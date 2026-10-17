@@ -1,0 +1,294 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  GraduationCap,
+  BookOpen,
+  Award,
+  Calendar,
+  Compass,
+  Building,
+  Phone,
+  FileText,
+  Users,
+  ShieldAlert,
+  HelpCircle,
+  Clock,
+  FlaskConical,
+  Trophy,
+  Camera,
+  HeartHandshake,
+  CheckCircle,
+} from "lucide-react";
+
+interface NavbarProps {
+  settings?: any;
+}
+
+export default function Navbar({ settings }: NavbarProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  const navLinks = [
+    { label: "Home", href: "/" },
+    {
+      label: "About Us",
+      href: "/about/history",
+      dropdown: [
+        { label: "History & Founder Arcot Mudaliar", href: "/about/history", desc: "Our 1883 philanthropic heritage" },
+        { label: "Legacy, Vision & Mission", href: "/about/legacy-vision-mission", desc: "Core values & principles" },
+        { label: "Principal's Message", href: "/about/principals-message", desc: "Words from Dr. K. S. Rajendra" },
+        { label: "Director's Message", href: "/about/directors-message", desc: "Vision from Prof. Vasantha Kumar" },
+        { label: "Management & Trustees", href: "/about/management", desc: "RBANMS Educational Charities Board" },
+        { label: "Who's Who", href: "/about/whos-who", desc: "Leadership and administrative directory" },
+        { label: "Statements & Declarations", href: "/about/statements", desc: "Anti-ragging, inclusion & safety" },
+        { label: "Accreditation & Recognition", href: "/about/accreditation-recognition", desc: "Karnataka PU Board code AS0042" },
+        { label: "Policies & Mandatory Documents", href: "/about/policies-documents", desc: "Student code & disclosures" },
+      ],
+    },
+    {
+      label: "Admissions",
+      href: "/admissions/admission-process",
+      dropdown: [
+        { label: "Admission Process & Guidelines", href: "/admissions/admission-process", desc: "How to apply for I Year PUC" },
+        { label: "Eligibility Criteria", href: "/admissions/eligibility", desc: "SSLC / Class 10 requirements" },
+        { label: "Courses Offered", href: "/admissions/courses-offered", desc: "Science, Commerce & Arts streams" },
+        { label: "Fee Structure (2025-26)", href: "/admissions/fee-structure", desc: "Transparent, affordable fees" },
+        { label: "Scholarships & Concessions", href: "/admissions/scholarships", desc: "Trust endowment & merit aid" },
+        { label: "Prospectus & Brochure", href: "/admissions/prospectus", desc: "Official 2025-26 college handbook" },
+        { label: "Downloads & Forms", href: "/admissions/downloads-forms", desc: "Application & declaration forms" },
+        { label: "Frequently Asked Questions", href: "/admissions/faqs", desc: "Common queries answered" },
+        { label: "Apply / Enquiry Online", href: "/admissions/apply", desc: "Submit online application" },
+      ],
+    },
+    {
+      label: "Academics",
+      href: "/academics/departments",
+      dropdown: [
+        { label: "Departments", href: "/academics/departments", desc: "9 specialized academic faculties" },
+        { label: "Faculty Directory", href: "/academics/faculty", desc: "Meet our dedicated educators" },
+        { label: "Academic Calendar", href: "/academics/academic-calendar", desc: "Term schedule & exam milestones" },
+        { label: "Timetable & Schedules", href: "/academics/timetable", desc: "Class and practical lecture hours" },
+        { label: "Curriculum & Syllabus", href: "/academics/syllabus", desc: "Karnataka PU Board NCERT curriculum" },
+        { label: "Examinations & Tests", href: "/academics/examination", desc: "Unit tests, preparatory & finals" },
+        { label: "Board Results", href: "/academics/results", desc: "98.4% pass record & distinctions" },
+        { label: "Library & Resource Center", href: "/academics/library", desc: "25,000+ volumes & journals" },
+        { label: "Computer Laboratories", href: "/academics/computer-lab", desc: "120 workstations with gigabit LAN" },
+        { label: "Science Laboratories", href: "/academics/science-laboratories", desc: "Spacious Physics, Chem & Bio labs" },
+      ],
+    },
+    {
+      label: "Student Life",
+      href: "/student-life/sports",
+      dropdown: [
+        { label: "Sports & Athletics", href: "/student-life/sports", desc: "Cricket, volleyball, track & field" },
+        { label: "National Cadet Corps (NCC)", href: "/student-life/ncc", desc: "Army & Naval wings" },
+        { label: "Cultural Activities", href: "/student-life/cultural-activities", desc: "Music, dance & drama festivals" },
+        { label: "Clubs & Societies", href: "/student-life/clubs-societies", desc: "Science, Commerce & Rotaract clubs" },
+        { label: "Career Guidance & Counseling", href: "/student-life/career-guidance", desc: "Mentorship & competitive coaching" },
+        { label: "Student Achievements", href: "/student-life/student-achievements", desc: "State ranks & sports medals" },
+        { label: "Faculty Achievements", href: "/student-life/faculty-achievements", desc: "Awards & pedagogical excellence" },
+        { label: "Campus Facilities", href: "/student-life/campus-facilities", desc: "Ulsoor Lake campus amenities" },
+        { label: "Transport & Connectivity", href: "/student-life/transport", desc: "Metro & BMTC connectivity" },
+        { label: "College Canteen", href: "/student-life/canteen", desc: "Hygienic vegetarian dining" },
+      ],
+    },
+    {
+      label: "Media",
+      href: "/media/notice-board",
+      dropdown: [
+        { label: "Digital Notice Board", href: "/media/notice-board", desc: "Official circulars & timetables" },
+        { label: "News & Press Releases", href: "/media/news", desc: "Latest campus achievements" },
+        { label: "Official Announcements", href: "/media/announcements", desc: "Advisories & department updates" },
+        { label: "Circulars & Government Orders", href: "/media/circulars", desc: "PU department directives" },
+        { label: "Upcoming & Past Events", href: "/media/events", desc: "Science & Commerce fests, sports day" },
+        { label: "Photo Gallery", href: "/media/photo-gallery", desc: "Campus & activity photographs" },
+        { label: "Video Gallery", href: "/media/video-gallery", desc: "Event recordings & celebrations" },
+      ],
+    },
+    {
+      label: "Alumni",
+      href: "/alumni/alumni",
+      dropdown: [
+        { label: "Alumni Recognition", href: "/alumni/alumni", desc: "Global network of proud graduates" },
+        { label: "Success Stories", href: "/alumni/success-stories", desc: "Distinguished alumni journeys" },
+      ],
+    },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs border-b border-gray-100 dark:border-slate-800 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          {/* Brand Logo & Name */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-12 h-12 shrink-0">
+              <Image
+                src={settings?.logoUrl || "/images/rbanms-logo.svg"}
+                alt="RBANMS PU College Logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-blue-900 dark:text-blue-100 font-serif leading-none group-hover:text-blue-700 dark:group-hover:text-blue-300 transition">
+                RBANM&apos;S
+              </span>
+              <span className="font-bold text-xs sm:text-sm tracking-wider text-slate-800 dark:text-slate-200 uppercase leading-tight">
+                Pre-University College
+              </span>
+              <span className="text-[10px] text-amber-700 dark:text-amber-400 font-semibold tracking-wider">
+                ESTD. 1883 • BENGALURU
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-1">
+            {navLinks.map((link) => {
+              const hasDropdown = !!link.dropdown;
+              return (
+                <div
+                  key={link.label}
+                  className="relative group"
+                  onMouseEnter={() => hasDropdown && setActiveDropdown(link.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-800 dark:hover:text-blue-400 rounded-md transition"
+                  >
+                    <span>{link.label}</span>
+                    {hasDropdown && (
+                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform duration-200" />
+                    )}
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {hasDropdown && (
+                    <div className="absolute top-full left-0 w-72 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-slate-800 p-2.5 space-y-1">
+                        {link.dropdown?.map((sub) => (
+                          <Link
+                            key={sub.label}
+                            href={sub.href}
+                            className="block px-3 py-2 rounded-xl hover:bg-blue-50/80 dark:hover:bg-slate-800 transition group/item"
+                          >
+                            <div className="text-xs font-semibold text-slate-800 dark:text-slate-100 group-hover/item:text-blue-700 dark:group-hover/item:text-blue-400">
+                              {sub.label}
+                            </div>
+                            {sub.desc && (
+                              <div className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
+                                {sub.desc}
+                              </div>
+                            )}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Apply Now CTA Button */}
+            <Link
+              href="/admissions/apply"
+              className="ml-3 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5"
+            >
+              Apply Online
+            </Link>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <Link
+              href="/admissions/apply"
+              className="px-3 py-1.5 rounded-lg bg-blue-700 text-white font-bold text-xs shadow-xs"
+            >
+              Apply
+            </Link>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-8 max-h-[85vh] overflow-y-auto animate-fade-in">
+          <div className="space-y-2">
+            {navLinks.map((link) => {
+              const hasDropdown = !!link.dropdown;
+              const isExpanded = activeDropdown === link.label;
+              return (
+                <div key={link.label} className="border-b border-gray-100 dark:border-slate-800/60 pb-2">
+                  <div className="flex justify-between items-center py-2">
+                    <Link
+                      href={link.href}
+                      onClick={() => !hasDropdown && setMobileMenuOpen(false)}
+                      className="font-bold text-sm text-slate-800 dark:text-slate-100"
+                    >
+                      {link.label}
+                    </Link>
+                    {hasDropdown && (
+                      <button
+                        onClick={() => setActiveDropdown(isExpanded ? null : link.label)}
+                        className="p-1 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                      >
+                        <ChevronDown className={`w-4 h-4 transform transition-transform ${isExpanded ? "rotate-180" : ""}`} />
+                      </button>
+                    )}
+                  </div>
+                  {hasDropdown && isExpanded && (
+                    <div className="pl-3 space-y-1 mt-1 border-l-2 border-blue-600/30">
+                      {link.dropdown?.map((sub) => (
+                        <Link
+                          key={sub.label}
+                          href={sub.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block py-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-medium"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <div className="pt-4 flex flex-col gap-2">
+              <Link
+                href="/admissions/apply"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-center py-2.5 rounded-xl bg-blue-700 text-white font-bold text-sm"
+              >
+                Apply Online 2025-26
+              </Link>
+              <Link
+                href="/admin"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-center py-2 rounded-xl bg-slate-800 text-amber-400 font-semibold text-xs border border-slate-700"
+              >
+                Staff / Admin CRM Portal
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

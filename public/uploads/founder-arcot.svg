@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="400" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="50%" cy="35%" r="40%">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1e293b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="450" fill="url(#bg)"/>
+  <circle cx="200" cy="170" r="140" fill="url(#halo)"/>
+  <circle cx="200" cy="160" r="65" fill="#f8fafc"/>
+  <!-- Turban/headdress -->
+  <path d="M 125 140 C 120 70 280 70 275 140 C 270 110 130 110 125 140 Z" fill="#b45309"/>
+  <ellipse cx="200" cy="110" rx="72" ry="30" fill="#d97706"/>
+  <circle cx="200" cy="95" r="10" fill="#fbbf24"/>
+  <!-- Coat / Sherwani -->
+  <path d="M 100 450 L 130 260 L 200 240 L 270 260 L 300 450 Z" fill="#334155"/>
+  <path d="M 160 260 L 200 320 L 240 260 Z" fill="#ffffff"/>
+  <!-- Medal/Honor -->
+  <polygon points="200,320 185,350 215,350" fill="#fbbf24"/>
+  <circle cx="200" cy="365" r="14" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+  <!-- Base Plate -->
+  <rect x="20" y="380" width="360" height="55" rx="6" fill="#1e3a8a" stroke="#d97706" stroke-width="2"/>
+  <text x="200" y="405" text-anchor="middle" font-family="'Cinzel', Georgia, serif" font-size="14" font-weight="700" fill="#fbbf24">Dharmarathnakara Rai Bahadur</text>
+  <text x="200" y="423" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="600" fill="#ffffff">Arcot Narrainswamy Mudaliar (1827 - 1910)</text>
+</svg>

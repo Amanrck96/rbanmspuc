@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 450" width="400" height="450">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="450" fill="url(#pbg)"/>
+  <circle cx="200" cy="160" r="70" fill="#fed7aa"/>
+  <!-- Hair -->
+  <path d="M 130 150 C 130 90 270 90 270 150 C 250 110 150 110 130 150 Z" fill="#334155"/>
+  <!-- Suit -->
+  <path d="M 80 450 L 120 270 L 200 250 L 280 270 L 320 450 Z" fill="#1e293b"/>
+  <polygon points="160,265 200,340 240,265" fill="#ffffff"/>
+  <polygon points="190,265 200,370 210,265" fill="#dc2626"/>
+  <!-- Glasses -->
+  <circle cx="175" cy="155" r="14" fill="none" stroke="#475569" stroke-width="3"/>
+  <circle cx="225" cy="155" r="14" fill="none" stroke="#475569" stroke-width="3"/>
+  <line x1="189" y1="155" x2="211" y2="155" stroke="#475569" stroke-width="3"/>
+  <!-- Nameplate -->
+  <rect x="25" y="380" width="350" height="55" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="200" y="405" text-anchor="middle" font-family="'Inter', sans-serif" font-size="15" font-weight="700" fill="#ffffff">Dr. K. S. Rajendra, M.Sc., Ph.D.</text>
+  <text x="200" y="423" text-anchor="middle" font-family="'Inter', sans-serif" font-size="12" font-weight="500" fill="#38bdf8">Principal, RBANMS Pre-University College</text>
+</svg>

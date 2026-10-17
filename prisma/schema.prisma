@@ -1,0 +1,244 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         String   @default("EDITOR") // SUPER_ADMIN, EDITOR, RECEPTIONIST
+  avatarUrl    String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSetting {
+  id               String   @id @default("default")
+  collegeName      String   @default("RBANMS Pre-University College")
+  tagline          String   @default("Empowering Minds, Enriching Character Since 1883")
+  founderName      String   @default("Dharmarathnakara Rai Bahadur Arcot Narrainswamy Mudaliar")
+  establishedYear  String   @default("1883")
+  address          String   @default("12, Annaswamy Mudaliar Road, Near Ulsoor Lake, Bengaluru, Karnataka 560042")
+  phone            String   @default("+91 80 2551 2911, +91 80 2554 4452")
+  email            String   @default("principal@rbanmspuc.edu.in")
+  admissionsEmail  String   @default("admissions@rbanmspuc.edu.in")
+  primaryColor     String   @default("#1e3a8a")
+  secondaryColor   String   @default("#b45309")
+  accentColor      String   @default("#0284c7")
+  logoUrl          String   @default("/images/rbanms-logo.svg")
+  bannerActive     Boolean  @default(true)
+  bannerText       String   @default("Admissions Open 2025-2026: Apply online now for Science (PCMB/PCMC), Commerce (SEBA/CEBA) & Arts (HEGP)!")
+  bannerLink       String   @default("/admissions/apply")
+  mapEmbedUrl      String   @default("https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8926946633633!2d77.6163339748414!3d12.978712987337326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1684c47f5bc7%3A0xbcf239b6b7123aa1!2sRBANM's%20Pre%20University%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin")
+  facebookUrl      String   @default("https://facebook.com/rbanmspuc")
+  twitterUrl       String   @default("https://twitter.com/rbanmspuc")
+  instagramUrl     String   @default("https://instagram.com/rbanmspuc")
+  youtubeUrl       String   @default("https://youtube.com/@rbanmspuc")
+  linkedinUrl      String   @default("https://linkedin.com/school/rbanmspuc")
+  metaTitle        String   @default("RBANMS PU College Bengaluru | Excellence in Higher Secondary Education")
+  metaDescription  String   @default("Official website of RBANM's Pre-University College Bengaluru. Established 1883. Offering Science, Commerce and Arts with rich academic legacy and modern facilities.")
+  updatedAt        DateTime @updatedAt
+}
+
+model Page {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  section     String   // about, admissions, academics, student-life, media, alumni, contact
+  title       String
+  subtitle    String?
+  content     String
+  bannerImage String?
+  isPublished Boolean  @default(true)
+  order       Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model Notice {
+  id          String   @id @default(uuid())
+  title       String
+  category    String   @default("NOTICE") // NOTICE, CIRCULAR, ANNOUNCEMENT, ADMISSION, RESULT
+  date        DateTime @default(now())
+  description String
+  fileUrl     String?
+  isPinned    Boolean  @default(false)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Event {
+  id          String    @id @default(uuid())
+  title       String
+  category    String    @default("ACADEMIC") // ACADEMIC, CULTURAL, SPORTS, CELEBRATION
+  eventDate   DateTime
+  endDate     DateTime?
+  venue       String    @default("College Auditorium / Campus Grounds")
+  description String
+  imageUrl    String?
+  isPublished Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model News {
+  id            String   @id @default(uuid())
+  title         String
+  category      String   @default("GENERAL")
+  summary       String
+  content       String
+  imageUrl      String?
+  publishedDate DateTime @default(now())
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Course {
+  id              String   @id @default(uuid())
+  code            String   @unique // PCMB, PCMC, CEBA, SEBA, HEGP
+  name            String
+  stream          String   // SCIENCE, COMMERCE, ARTS
+  duration        String   @default("2 Years (Pre-University 1st & 2nd Year)")
+  eligibility     String   @default("Pass in Karnataka SSLC or equivalent Class 10 examination")
+  intake          Int      @default(80)
+  subjects        String
+  careerProspects String
+  syllabusPdfUrl  String?
+  isPublished     Boolean  @default(true)
+  order           Int      @default(0)
+}
+
+model Department {
+  id          String    @id @default(uuid())
+  name        String
+  code        String    @unique
+  stream      String    // SCIENCE, COMMERCE, ARTS, LANGUAGES
+  description String
+  hodName     String
+  hodPhotoUrl String?
+  labs        String?
+  isPublished Boolean   @default(true)
+  order       Int       @default(0)
+  faculty     Faculty[]
+}
+
+model Faculty {
+  id             String     @id @default(uuid())
+  name           String
+  designation    String
+  departmentId   String
+  department     Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  qualification  String
+  experience     String
+  email          String?
+  photoUrl       String?
+  bio            String?
+  isPublished    Boolean    @default(true)
+  order          Int        @default(0)
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  title       String
+  category    String   // STUDENT, FACULTY, INSTITUTION, SPORTS, CULTURAL
+  recipient   String
+  year        String
+  description String
+  imageUrl    String?
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model GalleryItem {
+  id           String   @id @default(uuid())
+  title        String
+  category     String   @default("CAMPUS") // CAMPUS, SPORTS, CULTURAL, EVENTS, LABS
+  type         String   @default("IMAGE") // IMAGE, VIDEO
+  url          String
+  thumbnailUrl String?
+  caption      String?
+  isFeatured   Boolean  @default(false)
+  order        Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+model DownloadItem {
+  id            String   @id @default(uuid())
+  title         String
+  category      String   @default("GENERAL") // ADMISSION_FORM, SYLLABUS, TIMETABLE, CIRCULAR, BROCHURE, EXAM_RESULT
+  fileUrl       String
+  fileSize      String   @default("PDF")
+  fileType      String   @default("PDF")
+  downloadCount Int      @default(0)
+  isPublished   Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}
+
+model Faq {
+  id          String   @id @default(uuid())
+  question    String
+  answer      String
+  category    String   @default("ADMISSION") // ADMISSION, GENERAL, ACADEMIC, FEE, SCHOLARSHIP
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+}
+
+model Enquiry {
+  id                String    @id @default(uuid())
+  applicationNumber String    @unique
+  fullName          String
+  email             String
+  phone             String
+  courseInterested  String
+  tenthPercentage   Float?
+  schoolName        String?
+  parentName        String?
+  parentPhone       String?
+  address           String?
+  city              String?
+  message           String?
+  status            String    @default("NEW") // NEW, CONTACTED, APPLIED, ADMITTED, REJECTED
+  notes             String?
+  followUpDate      DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model MediaFile {
+  id           String   @id @default(uuid())
+  originalName String
+  fileName     String   @unique
+  fileUrl      String
+  mimeType     String
+  size         Int
+  uploadedBy   String?
+  createdAt    DateTime @default(now())
+}
+
+model ActivityLog {
+  id         String   @id @default(uuid())
+  userName   String   @default("System")
+  userRole   String   @default("SUPER_ADMIN")
+  action     String   // CREATE, UPDATE, DELETE, RESTORE, LOGIN, EXPORT
+  entityType String   // PAGE, NOTICE, ENQUIRY, SETTING, MEDIA, COURSE, FACULTY
+  entityId   String?
+  details    String
+  createdAt  DateTime @default(now())
+}
+
+model DeletedItem {
+  id           String   @id @default(uuid())
+  entityType   String
+  entityId     String
+  entityName   String
+  originalData String   // JSON serialized
+  deletedBy    String   @default("Admin")
+  deletedAt    DateTime @default(now())
+}
