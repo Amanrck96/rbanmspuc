@@ -20,21 +20,24 @@ export default function AdmissionAlertBanner({
   if (!bannerActive || dismissed) return null;
 
   return (
-    <div className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 text-white text-xs sm:text-sm py-2 px-4 shadow-md transition-all">
+    <div
+      data-testid="admission-alert-banner"
+      className="bg-[var(--gold)] text-[var(--maroon-dark)] text-xs sm:text-sm py-2 px-4 shadow-sm border-b border-[var(--maroon-dark)]/10 transition-all font-medium"
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 flex-1 justify-center text-center">
-          <Megaphone className="w-4 h-4 text-amber-200 shrink-0 animate-bounce" />
-          <span className="font-semibold tracking-wide">{bannerText}</span>
+          <Megaphone className="w-4 h-4 text-[var(--maroon-dark)] shrink-0 animate-bounce" />
+          <span className="font-bold tracking-wide text-[var(--maroon-dark)]">{bannerText}</span>
           <Link
             href={bannerLink}
-            className="ml-2 inline-flex items-center gap-1 underline font-bold text-amber-200 hover:text-white transition"
+            className="ml-2 inline-flex items-center gap-1 underline font-black text-[var(--maroon-dark)] hover:opacity-80 transition"
           >
             Apply Now <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
         <button
           onClick={() => setDismissed(true)}
-          className="text-amber-200 hover:text-white p-1 rounded-full hover:bg-amber-800/50 transition"
+          className="text-[var(--maroon-dark)] hover:bg-[var(--maroon-dark)]/10 p-1 rounded-full transition cursor-pointer"
           title="Dismiss notification"
         >
           <X className="w-3.5 h-3.5" />

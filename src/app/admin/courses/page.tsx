@@ -117,22 +117,22 @@ export default function CoursesManagerPage() {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon-light)] dark:text-[var(--gold)]">
             Curriculum Management
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] font-serif">
             Courses & Combinations
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             Manage academic combinations (PCMB, PCMC, CEBA, SEBA, HEGP), seats, and syllabus.
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
+          className="btn-maroon inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
         >
           <Plus className="w-4 h-4" /> Add New Course
         </button>
@@ -140,43 +140,43 @@ export default function CoursesManagerPage() {
 
       {loading ? (
         <div className="py-20 flex flex-col items-center justify-center space-y-3">
-          <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
-          <p className="text-xs text-slate-400">Loading courses...</p>
+          <Loader2 className="w-8 h-8 text-[var(--maroon)] animate-spin" />
+          <p className="text-xs text-muted-foreground">Loading courses...</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((c) => (
             <div
               key={c.id}
-              className="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm space-y-4 flex flex-col justify-between"
+              className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-sm space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 text-amber-400 uppercase">
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon-dark)] dark:bg-[var(--maroon-dark)] dark:text-[var(--gold)] uppercase">
                     {c.stream} Stream
                   </span>
-                  <span className="text-xs text-slate-400">Intake: {c.intake}</span>
+                  <span className="text-xs text-muted-foreground">Intake: {c.intake}</span>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-white font-mono">{c.code}</h3>
-                  <div className="text-xs font-semibold text-slate-300 mt-0.5">{c.name}</div>
+                  <h3 className="text-xl font-bold text-[var(--maroon)] dark:text-white font-mono">{c.code}</h3>
+                  <div className="text-xs font-semibold text-[var(--text)] mt-0.5">{c.name}</div>
                 </div>
 
-                <div className="text-xs text-slate-400 space-y-1">
+                <div className="text-xs text-muted-foreground space-y-1">
                   <div>
-                    <span className="text-slate-500 font-semibold">Subjects:</span> {c.subjects}
+                    <span className="text-[var(--maroon-light)] font-semibold">Subjects:</span> {c.subjects}
                   </div>
                   <div>
-                    <span className="text-slate-500 font-semibold">Career:</span> {c.careerProspects}
+                    <span className="text-[var(--maroon-light)] font-semibold">Career:</span> {c.careerProspects}
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+              <div className="pt-4 border-t border-[var(--maroon-light)]/15 flex items-center justify-between">
                 <span
                   className={`text-[10px] font-bold uppercase ${
-                    c.isPublished ? "text-emerald-400" : "text-slate-500"
+                    c.isPublished ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground"
                   }`}
                 >
                   {c.isPublished ? "Active on site" : "Draft"}
@@ -185,13 +185,13 @@ export default function CoursesManagerPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => openEditModal(c)}
-                    className="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
+                    className="px-3 py-1 rounded-lg bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white text-[var(--maroon-dark)] text-xs font-semibold transition"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(c.id, c.code)}
-                    className="p-1 rounded-lg text-red-400 hover:bg-red-950/60"
+                    className="p-1.5 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -209,23 +209,23 @@ export default function CoursesManagerPage() {
           onClick={() => setEditingCourse(null)}
         >
           <div
-            className="w-full max-w-xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 text-left shadow-2xl"
+            className="w-full max-w-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 rounded-3xl p-6 sm:p-8 space-y-6 text-left shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h2 className="text-lg font-bold text-white font-serif">
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/20">
+              <h2 className="text-lg font-bold text-[var(--maroon)] dark:text-white font-serif">
                 {isCreating ? "Add New Course Combination" : `Edit Course: ${editingCourse.code}`}
               </h2>
               <button
                 onClick={() => setEditingCourse(null)}
-                className="p-1 rounded-full text-slate-400 hover:text-white"
+                className="p-1 rounded-full text-muted-foreground hover:text-[var(--text)] transition"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {message && (
-              <div className="p-3 rounded-2xl bg-emerald-950/60 border border-emerald-800 text-emerald-300 text-xs">
+              <div className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 text-xs">
                 {message}
               </div>
             )}
@@ -233,7 +233,7 @@ export default function CoursesManagerPage() {
             <form onSubmit={handleSave} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                     Course Code (e.g. PCMC)
                   </label>
                   <input
@@ -241,16 +241,16 @@ export default function CoursesManagerPage() {
                     required
                     value={editingCourse.code}
                     onChange={(e) => setEditingCourse({ ...editingCourse, code: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-xs uppercase"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] font-mono text-xs uppercase focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Stream</label>
+                  <label className="block text-xs font-semibold text-[var(--text)] mb-1">Stream</label>
                   <select
                     value={editingCourse.stream}
                     onChange={(e) => setEditingCourse({ ...editingCourse, stream: e.target.value })}
-                    className="w-full px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                    className="w-full px-3 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                   >
                     <option value="SCIENCE">SCIENCE</option>
                     <option value="COMMERCE">COMMERCE</option>
@@ -260,20 +260,20 @@ export default function CoursesManagerPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   value={editingCourse.name}
                   onChange={(e) => setEditingCourse({ ...editingCourse, name: e.target.value })}
                   placeholder="e.g. Physics, Chemistry, Mathematics, Computer Science"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                     Intake (Seats)
                   </label>
                   <input
@@ -282,45 +282,45 @@ export default function CoursesManagerPage() {
                     onChange={(e) =>
                       setEditingCourse({ ...editingCourse, intake: parseInt(e.target.value) || 80 })
                     }
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Duration</label>
+                  <label className="block text-xs font-semibold text-[var(--text)] mb-1">Duration</label>
                   <input
                     type="text"
                     value={editingCourse.duration}
                     onChange={(e) => setEditingCourse({ ...editingCourse, duration: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Subjects</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Subjects</label>
                 <input
                   type="text"
                   required
                   value={editingCourse.subjects}
                   onChange={(e) => setEditingCourse({ ...editingCourse, subjects: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Eligibility Criteria
                 </label>
                 <textarea
                   rows={2}
                   value={editingCourse.eligibility}
                   onChange={(e) => setEditingCourse({ ...editingCourse, eligibility: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Career Prospects
                 </label>
                 <textarea
@@ -329,22 +329,22 @@ export default function CoursesManagerPage() {
                   onChange={(e) =>
                     setEditingCourse({ ...editingCourse, careerProspects: e.target.value })
                   }
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-4 border-t border-[var(--maroon-light)]/20">
                 <button
                   type="button"
                   onClick={() => setEditingCourse(null)}
-                  className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 text-xs font-bold"
+                  className="px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 text-[var(--text)] text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider"
+                  className="btn-maroon px-5 py-2 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition"
                 >
                   {saving ? "Saving..." : "Save Course"}
                 </button>

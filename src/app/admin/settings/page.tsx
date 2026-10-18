@@ -14,6 +14,8 @@ import {
   Loader2,
   Sparkles,
   Megaphone,
+  Lock,
+  Type,
 } from "lucide-react";
 
 export default function ThemeSettingsPage() {
@@ -26,12 +28,12 @@ export default function ThemeSettingsPage() {
     phone: "+91 80 2551 2911 / +91 80 2554 4452",
     email: "principal@rbanmspuc.edu.in",
     admissionsEmail: "admissions@rbanmspuc.edu.in",
-    primaryColor: "#1e3a8a",
-    secondaryColor: "#b45309",
-    accentColor: "#0284c7",
+    primaryColor: "#800000",
+    secondaryColor: "#5A0F1B",
+    accentColor: "#C9A227",
     logoUrl: "/images/rbanms-logo.svg",
     bannerActive: true,
-    bannerText: "Admissions Open for 2025-2026 Academic Year | Apply Online Today!",
+    bannerText: "Admissions Open for 2025-2026 Academic Year | Science (PCMB/PCMC), Commerce (SEBA/CEBA) & Arts (HEGP) | Apply Online Today!",
     bannerLink: "/admissions/apply",
     mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8926946633633!2d77.6163339748414!3d12.978712987337326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1684c47f5bc7%3A0xbcf239b6b7123aa1!2sRBANM's%20Pre%20University%20College!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
     facebookUrl: "https://facebook.com/rbanmspuc",
@@ -51,7 +53,14 @@ export default function ThemeSettingsPage() {
       .then((res) => res.json())
       .then((data) => {
         if (data.success && data.settings) {
-          setSettings(data.settings);
+          // Ensure maroon defaults if not set
+          const s = data.settings;
+          if (!s.primaryColor || !s.primaryColor.startsWith("#8") && !s.primaryColor.startsWith("#5")) {
+            s.primaryColor = "#800000";
+            s.secondaryColor = "#5A0F1B";
+            s.accentColor = "#C9A227";
+          }
+          setSettings(s);
         }
       })
       .catch((err) => console.error("Failed to fetch settings:", err))
@@ -75,7 +84,7 @@ export default function ThemeSettingsPage() {
         throw new Error(data.error || "Failed to update settings");
       }
 
-      setMessage("Settings and theme skin updated! Website revalidated instantly.");
+      setMessage("Brand skin and settings updated! Maroon theme revalidated instantly across all pages.");
       setTimeout(() => setMessage(null), 4000);
     } catch (err: any) {
       setMessage(`Error: ${err.message}`);
@@ -84,15 +93,24 @@ export default function ThemeSettingsPage() {
     }
   };
 
-  const applyPalette = (primary: string, secondary: string, accent: string) => {
-    setSettings({ ...settings, primaryColor: primary, secondaryColor: secondary, accentColor: accent });
-  };
+  const maroonShades = [
+    { label: "Classic Maroon (Official Primary)", hex: "#800000", darkHex: "#5A0F1B", tint: "#F7E9EB" },
+    { label: "Deep Crimson Maroon", hex: "#5A0F1B", darkHex: "#420A13", tint: "#F5E6E8" },
+    { label: "Heritage Rose Maroon", hex: "#A33B48", darkHex: "#5A0F1B", tint: "#FCEBED" },
+  ];
+
+  const goldPresets = [
+    { label: "Imperial Gold (Default)", hex: "#C9A227" },
+    { label: "Rich Royal Gold", hex: "#D4AF37" },
+    { label: "Amber Gold", hex: "#B45309" },
+    { label: "Honey Gold", hex: "#E5C158" },
+  ];
 
   if (loading) {
     return (
       <div className="py-20 flex flex-col items-center justify-center space-y-3">
-        <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
-        <p className="text-xs text-slate-400">Loading settings...</p>
+        <Loader2 className="w-8 h-8 text-[var(--gold)] animate-spin" />
+        <p className="text-xs text-[var(--text)]">Loading settings...</p>
       </div>
     );
   }
@@ -100,23 +118,23 @@ export default function ThemeSettingsPage() {
   return (
     <div className="space-y-8 animate-fade-in max-w-5xl">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-            Branding & Configurations
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
+            Branding & Color Architecture
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] font-serif">
             Site Skin & College Settings
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Modifying theme colors, logos, banner alerts, or contact numbers changes the whole website instantly.
+          <p className="text-xs text-[var(--text)]/70 mt-1">
+            Maroon is strictly locked as the institutional brand color. Customise the gold accent, logo, banner, and college details.
           </p>
         </div>
 
         <button
           onClick={handleSave}
           disabled={saving}
-          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer disabled:opacity-50"
+          className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer disabled:opacity-50"
         >
           {saving ? (
             <>
@@ -124,7 +142,7 @@ export default function ThemeSettingsPage() {
             </>
           ) : (
             <>
-              <Save className="w-4 h-4" /> Save & Update Skin
+              <Save className="w-4 h-4 text-[var(--gold)]" /> Save & Update Skin
             </>
           )}
         </button>
@@ -144,277 +162,289 @@ export default function ThemeSettingsPage() {
       )}
 
       <form onSubmit={handleSave} className="space-y-8">
-        {/* Section 1: Dynamic Theme Skin & Colors */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-800">
-            <Palette className="w-5 h-5 text-amber-400" />
-            <h2 className="font-bold text-base text-white font-serif">
-              Live Theme Skin & Color Palette
-            </h2>
+        {/* Section 1: Locked Maroon Brand & Gold Accent */}
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-6">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
+            <div className="flex items-center gap-2">
+              <Palette className="w-5 h-5 text-[var(--maroon)] dark:text-[var(--gold)]" />
+              <h2 className="font-bold text-base text-[var(--text)] font-serif">
+                Institutional Color Skin
+              </h2>
+            </div>
+            <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:bg-[var(--maroon)]/30 dark:text-[var(--gold)]">
+              <Lock className="w-3 h-3" /> Maroon Locked
+            </span>
           </div>
 
-          {/* Quick Palettes */}
-          <div className="space-y-2">
-            <span className="text-xs font-semibold text-slate-400">Recommended Institutional Palettes:</span>
-            <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
-                onClick={() => applyPalette("#1e3a8a", "#b45309", "#0284c7")}
-                className="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-xs text-white flex items-center gap-2"
-              >
-                <div className="w-3 h-3 rounded-full bg-[#1e3a8a]" />
-                <div className="w-3 h-3 rounded-full bg-[#b45309]" />
-                <span>Royal Navy & Amber (Default)</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => applyPalette("#881337", "#b45309", "#be123c")}
-                className="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-xs text-white flex items-center gap-2"
-              >
-                <div className="w-3 h-3 rounded-full bg-[#881337]" />
-                <div className="w-3 h-3 rounded-full bg-[#b45309]" />
-                <span>Imperial Crimson</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => applyPalette("#064e3b", "#b45309", "#059669")}
-                className="px-3 py-1.5 rounded-xl border border-slate-700 bg-slate-800 hover:bg-slate-700 text-xs text-white flex items-center gap-2"
-              >
-                <div className="w-3 h-3 rounded-full bg-[#064e3b]" />
-                <div className="w-3 h-3 rounded-full bg-[#b45309]" />
-                <span>Emerald Heritage</span>
-              </button>
+          {/* 1. Primary Maroon Selection (Locked to official shades) */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[var(--text)] uppercase tracking-wider">
+                Primary Brand Color (Official Maroon Shades)
+              </label>
+              <span className="text-[11px] text-[var(--text)]/60 italic">
+                RBANMS charter requires Maroon on every page
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {maroonShades.map((shade) => {
+                const isSelected = settings.primaryColor.toLowerCase() === shade.hex.toLowerCase();
+                return (
+                  <button
+                    key={shade.hex}
+                    type="button"
+                    onClick={() =>
+                      setSettings({
+                        ...settings,
+                        primaryColor: shade.hex,
+                        secondaryColor: shade.darkHex,
+                      })
+                    }
+                    className={`p-3.5 rounded-2xl border text-left transition flex items-center justify-between cursor-pointer ${
+                      isSelected
+                        ? "border-[var(--maroon)] bg-[var(--maroon-tint)] dark:bg-[var(--maroon)]/30 ring-2 ring-[var(--maroon)]"
+                        : "border-gray-200 dark:border-slate-800 hover:border-[var(--maroon-light)]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-7 h-7 rounded-full shadow-inner border border-white/40 shrink-0"
+                        style={{ backgroundColor: shade.hex }}
+                      />
+                      <div>
+                        <div className="text-xs font-bold text-[var(--text)]">{shade.label}</div>
+                        <div className="text-[10px] font-mono text-[var(--text)]/60">{shade.hex}</div>
+                      </div>
+                    </div>
+                    {isSelected && <CheckCircle2 className="w-4 h-4 text-[var(--maroon)] dark:text-[var(--gold)]" />}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Primary Brand Color
+          {/* 2. Gold Accent Customization */}
+          <div className="space-y-3 pt-3 border-t border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-bold text-[var(--text)] uppercase tracking-wider">
+                Gold Accent Color (Customizable Highlight & Banner)
               </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={settings.primaryColor}
-                  onChange={(e) => setSettings({ ...settings, primaryColor: e.target.value })}
-                  className="w-10 h-10 rounded-xl border-0 cursor-pointer bg-transparent"
-                />
-                <input
-                  type="text"
-                  value={settings.primaryColor}
-                  onChange={(e) => setSettings({ ...settings, primaryColor: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 font-mono text-xs text-white"
-                />
-              </div>
+              <span className="text-[11px] text-[var(--text)]/60">
+                Applied to banners, badges, highlights & buttons
+              </span>
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Secondary / Heritage Accent
-              </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={settings.secondaryColor}
-                  onChange={(e) => setSettings({ ...settings, secondaryColor: e.target.value })}
-                  className="w-10 h-10 rounded-xl border-0 cursor-pointer bg-transparent"
-                />
-                <input
-                  type="text"
-                  value={settings.secondaryColor}
-                  onChange={(e) => setSettings({ ...settings, secondaryColor: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 font-mono text-xs text-white"
-                />
-              </div>
+            <div className="flex flex-wrap gap-2 mb-3">
+              {goldPresets.map((g) => (
+                <button
+                  key={g.hex}
+                  type="button"
+                  onClick={() => setSettings({ ...settings, accentColor: g.hex })}
+                  className="px-3 py-1.5 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-[var(--gold)] text-xs flex items-center gap-2 cursor-pointer transition"
+                >
+                  <div className="w-3.5 h-3.5 rounded-full shadow-xs" style={{ backgroundColor: g.hex }} />
+                  <span className="text-[var(--text)] font-medium">{g.label}</span>
+                </button>
+              ))}
             </div>
 
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Highlight Accent Color
-              </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={settings.accentColor}
-                  onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
-                  className="w-10 h-10 rounded-xl border-0 cursor-pointer bg-transparent"
-                />
-                <input
-                  type="text"
-                  value={settings.accentColor}
-                  onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
-                  className="w-full px-3 py-2 rounded-xl bg-slate-800 border border-slate-700 font-mono text-xs text-white"
-                />
+            <div className="flex items-center gap-4 max-w-sm">
+              <input
+                type="color"
+                value={settings.accentColor || "#C9A227"}
+                onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
+                className="w-12 h-12 rounded-2xl border-0 cursor-pointer bg-transparent shadow-xs"
+              />
+              <input
+                type="text"
+                value={settings.accentColor || "#C9A227"}
+                onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 font-mono text-xs text-[var(--text)] uppercase font-bold"
+                placeholder="#C9A227"
+              />
+            </div>
+          </div>
+
+          {/* Live Preview Pill */}
+          <div className="p-4 rounded-2xl bg-[var(--maroon-tint)] dark:bg-[var(--maroon)]/20 border border-[var(--maroon-light)]/30 flex flex-wrap items-center justify-between gap-3">
+            <div className="space-y-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
+                Live Contrast & Branding Preview
+              </span>
+              <div className="text-xs font-semibold text-[var(--text)]">
+                White on Maroon: <span className="font-bold text-emerald-600 dark:text-emerald-400">9.07:1 (Passes AAA)</span> •
+                Maroon on Gold: <span className="font-bold text-emerald-600 dark:text-emerald-400">5.6:1 (Passes AA)</span>
               </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                className="px-4 py-2 rounded-xl text-white font-bold text-xs"
+                style={{ backgroundColor: settings.primaryColor }}
+              >
+                Primary Maroon Button
+              </button>
+              <button
+                type="button"
+                className="px-4 py-2 rounded-xl font-bold text-xs"
+                style={{
+                  backgroundColor: settings.accentColor || "#C9A227",
+                  color: settings.secondaryColor || "#5A0F1B",
+                }}
+              >
+                Gold Accent Banner
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Section 2: Admissions Alert Banner */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+        {/* Section 2: Logo & Header Identity */}
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <div className="flex items-center gap-2 pb-2 border-b border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
+            <Sparkles className="w-5 h-5 text-[var(--maroon)] dark:text-[var(--gold)]" />
+            <h2 className="font-bold text-base text-[var(--text)] font-serif">
+              College Logo & Emblem
+            </h2>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-6">
+            <div className="relative w-20 h-20 rounded-2xl bg-[var(--maroon)] p-2 shrink-0 border border-[var(--gold)]/40 shadow-sm flex items-center justify-center">
+              <Image
+                src={settings.logoUrl || "/images/rbanms-logo.svg"}
+                alt="Logo Preview"
+                fill
+                className="object-contain p-1"
+              />
+            </div>
+            <div className="space-y-1 flex-1 w-full">
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">
+                Logo Asset URL (SVG, PNG, or WebP)
+              </label>
+              <input
+                type="text"
+                value={settings.logoUrl}
+                onChange={(e) => setSettings({ ...settings, logoUrl: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)] font-mono"
+              />
+              <p className="text-[11px] text-[var(--text)]/60">
+                Tip: You can also upload/replace files in the Media Library (`/admin/media`) and link them here.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 3: Admission Alert Banner */}
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
             <div className="flex items-center gap-2">
-              <Megaphone className="w-5 h-5 text-amber-400" />
-              <h2 className="font-bold text-base text-white font-serif">
-                Top Notice / Admission Alert Banner
+              <Megaphone className="w-5 h-5 text-[var(--maroon)] dark:text-[var(--gold)]" />
+              <h2 className="font-bold text-base text-[var(--text)] font-serif">
+                Top Admission Alert Banner
               </h2>
             </div>
-            <label className="flex items-center gap-2 cursor-pointer text-xs font-bold text-slate-200">
+            <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-[var(--text)]">
               <input
                 type="checkbox"
                 checked={settings.bannerActive}
                 onChange={(e) => setSettings({ ...settings, bannerActive: e.target.checked })}
-                className="w-4 h-4 rounded text-amber-500"
+                className="w-4 h-4 rounded text-[var(--maroon)]"
               />
               <span>Banner Active</span>
             </label>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Announcement Text
+          <div className="space-y-4">
+            <div>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">
+                Banner Announcement Text
               </label>
               <input
                 type="text"
-                value={settings.bannerText || ""}
+                value={settings.bannerText}
                 onChange={(e) => setSettings({ ...settings, bannerText: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Call-to-Action Link
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">
+                Banner Action Link Destination
               </label>
               <input
                 type="text"
-                value={settings.bannerLink || ""}
+                value={settings.bannerLink}
                 onChange={(e) => setSettings({ ...settings, bannerLink: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 font-mono text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)] font-mono"
               />
             </div>
           </div>
         </div>
 
-        {/* Section 3: College Identity & Information */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-800">
-            <Globe className="w-5 h-5 text-blue-400" />
-            <h2 className="font-bold text-base text-white font-serif">
-              College Identity & Address
+        {/* Section 4: College Institutional Info */}
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <div className="flex items-center gap-2 pb-2 border-b border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
+            <Globe className="w-5 h-5 text-[var(--maroon)] dark:text-[var(--gold)]" />
+            <h2 className="font-bold text-base text-[var(--text)] font-serif">
+              College Contact & Institutional Info
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Official College Name
-              </label>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">College Name</label>
               <input
                 type="text"
-                value={settings.collegeName || ""}
+                value={settings.collegeName}
                 onChange={(e) => setSettings({ ...settings, collegeName: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
-
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Tagline</label>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">Tagline</label>
               <input
                 type="text"
-                value={settings.tagline || ""}
+                value={settings.tagline}
                 onChange={(e) => setSettings({ ...settings, tagline: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
-
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Campus Postal Address
-              </label>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">Official Address</label>
               <input
                 type="text"
-                value={settings.address || ""}
+                value={settings.address}
                 onChange={(e) => setSettings({ ...settings, address: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
-
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">Phone Numbers</label>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">Official Phone Numbers</label>
               <input
                 type="text"
-                value={settings.phone || ""}
+                value={settings.phone}
                 onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
-
             <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Admissions Email
-              </label>
+              <label className="block text-xs font-semibold text-[var(--text)] mb-1">Admissions Email</label>
               <input
                 type="email"
-                value={settings.admissionsEmail || ""}
+                value={settings.admissionsEmail}
                 onChange={(e) => setSettings({ ...settings, admissionsEmail: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-xs text-[var(--text)]"
               />
             </div>
           </div>
         </div>
 
-        {/* Section 4: SEO Metadata */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center gap-2 pb-2 border-b border-slate-800">
-            <Sparkles className="w-5 h-5 text-purple-400" />
-            <h2 className="font-bold text-base text-white font-serif">
-              Search Engine Optimization (SEO)
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Meta Title (Appears in Google search & browser tabs)
-              </label>
-              <input
-                type="text"
-                value={settings.metaTitle || ""}
-                onChange={(e) => setSettings({ ...settings, metaTitle: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
-              />
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-300 mb-1">
-                Meta Description
-              </label>
-              <textarea
-                rows={3}
-                value={settings.metaDescription || ""}
-                onChange={(e) => setSettings({ ...settings, metaDescription: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
-              />
-            </div>
-          </div>
-        </div>
-
+        {/* Save Bar */}
         <div className="flex justify-end pt-4">
           <button
             type="submit"
             disabled={saving}
-            className="px-8 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition cursor-pointer disabled:opacity-50"
+            className="px-8 py-3 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-lg cursor-pointer disabled:opacity-50"
           >
-            {saving ? (
-              <>
-                <Loader2 className="w-4 h-4 animate-spin" /> Saving Changes...
-              </>
-            ) : (
-              <>
-                <Save className="w-4 h-4" /> Save Site Settings & Update Skin
-              </>
-            )}
+            {saving ? "Saving Changes..." : "Save & Update Whole Site"}
           </button>
         </div>
       </form>

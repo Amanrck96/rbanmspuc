@@ -81,16 +81,16 @@ export default function UsersManagerPage() {
   };
 
   return (
-    <div className="space-y-8 animate-fade-in max-w-5xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+    <div className="space-y-8 animate-fade-in max-w-5xl text-[var(--text)]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
             Roles & Permissions
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
             Staff & User Management
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[var(--text)]/70 mt-1">
             Assign role-based access for Super Admin, Editor, and Receptionist counselors.
           </p>
         </div>
@@ -100,24 +100,24 @@ export default function UsersManagerPage() {
             setShowCreateModal(true);
             setMessage(null);
           }}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
         >
-          <UserPlus className="w-4 h-4" /> Add Staff Member
+          <UserPlus className="w-4 h-4 text-[var(--gold)]" /> Add Staff Member
         </button>
       </div>
 
       {/* Users Table */}
-      <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm overflow-hidden">
+      <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs overflow-hidden">
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center space-y-3">
-            <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
-            <p className="text-xs text-slate-400">Loading user accounts...</p>
+            <Loader2 className="w-8 h-8 text-[var(--gold)] animate-spin" />
+            <p className="text-xs text-[var(--text)]/60">Loading user accounts...</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 uppercase tracking-wider text-[10px]">
+                <tr className="border-b border-[var(--maroon-light)]/20 text-[var(--text)]/60 uppercase tracking-wider text-[10px]">
                   <th className="py-3 px-3">Name</th>
                   <th className="py-3 px-3">Email Address</th>
                   <th className="py-3 px-3">Role</th>
@@ -125,30 +125,30 @@ export default function UsersManagerPage() {
                   <th className="py-3 px-3">Created</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[var(--maroon-light)]/10">
                 {users.map((u) => (
-                  <tr key={u.id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3.5 px-3 font-bold text-white text-sm">{u.name}</td>
-                    <td className="py-3.5 px-3 font-mono text-slate-300">{u.email}</td>
+                  <tr key={u.id} className="hover:bg-[var(--maroon-tint)]/40 transition">
+                    <td className="py-3.5 px-3 font-bold text-[var(--text)] text-sm">{u.name}</td>
+                    <td className="py-3.5 px-3 font-mono text-[var(--text)]/80">{u.email}</td>
                     <td className="py-3.5 px-3">
                       <span
                         className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                           u.role === "SUPER_ADMIN"
-                            ? "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                            ? "bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30"
                             : u.role === "EDITOR"
-                            ? "bg-blue-500/20 text-blue-300 border border-blue-500/30"
-                            : "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                            ? "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-500/30"
+                            : "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-500/30"
                         }`}
                       >
                         {u.role.replace(/_/g, " ")}
                       </span>
                     </td>
                     <td className="py-3.5 px-3">
-                      <span className="text-emerald-400 font-semibold flex items-center gap-1 text-[11px]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Active
+                      <span className="text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 text-[11px]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Active
                       </span>
                     </td>
-                    <td className="py-3.5 px-3 text-slate-500 text-[11px]">
+                    <td className="py-3.5 px-3 text-[var(--text)]/50 text-[11px]">
                       {new Date(u.createdAt).toLocaleDateString("en-IN", {
                         day: "numeric",
                         month: "short",
@@ -170,14 +170,14 @@ export default function UsersManagerPage() {
           onClick={() => setShowCreateModal(false)}
         >
           <div
-            className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 text-left shadow-2xl"
+            className="w-full max-w-md bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 rounded-3xl p-6 sm:p-8 space-y-6 text-left shadow-2xl text-[var(--text)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h2 className="text-lg font-bold text-white font-serif">Add Staff Member</h2>
+            <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/20">
+              <h2 className="text-lg font-bold text-[var(--text)] font-serif">Add Staff Member</h2>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="p-1 rounded-full text-slate-400 hover:text-white"
+                className="p-1 rounded-full text-[var(--text)]/60 hover:text-[var(--text)] hover:bg-[var(--maroon-tint)] cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -187,8 +187,8 @@ export default function UsersManagerPage() {
               <div
                 className={`p-3 rounded-2xl text-xs flex items-center gap-2 ${
                   message.startsWith("Error")
-                    ? "bg-red-950/60 border border-red-800 text-red-300"
-                    : "bg-emerald-950/60 border border-emerald-800 text-emerald-300"
+                    ? "bg-red-100 dark:bg-red-950/60 border border-red-500/40 text-red-800 dark:text-red-300"
+                    : "bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-500/40 text-emerald-800 dark:text-emerald-300"
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
@@ -198,7 +198,7 @@ export default function UsersManagerPage() {
 
             <form onSubmit={handleCreate} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Full Name
                 </label>
                 <input
@@ -207,12 +207,12 @@ export default function UsersManagerPage() {
                   value={newUser.name}
                   onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
                   placeholder="e.g. Smt. Kavitha S."
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:ring-2 focus:ring-[var(--maroon)] focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Staff Email
                 </label>
                 <input
@@ -221,12 +221,12 @@ export default function UsersManagerPage() {
                   value={newUser.email}
                   onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
                   placeholder="kavitha@rbanmspuc.edu.in"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:ring-2 focus:ring-[var(--maroon)] focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Initial Password
                 </label>
                 <input
@@ -235,18 +235,18 @@ export default function UsersManagerPage() {
                   value={newUser.password}
                   onChange={(e) => setNewUser({ ...newUser, password: e.target.value })}
                   placeholder="••••••••••••"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:ring-2 focus:ring-[var(--maroon)] focus:outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">
                   Access Role
                 </label>
                 <select
                   value={newUser.role}
                   onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:ring-2 focus:ring-[var(--maroon)] focus:outline-hidden"
                 >
                   <option value="SUPER_ADMIN">SUPER ADMIN (Full system control)</option>
                   <option value="EDITOR">EDITOR (Manage content, notices, pages)</option>
@@ -254,18 +254,18 @@ export default function UsersManagerPage() {
                 </select>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-4 border-t border-[var(--maroon-light)]/20">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 text-xs font-bold"
+                  className="px-4 py-2 rounded-xl border border-[var(--maroon-light)]/30 text-[var(--text)]/80 text-xs font-bold hover:bg-[var(--maroon-tint)] transition cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creating}
-                  className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider"
+                  className="px-5 py-2 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer disabled:opacity-50 shadow-xs"
                 >
                   {creating ? "Creating..." : "Create Account"}
                 </button>

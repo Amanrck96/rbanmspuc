@@ -1,8 +1,40 @@
 # RBANMS Pre-University College — Official Portal & Admin CRM
 
-A full-stack institutional web portal and administrative CRM system built for **RBANMS Pre-University College**, Bengaluru (Estd. 1883 by Dharmarathnakara Rai Bahadur Arcot Narrainswamy Mudaliar).
+A production-ready full-stack institutional web portal and administrative CRM system built for **RBANMS Pre-University College**, Bengaluru (Estd. 1883 by Dharmarathnakara Rai Bahadur Arcot Narrainswamy Mudaliar).
 
 Both the public portal and the administrative console share **ONE unified SQLite database** (`prisma/dev.db`) and **ONE shared uploads directory** (`public/uploads`), ensuring zero stale cache and instantaneous reflection of all changes.
+
+---
+
+## 🎨 Mandatory Brand Skin & Theme Tokens (Maroon & Gold)
+
+Maroon (`#800000`) is the signature brand color and appears on **every public page and every admin page**: headers, buttons, links, footer, section headings, and the admin sidebar.
+
+### Theme Tokens
+- `--maroon: #800000` (primary brand color)
+- `--maroon-dark: #5A0F1B` (hover states, top utility bar, footer, admin sidebar)
+- `--maroon-light: #A33B48` (icons, borders, badges)
+- `--maroon-tint: #F7E9EB` (section backgrounds, card highlights)
+- `--gold: #C9A227` (accent, admissions banner, highlights)
+- `--cream: #FFF9F2` (page background in light mode)
+- `--text: #2B2B2B`
+- `--white: #FFFFFF`
+
+### Dark Mode Tokens
+- `--bg: #1A0B0E`
+- `--card: #2A1216`
+- `--text: #F5E9EA`
+- `--maroon: #B03A48`
+- `--gold: #E0B93A`
+
+### Contrast & Accessibility (WCAG AA)
+- Buttons: Maroon background (`bg-[var(--maroon)]`), crisp white text, dark-maroon on hover (`hover:bg-[var(--maroon-dark)]`).
+- Secondary buttons: Gold outline (`border border-[var(--gold)] text-[var(--gold)]`).
+- Links: Maroon, underlined on hover (`link-maroon`).
+- Admission Alert Banner: Gold background (`bg-[var(--gold)]`) with dark maroon text (`#5A0F1B`), ensuring > 5.5:1 contrast ratio.
+- Header: Maroon with white text and college logo.
+- Top Utility Bar: Dark maroon (`bg-[var(--maroon-dark)]`).
+- Admin Panel: Dark maroon sidebar (`bg-[var(--maroon-dark)]`), cream content area (`#FFF9F2`), locked maroon primary color.
 
 ---
 
@@ -45,7 +77,7 @@ Both the public portal and the administrative console share **ONE unified SQLite
    - **Pages CMS**: Create, edit, publish/unpublish every page with a formatting rich text editor (headings, bold, italic, lists, blockquotes, tables, images).
    - **Content Managers**: Dedicated CRUD panels for Notices, Events, News, Courses, Faculty, Downloads, FAQs, Gallery items, and Achievements.
    - **Media Library**: Upload, preview, download, and in-place replace images and PDFs with instant cache invalidation.
-   - **Brand & Theme Customizer (Skin)**: Edit college name, logo, banner announcement, and brand colors (Primary, Secondary, Accent) via live color pickers—propagating immediately to the public site via CSS variable injection.
+   - **Brand & Theme Customizer (Skin)**: Edit college name, logo, banner announcement, and accent colors via live color pickers—primary color locked to maroon.
    - **Activity Audit Trail**: Logs every create, update, delete, restore, and login event with actor, role, and timestamp.
    - **Recycle Bin & 1-Click Restore (Undo)**: Any deleted page, notice, or course is staged in the recycle bin and can be restored back to live status with one click.
    - **Staff & User Management**: Role-based access control supporting `SUPER_ADMIN`, `EDITOR`, and `RECEPTIONIST` roles.
@@ -93,7 +125,7 @@ npm run start
 ```
 
 ### 5. Automated E2E Browser Test Suite
-Run the 10-step automated browser validation suite using Puppeteer & Google Chrome:
+Run the 11-step automated browser validation suite using Puppeteer & Google Chrome:
 ```bash
 npx tsx scripts/e2e-browser-test.ts
 ```
@@ -102,6 +134,9 @@ npx tsx scripts/e2e-browser-test.ts
 
 ## 🧪 Verification & Checklist Status
 
+- [x] **Mandatory Maroon Brand Theme on every page** (Verified `#800000` headers, buttons, links, footer, sidebar)
+- [x] **WCAG AA Contrast Compliance** (Verified dark maroon text on gold banner, white on maroon buttons)
+- [x] **Dark Mode Toggle** (Verified `.dark` class with `--bg: #1A0B0E`, `--card: #2A1216`, `--maroon: #B03A48`)
 - [x] **Public site runs with no errors, all menu pages open** (Verified across 40+ sitemap endpoints)
 - [x] **Admin login works; protected routes cannot be opened without login** (Verified with JWT authentication and middleware redirection)
 - [x] **Edit text in admin -> website updates immediately** (Verified with on-demand cache revalidation)

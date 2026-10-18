@@ -28,6 +28,8 @@ import {
   Search,
   Shield,
   Loader2,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -36,6 +38,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [checkingAuth, setCheckingAuth] = useState(true);
+  const [isDark, setIsDark] = useState(false);
 
   const isLoginPage = pathname === "/admin/login";
 
@@ -44,6 +47,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       setCheckingAuth(false);
       return;
     }
+
+    // Check dark mode state
+    setIsDark(document.documentElement.classList.contains("dark"));
 
     // Verify authentication
     fetch("/api/auth/me")
@@ -67,6 +73,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       });
   }, [pathname, isLoginPage, router]);
 
+  const toggleDarkMode = () => {
+    const isNowDark = !isDark;
+    setIsDark(isNowDark);
+    if (isNowDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
@@ -83,10 +99,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--maroon-dark)] text-white">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 animate-spin text-amber-500" />
-          <p className="text-xs text-slate-400">Verifying administrative credentials...</p>
+          <Loader2 className="w-8 h-8 animate-spin text-[var(--gold)]" />
+          <p className="text-xs text-white/80 font-medium">Verifying administrative credentials...</p>
         </div>
       </div>
     );
@@ -113,53 +129,61 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col lg:flex-row">
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] flex flex-col lg:flex-row transition-colors">
       {/* Mobile Top Header */}
-      <header className="lg:hidden flex items-center justify-between p-4 bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+      <header className="lg:hidden flex items-center justify-between p-4 bg-[var(--maroon-dark)] border-b border-[var(--gold)]/30 sticky top-0 z-50 text-white">
         <div className="flex items-center gap-2">
-          <div className="relative w-8 h-8">
+          <div className="relative w-8 h-8 bg-white/10 rounded-full p-1 border border-[var(--gold)]/40">
             <Image src="/images/rbanms-logo.svg" alt="RBANMS Logo" fill className="object-contain" />
           </div>
           <div>
             <div className="font-bold text-xs text-white">RBANMS PU College</div>
-            <div className="text-[10px] text-amber-400">Admin CRM Console</div>
+            <div className="text-[10px] text-[var(--gold)] font-bold">Admin CRM Console</div>
           </div>
         </div>
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 rounded-lg bg-slate-800 text-slate-300"
-        >
-          {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={toggleDarkMode}
+            className="p-1.5 rounded-lg text-white/80 hover:text-[var(--gold)] hover:bg-[var(--maroon)] transition"
+          >
+            {isDark ? <Sun className="w-4 h-4 text-[var(--gold)]" /> : <Moon className="w-4 h-4" />}
+          </button>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-lg bg-[var(--maroon)] text-white hover:bg-[var(--maroon-light)]"
+          >
+            {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </header>
 
-      {/* Admin Sidebar Navigation */}
+      {/* Admin Sidebar Navigation in Maroon */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-200 overflow-y-auto ${
+        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-[var(--maroon-dark)] border-r border-[var(--gold)]/20 text-white flex flex-col justify-between transition-transform duration-200 overflow-y-auto ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        <div className="p-4 space-y-6">
+        <div className="p-4 space-y-5">
           {/* Logo & College Title */}
           <Link href="/admin" className="flex items-center gap-3 px-2 py-2 group">
-            <div className="relative w-10 h-10 shrink-0">
-              <Image src="/images/rbanms-logo.svg" alt="RBANMS Logo" fill className="object-contain" />
+            <div className="relative w-10 h-10 shrink-0 bg-white/10 rounded-full p-1 border border-[var(--gold)]/40 shadow-xs">
+              <Image src="/images/rbanms-logo.svg" alt="RBANMS Logo" fill className="object-contain p-0.5" />
             </div>
             <div>
               <div className="font-extrabold text-sm text-white font-serif leading-none">RBANM&apos;S</div>
-              <div className="text-[10px] text-amber-400 font-bold uppercase tracking-wider">Admin CRM Panel</div>
-              <div className="text-[9px] text-slate-500">Shared DB & Media Storage</div>
+              <div className="text-[10px] text-[var(--gold)] font-bold uppercase tracking-wider">Admin CRM Panel</div>
+              <div className="text-[9px] text-white/60">Shared DB & Media Storage</div>
             </div>
           </Link>
 
           {/* Current User Pill */}
           {currentUser && (
-            <div className="p-3 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-[var(--maroon)] border border-[var(--gold)]/30 flex items-center justify-between">
               <div className="overflow-hidden">
-                <div className="text-xs font-bold text-slate-200 truncate">{currentUser.name}</div>
-                <div className="text-[10px] text-amber-400 font-semibold">{currentUser.role}</div>
+                <div className="text-xs font-bold text-white truncate">{currentUser.name}</div>
+                <div className="text-[10px] text-[var(--gold)] font-bold">{currentUser.role}</div>
               </div>
-              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" title="Online" />
+              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Online" />
             </div>
           )}
 
@@ -175,8 +199,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                     isActive
-                      ? "bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/10"
-                      : "text-slate-400 hover:text-white hover:bg-slate-800/80"
+                      ? "bg-[var(--gold)] text-[var(--maroon-dark)] font-extrabold shadow-md"
+                      : "text-white/85 hover:text-white hover:bg-[var(--maroon)]"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -184,7 +208,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <span>{item.label}</span>
                   </div>
                   {item.badge && (
-                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-300 font-bold">
+                    <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                      isActive ? "bg-[var(--maroon-dark)] text-[var(--gold)]" : "bg-[var(--gold)]/20 text-[var(--gold)]"
+                    }`}>
                       {item.badge}
                     </span>
                   )}
@@ -195,26 +221,38 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-slate-800 space-y-2">
+        <div className="p-4 border-t border-[var(--maroon)]/50 space-y-2">
+          <div className="flex items-center justify-between px-2 py-1 text-xs text-white/70">
+            <span>Theme Mode</span>
+            <button
+              onClick={toggleDarkMode}
+              className="flex items-center gap-1.5 px-2 py-1 rounded bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-[var(--gold)] font-medium text-[11px] transition cursor-pointer"
+            >
+              {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+              <span>{isDark ? "Dark" : "Light"}</span>
+            </button>
+          </div>
           <Link
             href="/"
             target="_blank"
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-white text-xs font-semibold border border-[var(--gold)]/30 transition"
           >
-            <ExternalLink className="w-3.5 h-3.5" /> View Public Site
+            <ExternalLink className="w-3.5 h-3.5 text-[var(--gold)]" /> View Public Site
           </Link>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-950/40 hover:bg-red-900/60 text-red-300 border border-red-900/40 text-xs font-semibold transition cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-950/60 hover:bg-red-900/80 text-red-200 border border-red-800/40 text-xs font-semibold transition cursor-pointer"
           >
             <LogOut className="w-3.5 h-3.5" /> Sign Out
           </button>
         </div>
       </aside>
 
-      {/* Main Admin Workspace */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <main className="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full">{children}</main>
+      {/* Main Admin Content Area in Cream / Dark Background */}
+      <div className="flex-1 flex flex-col min-w-0 bg-[var(--bg)]">
+        <main className="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full text-[var(--text)]">
+          {children}
+        </main>
       </div>
     </div>
   );

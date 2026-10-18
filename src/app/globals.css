@@ -1,24 +1,151 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-maroon: var(--maroon);
+  --color-maroon-dark: var(--maroon-dark);
+  --color-maroon-light: var(--maroon-light);
+  --color-maroon-tint: var(--maroon-tint);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --color-text-main: var(--text);
+  --color-bg-main: var(--bg);
+  --color-card-bg: var(--card);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --maroon: #800000;
+  --maroon-dark: #5A0F1B;
+  --maroon-light: #A33B48;
+  --maroon-tint: #F7E9EB;
+  --gold: #C9A227;
+  --cream: #FFF9F2;
+  --text: #2B2B2B;
+  --white: #FFFFFF;
+  --bg: #FFF9F2;
+  --card: #FFFFFF;
+
+  --color-primary: var(--maroon);
+  --color-secondary: var(--maroon-dark);
+  --color-accent: var(--gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark, html.dark {
+  --bg: #1A0B0E;
+  --card: #2A1216;
+  --text: #F5E9EA;
+  --maroon: #B03A48;
+  --maroon-dark: #5A0F1B;
+  --maroon-light: #C44F5D;
+  --maroon-tint: #2A1216;
+  --gold: #E0B93A;
+  --white: #FFFFFF;
+  --cream: #1A0B0E;
+
+  --color-primary: var(--maroon);
+  --color-secondary: var(--maroon-dark);
+  --color-accent: var(--gold);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Common Brand Theme Classes */
+.bg-maroon {
+  background-color: var(--maroon) !important;
+}
+.bg-maroon-dark {
+  background-color: var(--maroon-dark) !important;
+}
+.bg-maroon-light {
+  background-color: var(--maroon-light) !important;
+}
+.bg-maroon-tint {
+  background-color: var(--maroon-tint) !important;
+}
+.bg-gold {
+  background-color: var(--gold) !important;
+}
+.bg-cream {
+  background-color: var(--cream) !important;
+}
+.bg-card-theme {
+  background-color: var(--card) !important;
+}
+
+.text-maroon {
+  color: var(--maroon) !important;
+}
+.text-maroon-dark {
+  color: var(--maroon-dark) !important;
+}
+.text-maroon-light {
+  color: var(--maroon-light) !important;
+}
+.text-gold {
+  color: var(--gold) !important;
+}
+.text-cream {
+  color: var(--cream) !important;
+}
+.text-main {
+  color: var(--text) !important;
+}
+
+.border-maroon {
+  border-color: var(--maroon) !important;
+}
+.border-maroon-dark {
+  border-color: var(--maroon-dark) !important;
+}
+.border-maroon-light {
+  border-color: var(--maroon-light) !important;
+}
+.border-gold {
+  border-color: var(--gold) !important;
+}
+
+/* Interactive elements */
+.btn-primary, .btn-maroon {
+  background-color: var(--maroon) !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s ease-in-out;
+}
+.btn-primary:hover, .btn-maroon:hover {
+  background-color: var(--maroon-dark) !important;
+}
+
+.btn-secondary, .btn-gold-outline {
+  border: 1.5px solid var(--gold) !important;
+  color: var(--gold) !important;
+  background-color: transparent !important;
+  transition: all 0.2s ease-in-out;
+}
+.btn-secondary:hover, .btn-gold-outline:hover {
+  background-color: color-mix(in srgb, var(--gold) 15%, transparent) !important;
+}
+
+.link-maroon {
+  color: var(--maroon);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+.link-maroon:hover {
+  text-decoration: underline;
+  color: var(--maroon-dark);
+}
+
+.dark .link-maroon {
+  color: var(--maroon);
+}
+.dark .link-maroon:hover {
+  color: var(--gold);
+}
+
+/* Headings with Maroon Brand */
+h1, h2, h3 {
+  letter-spacing: -0.015em;
 }

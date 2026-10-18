@@ -45,11 +45,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] transition-colors`}>
         <ThemeInjector
-          primaryColor={settings?.primaryColor || "#1e3a8a"}
-          secondaryColor={settings?.secondaryColor || "#b45309"}
-          accentColor={settings?.accentColor || "#0284c7"}
+          primaryColor={settings?.primaryColor || "#800000"}
+          secondaryColor={settings?.secondaryColor || "#5A0F1B"}
+          accentColor={settings?.accentColor || "#C9A227"}
         />
         {children}
       </body>

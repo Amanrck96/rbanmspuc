@@ -80,21 +80,21 @@ export default function GalleryManagerPage() {
 
   return (
     <div className="space-y-8 animate-fade-in max-w-5xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon-light)] dark:text-[var(--gold)]">
             Media Archive
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] font-serif">
             Photo Gallery Manager
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             Manage photos, categories, and captions appearing on the public website.
           </p>
         </div>
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition cursor-pointer"
+          className="btn-maroon inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
         >
           <Plus className="w-4 h-4" /> Add Photo
         </button>
@@ -102,40 +102,40 @@ export default function GalleryManagerPage() {
 
       {loading ? (
         <div className="py-20 flex justify-center">
-          <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
+          <Loader2 className="w-8 h-8 text-[var(--maroon)] animate-spin" />
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {items.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-sm flex flex-col justify-between group"
+              className="bg-white dark:bg-[var(--card)] rounded-3xl overflow-hidden border border-[var(--maroon-light)]/20 shadow-sm flex flex-col justify-between group"
             >
-              <div className="relative w-full h-44 bg-slate-950">
+              <div className="relative w-full h-44 bg-[var(--maroon-tint)]">
                 <Image src={item.url} alt={item.title} fill className="object-cover" />
                 <div className="absolute top-3 left-3">
-                  <span className="px-2 py-0.5 rounded-full bg-slate-950/80 text-amber-400 text-[10px] font-bold uppercase">
+                  <span className="px-2 py-0.5 rounded-full bg-[var(--maroon-dark)]/90 text-[var(--gold)] text-[10px] font-bold uppercase backdrop-blur-xs">
                     {item.category}
                   </span>
                 </div>
               </div>
 
               <div className="p-4 space-y-2">
-                <h3 className="font-bold text-sm text-white">{item.title}</h3>
-                {item.caption && <p className="text-xs text-slate-400 line-clamp-1">{item.caption}</p>}
-                <div className="pt-2 border-t border-slate-800 flex justify-end gap-2">
+                <h3 className="font-bold text-sm text-[var(--maroon)] dark:text-white">{item.title}</h3>
+                {item.caption && <p className="text-xs text-muted-foreground line-clamp-1">{item.caption}</p>}
+                <div className="pt-2 border-t border-[var(--maroon-light)]/15 flex justify-end gap-2">
                   <button
                     onClick={() => {
                       setEditingItem({ ...item });
                       setIsCreating(false);
                     }}
-                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold"
+                    className="px-2.5 py-1 rounded-lg bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white text-[var(--maroon-dark)] text-xs font-semibold transition"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="p-1 rounded-lg text-red-400 hover:bg-red-950/60"
+                    className="p-1 rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40 transition"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -153,47 +153,47 @@ export default function GalleryManagerPage() {
           onClick={() => setEditingItem(null)}
         >
           <div
-            className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-4 text-left shadow-2xl"
+            className="w-full max-w-md bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 rounded-3xl p-6 sm:p-8 space-y-4 text-left shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center pb-2 border-b border-slate-800">
-              <h2 className="text-lg font-bold text-white font-serif">
+            <div className="flex justify-between items-center pb-2 border-b border-[var(--maroon-light)]/20">
+              <h2 className="text-lg font-bold text-[var(--maroon)] dark:text-white font-serif">
                 {isCreating ? "Add Photo" : "Edit Photo Details"}
               </h2>
-              <button onClick={() => setEditingItem(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setEditingItem(null)} className="text-muted-foreground hover:text-[var(--text)] transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <form onSubmit={handleSave} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Title</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Title</label>
                 <input
                   type="text"
                   required
                   value={editingItem.title}
                   onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Image URL</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Image URL</label>
                 <input
                   type="text"
                   required
                   value={editingItem.url}
                   onChange={(e) => setEditingItem({ ...editingItem, url: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 font-mono text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 font-mono text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Category</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Category</label>
                 <select
                   value={editingItem.category}
                   onChange={(e) => setEditingItem({ ...editingItem, category: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 >
                   <option value="CAMPUS">CAMPUS & HERITAGE</option>
                   <option value="LABS">LABORATORIES</option>
@@ -204,27 +204,27 @@ export default function GalleryManagerPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Caption</label>
+                <label className="block text-xs font-semibold text-[var(--text)] mb-1">Caption</label>
                 <input
                   type="text"
                   value={editingItem.caption || ""}
                   onChange={(e) => setEditingItem({ ...editingItem, caption: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs"
+                  className="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-[var(--maroon-light)]/20">
                 <button
                   type="button"
                   onClick={() => setEditingItem(null)}
-                  className="px-4 py-2 rounded-xl border border-slate-700 text-slate-300 text-xs font-bold"
+                  className="px-4 py-2 rounded-xl border border-gray-300 dark:border-gray-700 text-[var(--text)] text-xs font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider"
+                  className="btn-maroon px-5 py-2 rounded-xl text-white font-bold text-xs uppercase tracking-wider transition"
                 >
                   {saving ? "Saving..." : "Save Photo"}
                 </button>

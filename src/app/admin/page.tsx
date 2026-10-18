@@ -61,17 +61,17 @@ export default async function AdminDashboardPage() {
   });
 
   return (
-    <div className="space-y-8 animate-fade-in">
+    <div className="space-y-8 animate-fade-in text-[var(--text)]">
       {/* Welcome Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
             Management Overview
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
             Executive CRM Dashboard
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-[var(--text)]/70 mt-1">
             Real-time admissions pipeline, content management status, and audit records.
           </p>
         </div>
@@ -79,14 +79,14 @@ export default async function AdminDashboardPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/admin/enquiries"
-            className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition shadow-sm"
+            className="px-4 py-2 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm"
           >
             Manage Enquiries ({newEnquiries} New)
           </Link>
           <Link
             href="/"
             target="_blank"
-            className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition"
+            className="px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] font-semibold text-xs hover:bg-[var(--maroon-tint)] transition"
           >
             Live Site ↗
           </Link>
@@ -95,76 +95,76 @@ export default async function AdminDashboardPage() {
 
       {/* Metric Cards Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        <div className="p-5 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm space-y-2">
+        <div className="p-5 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Total Enquiries</span>
-            <div className="p-2 rounded-xl bg-blue-500/10 text-blue-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--text)]/60">Total Enquiries</span>
+            <div className="p-2 rounded-xl bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)]">
               <Users className="w-5 h-5" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{totalEnquiries}</div>
-          <div className="text-[11px] text-emerald-400 flex items-center gap-1">
+          <div className="text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-mono">{totalEnquiries}</div>
+          <div className="text-[11px] text-emerald-600 dark:text-emerald-400 flex items-center gap-1 font-semibold">
             <TrendingUp className="w-3 h-3" /> {newEnquiries} pending review
           </div>
         </div>
 
-        <div className="p-5 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm space-y-2">
+        <div className="p-5 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Admissions Confirmed</span>
-            <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--text)]/60">Admissions Confirmed</span>
+            <div className="p-2 rounded-xl bg-[var(--maroon-tint)] text-emerald-600 dark:text-emerald-400">
               <CheckCircle2 className="w-5 h-5" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{admittedEnquiries}</div>
-          <div className="text-[11px] text-slate-400">Across Science, Commerce & Arts</div>
+          <div className="text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-mono">{admittedEnquiries}</div>
+          <div className="text-[11px] text-[var(--text)]/60">Across Science, Commerce & Arts</div>
         </div>
 
-        <div className="p-5 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm space-y-2">
+        <div className="p-5 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Active Notices</span>
-            <div className="p-2 rounded-xl bg-amber-500/10 text-amber-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--text)]/60">Active Notices</span>
+            <div className="p-2 rounded-xl bg-[var(--maroon-tint)] text-[var(--gold)]">
               <Bell className="w-5 h-5" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{noticesCount}</div>
-          <div className="text-[11px] text-slate-400">Live on public portal</div>
+          <div className="text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-mono">{noticesCount}</div>
+          <div className="text-[11px] text-[var(--text)]/60">Live on public portal</div>
         </div>
 
-        <div className="p-5 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm space-y-2">
+        <div className="p-5 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400">CMS Pages</span>
-            <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--text)]/60">CMS Pages</span>
+            <div className="p-2 rounded-xl bg-[var(--maroon-tint)] text-[var(--maroon-light)] dark:text-[var(--gold)]">
               <FileText className="w-5 h-5" />
             </div>
           </div>
-          <div className="text-3xl font-extrabold text-white font-mono">{pagesCount}</div>
-          <div className="text-[11px] text-slate-400">Fully editable from admin</div>
+          <div className="text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-mono">{pagesCount}</div>
+          <div className="text-[11px] text-[var(--text)]/60">Fully editable from admin</div>
         </div>
       </div>
 
       {/* Interactive Charts & Stream Distribution */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Stream Breakdown */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-5">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <h3 className="font-bold text-sm text-white uppercase tracking-wider">
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-5">
+          <div className="flex items-center justify-between pb-2 border-b border-[var(--maroon-light)]/15">
+            <h3 className="font-bold text-sm text-[var(--maroon)] dark:text-[var(--gold)] uppercase tracking-wider">
               Enquiry Stream Breakdown
             </h3>
-            <span className="text-xs text-amber-400 font-mono font-semibold">{totalEnquiries} Total</span>
+            <span className="text-xs text-[var(--maroon)] dark:text-[var(--gold)] font-mono font-semibold">{totalEnquiries} Total</span>
           </div>
 
           <div className="space-y-4">
             <div>
               <div className="flex justify-between text-xs font-semibold mb-1">
-                <span className="text-blue-400">Science (PCMB / PCMC)</span>
-                <span className="font-mono text-slate-200">
+                <span className="text-[var(--maroon)] dark:text-[var(--gold)]">Science (PCMB / PCMC)</span>
+                <span className="font-mono text-[var(--text)]/80">
                   {streamCounts.Science} (
                   {totalEnquiries > 0 ? Math.round((streamCounts.Science / totalEnquiries) * 100) : 0}%)
                 </span>
               </div>
-              <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-[var(--maroon-tint)] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-blue-600 rounded-full"
+                  className="h-full bg-[var(--maroon)] rounded-full"
                   style={{
                     width: `${totalEnquiries > 0 ? (streamCounts.Science / totalEnquiries) * 100 : 0}%`,
                   }}
@@ -174,15 +174,15 @@ export default async function AdminDashboardPage() {
 
             <div>
               <div className="flex justify-between text-xs font-semibold mb-1">
-                <span className="text-amber-400">Commerce (CEBA / SEBA)</span>
-                <span className="font-mono text-slate-200">
+                <span className="text-[var(--gold)]">Commerce (CEBA / SEBA)</span>
+                <span className="font-mono text-[var(--text)]/80">
                   {streamCounts.Commerce} (
                   {totalEnquiries > 0 ? Math.round((streamCounts.Commerce / totalEnquiries) * 100) : 0}%)
                 </span>
               </div>
-              <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-[var(--maroon-tint)] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-amber-500 rounded-full"
+                  className="h-full bg-[var(--gold)] rounded-full"
                   style={{
                     width: `${totalEnquiries > 0 ? (streamCounts.Commerce / totalEnquiries) * 100 : 0}%`,
                   }}
@@ -192,15 +192,15 @@ export default async function AdminDashboardPage() {
 
             <div>
               <div className="flex justify-between text-xs font-semibold mb-1">
-                <span className="text-purple-400">Arts / Humanities (HEGP)</span>
-                <span className="font-mono text-slate-200">
+                <span className="text-[var(--maroon-light)]">Arts / Humanities (HEGP)</span>
+                <span className="font-mono text-[var(--text)]/80">
                   {streamCounts.Arts} (
                   {totalEnquiries > 0 ? Math.round((streamCounts.Arts / totalEnquiries) * 100) : 0}%)
                 </span>
               </div>
-              <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-full h-3 bg-[var(--maroon-tint)] rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-purple-600 rounded-full"
+                  className="h-full bg-[var(--maroon-light)] rounded-full"
                   style={{
                     width: `${totalEnquiries > 0 ? (streamCounts.Arts / totalEnquiries) * 100 : 0}%`,
                   }}
@@ -209,82 +209,82 @@ export default async function AdminDashboardPage() {
             </div>
           </div>
 
-          <div className="pt-2 text-[11px] text-slate-400 border-t border-slate-800">
+          <div className="pt-2 text-[11px] text-[var(--text)]/60 border-t border-[var(--maroon-light)]/15">
             Aggregated from website online enquiry and application submissions.
           </div>
         </div>
 
         {/* Quick CMS Control Shortcuts */}
-        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <h3 className="font-bold text-sm text-white uppercase tracking-wider pb-2 border-b border-slate-800">
+        <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <h3 className="font-bold text-sm text-[var(--maroon)] dark:text-[var(--gold)] uppercase tracking-wider pb-2 border-b border-[var(--maroon-light)]/15">
             Quick Actions
           </h3>
           <div className="grid grid-cols-2 gap-2.5">
             <Link
               href="/admin/notices"
-              className="p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition flex flex-col justify-between"
+              className="p-3 rounded-2xl bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white border border-[var(--maroon-light)]/20 transition flex flex-col justify-between group"
             >
-              <Bell className="w-5 h-5 text-amber-400 mb-2" />
-              <div className="font-bold text-xs text-white">Post Notice</div>
-              <div className="text-[10px] text-slate-400">Instant publish</div>
+              <Bell className="w-5 h-5 text-[var(--gold)] mb-2" />
+              <div className="font-bold text-xs text-[var(--text)] group-hover:text-white">Post Notice</div>
+              <div className="text-[10px] text-[var(--text)]/60 group-hover:text-white/80">Instant publish</div>
             </Link>
 
             <Link
               href="/admin/media"
-              className="p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition flex flex-col justify-between"
+              className="p-3 rounded-2xl bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white border border-[var(--maroon-light)]/20 transition flex flex-col justify-between group"
             >
-              <FolderOpen className="w-5 h-5 text-blue-400 mb-2" />
-              <div className="font-bold text-xs text-white">Upload Media</div>
-              <div className="text-[10px] text-slate-400">Shared /uploads</div>
+              <FolderOpen className="w-5 h-5 text-[var(--maroon)] dark:text-[var(--gold)] mb-2 group-hover:text-white" />
+              <div className="font-bold text-xs text-[var(--text)] group-hover:text-white">Upload Media</div>
+              <div className="text-[10px] text-[var(--text)]/60 group-hover:text-white/80">Shared /uploads</div>
             </Link>
 
             <Link
               href="/admin/pages"
-              className="p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition flex flex-col justify-between"
+              className="p-3 rounded-2xl bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white border border-[var(--maroon-light)]/20 transition flex flex-col justify-between group"
             >
-              <FileText className="w-5 h-5 text-emerald-400 mb-2" />
-              <div className="font-bold text-xs text-white">Edit Pages</div>
-              <div className="text-[10px] text-slate-400">48 dynamic pages</div>
+              <FileText className="w-5 h-5 text-[var(--maroon-light)] mb-2 group-hover:text-white" />
+              <div className="font-bold text-xs text-[var(--text)] group-hover:text-white">Edit Pages</div>
+              <div className="text-[10px] text-[var(--text)]/60 group-hover:text-white/80">48 dynamic pages</div>
             </Link>
 
             <Link
               href="/admin/settings"
-              className="p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition flex flex-col justify-between"
+              className="p-3 rounded-2xl bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white border border-[var(--maroon-light)]/20 transition flex flex-col justify-between group"
             >
-              <GraduationCap className="w-5 h-5 text-purple-400 mb-2" />
-              <div className="font-bold text-xs text-white">Site Skin</div>
-              <div className="text-[10px] text-slate-400">Colors & branding</div>
+              <GraduationCap className="w-5 h-5 text-[var(--gold)] mb-2" />
+              <div className="font-bold text-xs text-[var(--text)] group-hover:text-white">Site Skin</div>
+              <div className="text-[10px] text-[var(--text)]/60 group-hover:text-white/80">Colors & branding</div>
             </Link>
           </div>
         </div>
 
         {/* System Summary */}
-        <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-blue-950/80 border border-slate-800 space-y-4">
-          <h3 className="font-bold text-sm text-white uppercase tracking-wider pb-2 border-b border-slate-800">
+        <div className="p-6 rounded-3xl bg-gradient-to-br from-[var(--maroon-dark)] to-[var(--maroon)] text-white border border-[var(--gold)]/30 space-y-4 shadow-sm">
+          <h3 className="font-bold text-sm text-[var(--gold)] uppercase tracking-wider pb-2 border-b border-[var(--gold)]/20">
             System & Storage
           </h3>
           <ul className="space-y-3 text-xs">
-            <li className="flex justify-between items-center text-slate-300">
+            <li className="flex justify-between items-center text-white/90">
               <span>Database Engine:</span>
-              <span className="font-mono text-emerald-400 font-semibold">SQLite (Prisma 6)</span>
+              <span className="font-mono text-emerald-300 font-semibold">SQLite (Prisma 6)</span>
             </li>
-            <li className="flex justify-between items-center text-slate-300">
+            <li className="flex justify-between items-center text-white/90">
               <span>Media Files Stored:</span>
-              <span className="font-mono text-amber-400 font-semibold">{mediaCount} files</span>
+              <span className="font-mono text-[var(--gold)] font-semibold">{mediaCount} files</span>
             </li>
-            <li className="flex justify-between items-center text-slate-300">
+            <li className="flex justify-between items-center text-white/90">
               <span>Revalidation:</span>
-              <span className="font-mono text-blue-400 font-semibold">On-Demand Instant</span>
+              <span className="font-mono text-white font-semibold">On-Demand Instant</span>
             </li>
-            <li className="flex justify-between items-center text-slate-300">
+            <li className="flex justify-between items-center text-white/90">
               <span>Faculty Members:</span>
-              <span className="font-mono text-slate-100 font-semibold">{facultyCount}</span>
+              <span className="font-mono text-white font-semibold">{facultyCount}</span>
             </li>
           </ul>
           <div className="pt-2">
             <Link
               href="/admin/trash"
-              className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold flex items-center justify-center gap-1.5 transition"
+              className="w-full py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition border border-white/20"
             >
               Open Recycle Bin & Undo
             </Link>
@@ -295,15 +295,15 @@ export default async function AdminDashboardPage() {
       {/* Recent Enquiries & Activity Feed */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Recent Enquiries Table */}
-        <div className="lg:col-span-8 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="lg:col-span-8 p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/15">
             <div>
-              <h3 className="font-bold text-base text-white font-serif">Recent Admissions Enquiries</h3>
-              <p className="text-xs text-slate-400">Applications submitted from the public portal</p>
+              <h3 className="font-bold text-base text-[var(--maroon)] dark:text-white font-serif">Recent Admissions Enquiries</h3>
+              <p className="text-xs text-[var(--text)]/60">Applications submitted from the public portal</p>
             </div>
             <Link
               href="/admin/enquiries"
-              className="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-1"
+              className="text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:underline flex items-center gap-1 link-maroon"
             >
               View Full CRM <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -312,7 +312,7 @@ export default async function AdminDashboardPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 uppercase tracking-wider text-[10px]">
+                <tr className="border-b border-[var(--maroon-light)]/20 text-[var(--text)]/60 uppercase tracking-wider text-[10px]">
                   <th className="py-2.5 px-3">App No</th>
                   <th className="py-2.5 px-3">Applicant Name</th>
                   <th className="py-2.5 px-3">Course</th>
@@ -321,23 +321,23 @@ export default async function AdminDashboardPage() {
                   <th className="py-2.5 px-3">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[var(--maroon-light)]/10">
                 {recentEnquiries.map((enq) => (
-                  <tr key={enq.id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3 px-3 font-mono font-semibold text-slate-300">{enq.applicationNumber}</td>
-                    <td className="py-3 px-3 font-bold text-white">{enq.fullName}</td>
-                    <td className="py-3 px-3 font-mono text-blue-400 font-semibold">{enq.courseInterested}</td>
-                    <td className="py-3 px-3 text-slate-300">{enq.phone}</td>
+                  <tr key={enq.id} className="hover:bg-[var(--maroon-tint)]/40 transition">
+                    <td className="py-3 px-3 font-mono font-semibold text-[var(--text)]">{enq.applicationNumber}</td>
+                    <td className="py-3 px-3 font-bold text-[var(--text)]">{enq.fullName}</td>
+                    <td className="py-3 px-3 font-mono text-[var(--maroon)] dark:text-[var(--gold)] font-semibold">{enq.courseInterested}</td>
+                    <td className="py-3 px-3 text-[var(--text)]/80">{enq.phone}</td>
                     <td className="py-3 px-3">
                       <span
                         className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                           enq.status === "NEW"
-                            ? "bg-blue-500/20 text-blue-300"
+                            ? "bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)]"
                             : enq.status === "ADMITTED"
-                            ? "bg-emerald-500/20 text-emerald-300"
+                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
                             : enq.status === "CONTACTED"
-                            ? "bg-amber-500/20 text-amber-300"
-                            : "bg-slate-700 text-slate-300"
+                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300"
+                            : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
                         }`}
                       >
                         {enq.status}
@@ -346,7 +346,7 @@ export default async function AdminDashboardPage() {
                     <td className="py-3 px-3">
                       <Link
                         href={`/admin/enquiries?id=${enq.id}`}
-                        className="text-xs font-semibold text-amber-400 hover:underline"
+                        className="text-xs font-semibold text-[var(--maroon)] dark:text-[var(--gold)] hover:underline link-maroon"
                       >
                         Open Dossier
                       </Link>
@@ -359,12 +359,12 @@ export default async function AdminDashboardPage() {
         </div>
 
         {/* Live Activity Audit Feed */}
-        <div className="lg:col-span-4 p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-            <h3 className="font-bold text-sm text-white uppercase tracking-wider flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-amber-400" /> Audit Activity Feed
+        <div className="lg:col-span-4 p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/15">
+            <h3 className="font-bold text-sm text-[var(--maroon)] dark:text-[var(--gold)] uppercase tracking-wider flex items-center gap-1.5">
+              <Clock className="w-4 h-4 text-[var(--gold)]" /> Audit Activity Feed
             </h3>
-            <Link href="/admin/activity" className="text-xs text-slate-400 hover:text-white">
+            <Link href="/admin/activity" className="text-xs text-[var(--text)]/60 hover:text-[var(--maroon)] link-maroon">
               History
             </Link>
           </div>
@@ -373,20 +373,20 @@ export default async function AdminDashboardPage() {
             {recentActivities.map((act) => (
               <div
                 key={act.id}
-                className="p-3 rounded-2xl bg-slate-800/40 border border-slate-800 text-xs space-y-1"
+                className="p-3 rounded-2xl bg-[var(--maroon-tint)]/40 border border-[var(--maroon-light)]/15 text-xs space-y-1"
               >
                 <div className="flex items-center justify-between text-[10px]">
-                  <span className="font-bold text-amber-400 uppercase tracking-wider">{act.action}</span>
-                  <span className="text-slate-500">
+                  <span className="font-bold text-[var(--maroon)] dark:text-[var(--gold)] uppercase tracking-wider">{act.action}</span>
+                  <span className="text-[var(--text)]/60">
                     {new Date(act.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                   </span>
                 </div>
-                <p className="text-slate-300 text-xs leading-snug">{act.details}</p>
-                <div className="text-[10px] text-slate-500">Actor: {act.userName} ({act.userRole})</div>
+                <p className="text-[var(--text)]/80 text-xs leading-snug">{act.details}</p>
+                <div className="text-[10px] text-[var(--text)]/60">Actor: {act.userName} ({act.userRole})</div>
               </div>
             ))}
             {recentActivities.length === 0 && (
-              <div className="text-xs text-slate-500 py-6 text-center">No recent activities recorded.</div>
+              <div className="text-xs text-[var(--text)]/60 py-6 text-center">No recent activities recorded.</div>
             )}
           </div>
         </div>

@@ -43,33 +43,33 @@ export default function ActivityLogPage() {
   const getActionBadge = (action: string) => {
     switch (action) {
       case "CREATE":
-        return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
+        return "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800";
       case "UPDATE":
-        return "bg-blue-500/20 text-blue-300 border-blue-500/30";
+        return "bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300 border-blue-300 dark:border-blue-800";
       case "DELETE":
-        return "bg-red-500/20 text-red-300 border-red-500/30";
+        return "bg-red-50 dark:bg-red-950/60 text-red-800 dark:text-red-300 border-red-300 dark:border-red-800";
       case "RESTORE":
-        return "bg-purple-500/20 text-purple-300 border-purple-500/30";
+        return "bg-purple-50 dark:bg-purple-950/60 text-purple-800 dark:text-purple-300 border-purple-300 dark:border-purple-800";
       case "LOGIN":
-        return "bg-amber-500/20 text-amber-300 border-amber-500/30";
+        return "bg-[var(--maroon-tint)] text-[var(--maroon-dark)] dark:bg-[var(--maroon-dark)] dark:text-[var(--gold)] border-[var(--maroon-light)]/30";
       case "EXPORT":
-        return "bg-cyan-500/20 text-cyan-300 border-cyan-500/30";
+        return "bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800";
       default:
-        return "bg-slate-700 text-slate-300";
+        return "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700";
     }
   };
 
   return (
     <div className="space-y-8 animate-fade-in max-w-5xl">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon-light)] dark:text-[var(--gold)]">
             Audit Trail & Compliance
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--text)] font-serif">
             Administrative Activity Logs
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             Complete chronological record of all administrative logins, page modifications, CRM updates, and file replacements.
           </p>
         </div>
@@ -84,8 +84,8 @@ export default function ActivityLogPage() {
               onClick={() => setActionFilter(act)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
                 actionFilter === act
-                  ? "bg-amber-500 text-slate-950 shadow-md"
-                  : "bg-slate-900 border border-slate-800 text-slate-300 hover:bg-slate-800"
+                  ? "btn-maroon text-white shadow-xs"
+                  : "bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 text-[var(--text)] hover:bg-[var(--maroon-tint)] dark:hover:bg-[var(--maroon-dark)]"
               }`}
             >
               {act}
@@ -94,34 +94,34 @@ export default function ActivityLogPage() {
         </div>
 
         <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search details, actor, entity..."
-            className="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500"
+            className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 text-xs text-[var(--text)] placeholder:text-muted-foreground focus:outline-hidden focus:ring-1 focus:ring-[var(--maroon)]"
           />
         </div>
       </div>
 
       {/* Logs Table */}
-      <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm overflow-hidden">
+      <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-sm overflow-hidden">
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center space-y-3">
-            <Loader2 className="w-8 h-8 text-amber-500 animate-spin" />
-            <p className="text-xs text-slate-400">Loading audit log...</p>
+            <Loader2 className="w-8 h-8 text-[var(--maroon)] animate-spin" />
+            <p className="text-xs text-muted-foreground">Loading audit log...</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 space-y-2">
-            <p className="text-base font-bold text-white">No activity records match</p>
-            <p className="text-xs text-slate-400">Try adjusting your filters or search term.</p>
+            <p className="text-base font-bold text-[var(--text)]">No activity records match</p>
+            <p className="text-xs text-muted-foreground">Try adjusting your filters or search term.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-slate-400 uppercase tracking-wider text-[10px]">
+                <tr className="border-b border-[var(--maroon-light)]/20 text-muted-foreground uppercase tracking-wider text-[10px]">
                   <th className="py-3 px-3">Timestamp</th>
                   <th className="py-3 px-3">Action</th>
                   <th className="py-3 px-3">Entity</th>
@@ -129,10 +129,10 @@ export default function ActivityLogPage() {
                   <th className="py-3 px-3">Audit Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-[var(--maroon-light)]/10">
                 {filtered.map((log) => (
-                  <tr key={log.id} className="hover:bg-slate-800/40 transition">
-                    <td className="py-3 px-3 text-slate-400 font-mono whitespace-nowrap text-[11px]">
+                  <tr key={log.id} className="hover:bg-[var(--maroon-tint)]/40 dark:hover:bg-[var(--maroon-dark)]/20 transition">
+                    <td className="py-3 px-3 text-muted-foreground font-mono whitespace-nowrap text-[11px]">
                       {new Date(log.createdAt).toLocaleString("en-IN", {
                         day: "numeric",
                         month: "short",
@@ -149,12 +149,12 @@ export default function ActivityLogPage() {
                         {log.action}
                       </span>
                     </td>
-                    <td className="py-3 px-3 font-semibold text-slate-300">{log.entityType}</td>
+                    <td className="py-3 px-3 font-semibold text-[var(--maroon)] dark:text-slate-200">{log.entityType}</td>
                     <td className="py-3 px-3 whitespace-nowrap">
-                      <span className="font-bold text-white">{log.userName}</span>
-                      <span className="text-[10px] text-amber-400 block">{log.userRole}</span>
+                      <span className="font-bold text-[var(--text)]">{log.userName}</span>
+                      <span className="text-[10px] text-[var(--maroon-light)] dark:text-[var(--gold)] block">{log.userRole}</span>
                     </td>
-                    <td className="py-3 px-3 text-slate-200">{log.details}</td>
+                    <td className="py-3 px-3 text-[var(--text)] dark:text-slate-200">{log.details}</td>
                   </tr>
                 ))}
               </tbody>

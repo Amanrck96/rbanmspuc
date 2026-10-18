@@ -123,28 +123,28 @@ export default function Navbar({ settings }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xs border-b border-gray-100 dark:border-slate-800 transition-colors">
+    <header className="sticky top-0 z-40 bg-[var(--maroon)] text-white shadow-lg border-b border-[var(--gold)]/30 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Brand Logo & Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 shrink-0">
+            <div className="relative w-12 h-12 shrink-0 bg-white/10 rounded-full p-1 border border-[var(--gold)]/40 shadow-xs">
               <Image
                 src={settings?.logoUrl || "/images/rbanms-logo.svg"}
                 alt="RBANMS PU College Logo"
                 fill
-                className="object-contain"
+                className="object-contain p-0.5"
                 priority
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-blue-900 dark:text-blue-100 font-serif leading-none group-hover:text-blue-700 dark:group-hover:text-blue-300 transition">
+              <span className="font-extrabold text-lg sm:text-xl tracking-tight text-white font-serif leading-none group-hover:text-[var(--gold)] transition">
                 RBANM&apos;S
               </span>
-              <span className="font-bold text-xs sm:text-sm tracking-wider text-slate-800 dark:text-slate-200 uppercase leading-tight">
+              <span className="font-bold text-xs sm:text-sm tracking-wider text-[var(--gold)] uppercase leading-tight">
                 Pre-University College
               </span>
-              <span className="text-[10px] text-amber-700 dark:text-amber-400 font-semibold tracking-wider">
+              <span className="text-[10px] text-white/80 font-semibold tracking-wider">
                 ESTD. 1883 • BENGALURU
               </span>
             </div>
@@ -163,25 +163,25 @@ export default function Navbar({ settings }: NavbarProps) {
                 >
                   <Link
                     href={link.href}
-                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-blue-800 dark:hover:text-blue-400 rounded-md transition"
+                    className="flex items-center gap-1 px-3 py-2 text-sm font-semibold text-white/95 hover:text-[var(--gold)] hover:bg-[var(--maroon-dark)] rounded-lg transition"
                   >
                     <span>{link.label}</span>
                     {hasDropdown && (
-                      <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:rotate-180 transition-transform duration-200" />
+                      <ChevronDown className="w-3.5 h-3.5 text-[var(--gold)] group-hover:rotate-180 transition-transform duration-200" />
                     )}
                   </Link>
 
                   {/* Dropdown Menu */}
                   {hasDropdown && (
                     <div className="absolute top-full left-0 w-72 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-slate-800 p-2.5 space-y-1">
+                      <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-2xl border border-[var(--maroon-light)]/30 p-2.5 space-y-1">
                         {link.dropdown?.map((sub) => (
                           <Link
                             key={sub.label}
                             href={sub.href}
-                            className="block px-3 py-2 rounded-xl hover:bg-blue-50/80 dark:hover:bg-slate-800 transition group/item"
+                            className="block px-3 py-2 rounded-xl hover:bg-[var(--maroon-tint)] dark:hover:bg-[var(--maroon)]/20 transition group/item"
                           >
-                            <div className="text-xs font-semibold text-slate-800 dark:text-slate-100 group-hover/item:text-blue-700 dark:group-hover/item:text-blue-400">
+                            <div className="text-xs font-bold text-[var(--text)] group-hover/item:text-[var(--maroon)] dark:group-hover/item:text-[var(--gold)]">
                               {sub.label}
                             </div>
                             {sub.desc && (
@@ -201,7 +201,7 @@ export default function Navbar({ settings }: NavbarProps) {
             {/* Apply Now CTA Button */}
             <Link
               href="/admissions/apply"
-              className="ml-3 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-700 to-blue-900 hover:from-blue-800 hover:to-blue-950 text-white font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5"
+              className="ml-3 px-4 py-2 rounded-xl bg-[var(--gold)] hover:brightness-110 text-[var(--maroon-dark)] font-extrabold text-xs uppercase tracking-wider shadow-md transition transform hover:-translate-y-0.5 border border-white/20"
             >
               Apply Online
             </Link>
@@ -211,16 +211,16 @@ export default function Navbar({ settings }: NavbarProps) {
           <div className="flex items-center gap-2 lg:hidden">
             <Link
               href="/admissions/apply"
-              className="px-3 py-1.5 rounded-lg bg-blue-700 text-white font-bold text-xs shadow-xs"
+              className="px-3 py-1.5 rounded-lg bg-[var(--gold)] text-[var(--maroon-dark)] font-bold text-xs shadow-xs"
             >
               Apply
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+              className="p-2 rounded-lg text-white hover:bg-[var(--maroon-dark)] transition cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-[var(--gold)]" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -228,38 +228,38 @@ export default function Navbar({ settings }: NavbarProps) {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-3 pb-8 max-h-[85vh] overflow-y-auto animate-fade-in">
+        <div className="lg:hidden border-t border-[var(--gold)]/30 bg-[var(--maroon-dark)] px-4 pt-3 pb-8 max-h-[85vh] overflow-y-auto animate-fade-in text-white">
           <div className="space-y-2">
             {navLinks.map((link) => {
               const hasDropdown = !!link.dropdown;
               const isExpanded = activeDropdown === link.label;
               return (
-                <div key={link.label} className="border-b border-gray-100 dark:border-slate-800/60 pb-2">
+                <div key={link.label} className="border-b border-[var(--maroon-light)]/30 pb-2">
                   <div className="flex justify-between items-center py-2">
                     <Link
                       href={link.href}
                       onClick={() => !hasDropdown && setMobileMenuOpen(false)}
-                      className="font-bold text-sm text-slate-800 dark:text-slate-100"
+                      className="font-bold text-sm text-white hover:text-[var(--gold)]"
                     >
                       {link.label}
                     </Link>
                     {hasDropdown && (
                       <button
                         onClick={() => setActiveDropdown(isExpanded ? null : link.label)}
-                        className="p-1 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+                        className="p-1 rounded text-[var(--gold)]"
                       >
                         <ChevronDown className={`w-4 h-4 transform transition-transform ${isExpanded ? "rotate-180" : ""}`} />
                       </button>
                     )}
                   </div>
                   {hasDropdown && isExpanded && (
-                    <div className="pl-3 space-y-1 mt-1 border-l-2 border-blue-600/30">
+                    <div className="pl-3 space-y-1 mt-1 border-l-2 border-[var(--gold)]/60">
                       {link.dropdown?.map((sub) => (
                         <Link
                           key={sub.label}
                           href={sub.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block py-1.5 text-xs text-slate-600 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-medium"
+                          className="block py-1.5 text-xs text-white/80 hover:text-[var(--gold)] font-medium"
                         >
                           {sub.label}
                         </Link>
@@ -274,14 +274,14 @@ export default function Navbar({ settings }: NavbarProps) {
               <Link
                 href="/admissions/apply"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 rounded-xl bg-blue-700 text-white font-bold text-sm"
+                className="w-full text-center py-2.5 rounded-xl bg-[var(--gold)] text-[var(--maroon-dark)] font-extrabold text-sm shadow-md"
               >
                 Apply Online 2025-26
               </Link>
               <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2 rounded-xl bg-slate-800 text-amber-400 font-semibold text-xs border border-slate-700"
+                className="w-full text-center py-2 rounded-xl bg-[var(--maroon)] text-white font-semibold text-xs border border-[var(--gold)]/40"
               >
                 Staff / Admin CRM Portal
               </Link>

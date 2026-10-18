@@ -7,10 +7,24 @@ This document tracks all defaults and architectural decisions made autonomously 
    - Shared static asset folder at `public/uploads/` serving all media uploaded by the Admin CRM directly on `/uploads/{filename}`.
    - Any database update triggers Next.js cache revalidation (`revalidatePath`) to guarantee zero stale cache on the public website.
 
-2. **Skin & Theming**:
-   - Dynamic theme colors (Primary: `#1e3a8a` Deep Royal Navy; Secondary: `#b45309` Amber/Gold; Accent: `#0284c7` Sky Blue) stored in the `SiteSetting` database table and injected via CSS variables into the `:root` element.
-   - Admin CRM features live color pickers to instantly alter the college branding and theme across the entire site.
-   - Dark mode toggle supported using localStorage and `dark` class on `<html>`.
+2. **Mandatory Brand Theme (Maroon & Gold Skin)**:
+   - Maroon (`#800000`) is the mandatory primary brand color across every public page and every admin page (headers, buttons, links, footer, section headings, and sidebar).
+   - Theme Tokens:
+     - `--maroon: #800000` (primary)
+     - `--maroon-dark: #5A0F1B` (hover, top bar, footer, admin sidebar)
+     - `--maroon-light: #A33B48` (icons, borders, badges)
+     - `--maroon-tint: #F7E9EB` (section backgrounds, card highlights)
+     - `--gold: #C9A227` (accent, alert banner, highlights)
+     - `--cream: #FFF9F2` (page background in light mode)
+     - `--text: #2B2B2B`
+     - `--white: #FFFFFF`
+   - Dark Mode:
+     - `--bg: #1A0B0E`, `--card: #2A1216`, `--text: #F5E9EA`, `--maroon: #B03A48`, `--gold: #E0B93A`.
+   - WCAG AA Contrast Compliance:
+     - Text on gold backgrounds (e.g. Admission Alert Banner) is dark maroon (`#5A0F1B` / `rgb(90, 15, 27)`), maintaining high contrast (> 5.5:1).
+     - Buttons use maroon background with crisp white text (`#FFFFFF`), dark-maroon on hover.
+     - Secondary buttons use gold outline with dark maroon text on light / gold text on dark.
+   - Admin CRM locks the primary brand color to maroon; administrators may only customize accent gold, fonts, and logo URL.
 
 3. **Authentication & Authorization**:
    - JWT sessions stored in HTTP-only, secure, `SameSite=Lax` cookies named `rbanms_admin_token`.

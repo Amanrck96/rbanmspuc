@@ -427,6 +427,83 @@ async function main() {
       console.log(`   Verified: Responsive mobile layout (scrollWidth: ${scrollWidth}px <= 375px).`);
     }, browser);
 
+    // TEST 11: Mandatory Maroon & Gold Brand Theme Verification & WCAG Contrast Compliance
+    await runTest("11. Mandatory Maroon Brand Theme & WCAG AA Contrast", async (page) => {
+      await page.setViewport({ width: 1280, height: 800 });
+      await page.goto(`${BASE_URL}/`, { waitUntil: "networkidle2" });
+
+      // 1. Verify CSS custom properties on document.documentElement
+      const tokens = await page.evaluate(() => {
+        const style = getComputedStyle(document.documentElement);
+        return {
+          maroon: style.getPropertyValue("--maroon").trim().toLowerCase(),
+          maroonDark: style.getPropertyValue("--maroon-dark").trim().toLowerCase(),
+          gold: style.getPropertyValue("--gold").trim().toLowerCase(),
+        };
+      });
+
+      const isMaroonValid = tokens.maroon.includes("#800000") || tokens.maroon.includes("128, 0, 0");
+      if (!isMaroonValid) {
+        throw new Error(`Expected --maroon to resolve to #800000 or rgb(128, 0, 0), got: ${tokens.maroon}`);
+      }
+
+      const isDarkMaroonValid = tokens.maroonDark.includes("#5a0f1b") || tokens.maroonDark.includes("90, 15, 27");
+      if (!isDarkMaroonValid) {
+        throw new Error(`Expected --maroon-dark to resolve to #5a0f1b or rgb(90, 15, 27), got: ${tokens.maroonDark}`);
+      }
+
+      const isGoldValid = tokens.gold.includes("#c9a227") || tokens.gold.includes("201, 162, 39");
+      if (!isGoldValid) {
+        throw new Error(`Expected --gold to resolve to #c9a227 or rgb(201, 162, 39), got: ${tokens.gold}`);
+      }
+
+      // 2. Verify element background colors on public layout
+      const elementStyles = await page.evaluate(() => {
+        const header = document.querySelector("header.bg-\\[var\\(--maroon\\)\\]") || document.querySelector("header");
+        const utilityBar = document.querySelector(".bg-\\[var\\(--maroon-dark\\)\\]");
+        const alertBanner = document.querySelector("[data-testid='admission-alert-banner']") || document.querySelector("div.bg-\\[var\\(--gold\\)\\]");
+
+        return {
+          headerBg: header ? getComputedStyle(header).backgroundColor : null,
+          utilityBg: utilityBar ? getComputedStyle(utilityBar).backgroundColor : null,
+          bannerBg: alertBanner ? getComputedStyle(alertBanner).backgroundColor : null,
+          bannerText: alertBanner ? getComputedStyle(alertBanner).color : null,
+        };
+      });
+
+      if (!elementStyles.headerBg?.includes("128, 0, 0")) {
+        throw new Error(`Expected header to have maroon background rgb(128, 0, 0), got: ${elementStyles.headerBg}`);
+      }
+      if (!elementStyles.utilityBg?.includes("90, 15, 27")) {
+        throw new Error(`Expected utility bar to have dark maroon background rgb(90, 15, 27), got: ${elementStyles.utilityBg}`);
+      }
+      if (!elementStyles.bannerBg?.includes("201, 162, 39")) {
+        throw new Error(`Expected alert banner to have gold background rgb(201, 162, 39), got: ${elementStyles.bannerBg}`);
+      }
+      if (!elementStyles.bannerText?.includes("90, 15, 27") && !elementStyles.bannerText?.includes("66, 10, 19")) {
+        throw new Error(`Expected alert banner text to have dark maroon color rgb(90, 15, 27) for WCAG AA contrast, got: ${elementStyles.bannerText}`);
+      }
+
+      // 3. Test Dark Mode Toggle
+      await page.click("button[title='Toggle Light / Dark Mode']");
+      const hasDarkClass = await page.evaluate(() => document.documentElement.classList.contains("dark"));
+      if (!hasDarkClass) {
+        throw new Error("Dark mode toggle failed to add .dark class to root html element");
+      }
+
+      // 4. Test Admin Panel Maroon Sidebar
+      await page.goto(`${BASE_URL}/admin`, { waitUntil: "networkidle2" });
+      const sidebarBg = await page.evaluate(() => {
+        const sidebar = document.querySelector("aside");
+        return sidebar ? getComputedStyle(sidebar).backgroundColor : null;
+      });
+      if (!sidebarBg?.includes("90, 15, 27")) {
+        throw new Error(`Expected admin sidebar background to be dark maroon rgb(90, 15, 27), got: ${sidebarBg}`);
+      }
+
+      console.log("   Verified: Mandatory Maroon tokens, element styles, dark mode toggle, and WCAG AA contrast all conform.");
+    }, browser);
+
   } finally {
     await browser.close();
   }
