@@ -1,49 +1,77 @@
 @import "tailwindcss";
 
 @theme {
-  --color-maroon: var(--maroon);
-  --color-maroon-dark: var(--maroon-dark);
-  --color-maroon-light: var(--maroon-light);
-  --color-maroon-tint: var(--maroon-tint);
-  --color-gold: var(--gold);
-  --color-cream: var(--cream);
-  --color-text-main: var(--text);
+  --color-royal-blue: #1E3A8A;
+  --color-white: #FFFFFF;
+  --color-maroon: #800000;
+  --color-maroon-dark: #5A0F1B;
+  --color-maroon-light: #A33B48;
+  --color-maroon-tint: #F7E9EB;
+  --color-burnt-orange: #D17B2F;
+  --color-gold: #FFD700;
+  --color-gold-hover: #FFD700;
+  --color-body-black: #000000;
+  --color-tab-inactive: #F1F5F9;
+  --color-border-gray: #CBD5E1;
+
+  --color-heading: var(--heading);
   --color-bg-main: var(--bg);
   --color-card-bg: var(--card);
-  --color-heading: var(--heading);
-  --color-royal-blue: var(--heading);
+  --color-accent: var(--accent);
+  --color-text-main: var(--text);
 }
 
 :root {
+  /* =========================================================================
+     RBANMS PRE-UNIVERSITY COLLEGE — 8-COLOR INSTITUTIONAL BRAND PALETTE
+     ========================================================================= */
+
+  /* 1. Royal / Dark Blue — Headings, Card Titles & Course Badges (#1E3A8A) */
+  --heading: #1E3A8A;
+  --royal-blue: #1E3A8A;
+  --blue: #1E3A8A;
+
+  /* 2. White — Main Background, Cards & Text on Dark Banners (#FFFFFF) */
+  --white: #FFFFFF;
+  --bg: #FFFFFF;
+  --card: #FFFFFF;
+  --cream: #FFFFFF;
+
   /* 3. Maroon — Primary Brand Color (#800000) */
   --maroon: #800000;
   --maroon-dark: #5A0F1B;
   --maroon-light: #A33B48;
   --maroon-tint: #F7E9EB;
-  --gold: #C9A227;
-
-  /* 2. White — Main Background & Cards (#FFFFFF) */
-  --white: #FFFFFF;
-  --bg: #FFFFFF;
-  --card: #FFFFFF;
-  --cream: #FFFFFF;
-  --text: #1E293B;
-
-  /* 1. Royal / Dark Blue — Headings & Badges (#1E3A8A) */
-  --heading: #1E3A8A;
-  --blue: #1E3A8A;
-  --royal-blue: #1E3A8A;
-
   --color-primary: var(--maroon);
   --color-secondary: var(--maroon-dark);
-  --color-accent: var(--gold);
-  --color-heading: var(--heading);
+
+  /* 4. Burnt Orange — Accent Color for Highlighted Elements (#D17B2F) */
+  --accent: #D17B2F;
+  --burnt-orange: #D17B2F;
+  --color-accent: #D17B2F;
+
+  /* 5. Gold — Hover Highlight (Brochure Button Hover Background) (#FFD700) */
+  --gold: #FFD700;
+  --gold-hover: #FFD700;
+
+  /* 6. Black — Body Text for Normal Content (#000000) */
+  --text: #000000;
+  --body-text: #000000;
+  --text-black: #000000;
+
+  /* 7. Light Slate Gray — Inactive Tabs & Subtle Backgrounds (#F1F5F9) */
+  --tab-inactive-bg: #F1F5F9;
+  --slate-light: #F1F5F9;
+
+  /* 8. Border Gray — Borders around Inactive Tabs & Interface Elements (#CBD5E1) */
+  --border-gray: #CBD5E1;
+  --border-inactive: #CBD5E1;
 }
 
 .dark, html.dark {
   --bg: #0B1120;
   --card: #1E293B;
-  --text: #F1F5F9;
+  --text: #FFFFFF;
   --heading: #60A5FA;
   --blue: #60A5FA;
   --royal-blue: #60A5FA;
@@ -51,13 +79,18 @@
   --maroon-dark: #5A0F1B;
   --maroon-light: #C44F5D;
   --maroon-tint: #1E293B;
-  --gold: #E0B93A;
+  --accent: #E68A3E;
+  --burnt-orange: #E68A3E;
+  --gold: #FFD700;
+  --gold-hover: #FFD700;
+  --tab-inactive-bg: #1E293B;
+  --border-gray: #334155;
   --white: #FFFFFF;
   --cream: #0B1120;
 
   --color-primary: var(--maroon);
   --color-secondary: var(--maroon-dark);
-  --color-accent: var(--gold);
+  --color-accent: var(--accent);
   --color-heading: var(--heading);
 }
 
@@ -72,28 +105,10 @@ body {
    1. ROYAL / DARK BLUE (#1E3A8A) — HEADINGS, CARD TITLES & COURSE BADGES
    ========================================================================= */
 
-/* Headings default to Royal Blue */
+/* Default headings on light background to Royal Blue */
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.015em;
   color: var(--heading);
-}
-
-/* Explicit text overrides for dark banners, heroes & gold highlights */
-header h1, header h2, header h3, header span,
-footer h1, footer h2, footer h3, footer h4,
-.text-white, .text-white * {
-  color: inherit;
-}
-
-.bg-maroon-dark h1, .bg-maroon-dark h2, .bg-maroon-dark h3,
-.bg-maroon h1, .bg-maroon h2, .bg-maroon h3,
-[class*="bg-gradient-to"] h1, [class*="bg-gradient-to"] h2, [class*="bg-gradient-to"] h3 {
-  color: #FFFFFF;
-}
-
-h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.text-white,
-h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-gold {
-  color: inherit;
 }
 
 .heading-blue, .text-heading, .card-title {
@@ -129,6 +144,42 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
   background-color: var(--card) !important;
 }
 
+/* Ensure .text-white is pure #FFFFFF */
+.text-white {
+  color: #FFFFFF !important;
+}
+
+/* Dark banners default text color is White (#FFFFFF) */
+header,
+footer,
+.bg-maroon,
+.bg-maroon-dark,
+[class*="bg-maroon"],
+.prospectus-card,
+.card-prospectus {
+  color: #FFFFFF;
+}
+
+/* Headings on dark banners must be White (#FFFFFF) */
+header h1, header h2, header h3, header h4,
+footer h1, footer h2, footer h3, footer h4,
+.bg-maroon h1, .bg-maroon h2, .bg-maroon h3, .bg-maroon h4,
+.bg-maroon-dark h1, .bg-maroon-dark h2, .bg-maroon-dark h3, .bg-maroon-dark h4,
+[class*="bg-maroon"] h1, [class*="bg-maroon"] h2, [class*="bg-maroon"] h3,
+.prospectus-card h1, .prospectus-card h2, .prospectus-card h3,
+.card-prospectus h1, .card-prospectus h2, .card-prospectus h3,
+h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.text-white {
+  color: #FFFFFF !important;
+}
+
+/* Paragraphs and captions on dark banners default to white with subtle opacity */
+.bg-maroon-dark p:not([class*="text-gold"]):not([class*="text-maroon"]):not([class*="text-amber"]):not([class*="text-accent"]):not([class*="text-orange"]),
+.bg-maroon p:not([class*="text-gold"]):not([class*="text-maroon"]):not([class*="text-amber"]):not([class*="text-accent"]):not([class*="text-orange"]),
+.prospectus-card p,
+.card-prospectus p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
 .banner-text-white {
   color: #FFFFFF !important;
 }
@@ -150,12 +201,6 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
 .bg-maroon-tint {
   background-color: var(--maroon-tint) !important;
 }
-.bg-gold {
-  background-color: var(--gold) !important;
-}
-.bg-cream {
-  background-color: var(--cream) !important;
-}
 
 .text-maroon {
   color: var(--maroon) !important;
@@ -165,12 +210,6 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
 }
 .text-maroon-light {
   color: var(--maroon-light) !important;
-}
-.text-gold {
-  color: var(--gold) !important;
-}
-.text-cream {
-  color: var(--cream) !important;
 }
 .text-main {
   color: var(--text) !important;
@@ -188,33 +227,21 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
 .border-maroon-light {
   border-color: var(--maroon-light) !important;
 }
-.border-gold {
-  border-color: var(--gold) !important;
-}
 .border-royal-blue {
   border-color: #BFDBFE !important;
 }
 
-/* Prospectus Cards in Maroon (#800000) with Gold Trim */
+/* Prospectus Cards in Maroon (#800000) with Accent Trim */
 .prospectus-card, .card-prospectus {
   background: linear-gradient(135deg, #800000 0%, #5A0F1B 100%) !important;
   color: #FFFFFF !important;
-  border: 2px solid var(--gold) !important;
+  border: 2px solid var(--accent, #D17B2F) !important;
   box-shadow: 0 16px 36px -8px rgba(128, 0, 0, 0.45) !important;
 }
+
 .prospectus-card h1, .prospectus-card h2, .prospectus-card h3, .prospectus-card h4, .prospectus-card p,
 .card-prospectus h1, .card-prospectus h2, .card-prospectus h3, .card-prospectus h4, .card-prospectus p {
   color: #FFFFFF !important;
-}
-.prospectus-card .btn-prospectus, .card-prospectus .btn-prospectus {
-  background-color: var(--gold) !important;
-  color: var(--maroon-dark) !important;
-  font-weight: 800 !important;
-  border: 1px solid rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
-}
-.prospectus-card .btn-prospectus:hover, .card-prospectus .btn-prospectus:hover {
-  filter: brightness(1.1);
 }
 
 /* Active Tabs in Maroon (#800000) */
@@ -245,16 +272,6 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
   background-color: var(--maroon-dark) !important;
 }
 
-.btn-secondary, .btn-gold-outline {
-  border: 1.5px solid var(--gold) !important;
-  color: var(--gold) !important;
-  background-color: transparent !important;
-  transition: all 0.2s ease-in-out;
-}
-.btn-secondary:hover, .btn-gold-outline:hover {
-  background-color: color-mix(in srgb, var(--gold) 15%, transparent) !important;
-}
-
 .link-maroon {
   color: var(--maroon);
   text-decoration: none;
@@ -270,4 +287,147 @@ h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-go
 }
 .dark .link-maroon:hover {
   color: var(--gold);
+}
+
+/* =========================================================================
+   4. BURNT ORANGE (#D17B2F) — THEME ACCENT COLOR FOR HIGHLIGHTED ELEMENTS
+   ========================================================================= */
+
+.accent-burnt-orange, .text-accent, .text-burnt-orange {
+  color: #D17B2F !important;
+}
+
+.bg-accent, .bg-burnt-orange {
+  background-color: #D17B2F !important;
+  color: #FFFFFF !important;
+}
+
+.border-accent, .border-burnt-orange {
+  border-color: #D17B2F !important;
+}
+
+.badge-accent, .badge-orange {
+  background-color: #FFF7ED !important;
+  color: #D17B2F !important;
+  border: 1px solid #FED7AA !important;
+  font-weight: 700 !important;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+}
+
+.dark .badge-accent, .dark .badge-orange {
+  background-color: rgba(209, 123, 47, 0.2) !important;
+  color: #FDBA74 !important;
+  border-color: rgba(209, 123, 47, 0.4) !important;
+}
+
+.accent-highlight {
+  color: #D17B2F !important;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   5. GOLD (#FFD700) — HOVER HIGHLIGHT (BROCHURE BUTTON HOVER BACKGROUND)
+   ========================================================================= */
+
+.btn-prospectus, .btn-brochure {
+  background-color: #FFD700 !important;
+  color: #5A0F1B !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.25s ease-in-out !important;
+}
+
+/* Brochure button hover background: Gold (#FFD700) */
+.btn-prospectus:hover,
+.btn-brochure:hover,
+.btn-download-brochure:hover,
+.prospectus-card .btn-prospectus:hover,
+.card-prospectus .btn-prospectus:hover,
+.prospectus-card .btn-brochure:hover,
+.card-prospectus .btn-brochure:hover {
+  background-color: #FFD700 !important;
+  color: #000000 !important;
+  border-color: #FFD700 !important;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.55) !important;
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px);
+}
+
+.bg-gold {
+  background-color: #FFD700 !important;
+}
+.text-gold {
+  color: #FFD700 !important;
+}
+.border-gold {
+  border-color: #FFD700 !important;
+}
+.hover-gold:hover {
+  background-color: #FFD700 !important;
+  color: #000000 !important;
+}
+
+.btn-secondary, .btn-gold-outline {
+  border: 1.5px solid var(--gold) !important;
+  color: var(--gold) !important;
+  background-color: transparent !important;
+  transition: all 0.2s ease-in-out;
+}
+.btn-secondary:hover, .btn-gold-outline:hover {
+  background-color: color-mix(in srgb, var(--gold) 15%, transparent) !important;
+}
+
+/* =========================================================================
+   6. BLACK (#000000) — BODY TEXT (NORMAL CONTENT TEXT)
+   ========================================================================= */
+
+.text-body,
+.content-text,
+.text-black-normal {
+  color: #000000 !important;
+}
+
+/* =========================================================================
+   7. LIGHT SLATE GRAY (#F1F5F9) — INACTIVE TABS & SUBTLE BACKGROUNDS
+   ========================================================================= */
+
+.tab-inactive,
+button[aria-selected="false"].tab-item,
+[data-active="false"].tab-item {
+  background-color: #F1F5F9 !important;
+  color: #000000 !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
+.tab-inactive:hover {
+  background-color: #E2E8F0 !important;
+  color: #000000 !important;
+  border-color: #94A3B8 !important;
+}
+
+.dark .tab-inactive {
+  background-color: #1E293B !important;
+  color: #FFFFFF !important;
+  border-color: #334155 !important;
+}
+
+.bg-light-slate, .bg-subtle-slate {
+  background-color: #F1F5F9 !important;
+}
+
+/* =========================================================================
+   8. BORDER GRAY (#CBD5E1) — BORDERS AROUND INACTIVE TABS & INTERFACE ELEMENTS
+   ========================================================================= */
+
+.border-gray-theme,
+.border-interface,
+.border-slate-theme {
+  border-color: #CBD5E1 !important;
+}
+
+.border-gray-200 {
+  border-color: #CBD5E1;
 }

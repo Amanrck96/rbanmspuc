@@ -99,9 +99,9 @@ export default function ThemeSettingsPage() {
     { label: "Heritage Rose Maroon", hex: "#A33B48", darkHex: "#5A0F1B", tint: "#FCEBED" },
   ];
 
-  const goldPresets = [
-    { label: "Imperial Gold (Default)", hex: "#C9A227" },
-    { label: "Rich Royal Gold", hex: "#D4AF37" },
+  const accentPresets = [
+    { label: "Burnt Orange (Official Accent)", hex: "#D17B2F" },
+    { label: "Gold (Hover Highlight)", hex: "#FFD700" },
     { label: "Amber Gold", hex: "#B45309" },
     { label: "Honey Gold", hex: "#E5C158" },
   ];
@@ -127,7 +127,7 @@ export default function ThemeSettingsPage() {
             Site Skin & College Settings
           </h1>
           <p className="text-xs text-[var(--text)]/70 mt-1">
-            Maroon is strictly locked as the institutional brand color. Customise the gold accent, logo, banner, and college details.
+            Official 8-color institutional brand palette architecture: Maroon, Royal Blue, White, Burnt Orange, Gold, Black, Light Slate Gray, and Border Gray.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export default function ThemeSettingsPage() {
       )}
 
       <form onSubmit={handleSave} className="space-y-8">
-        {/* Section 1: Locked Maroon Brand & Gold Accent */}
+        {/* Section 1: Locked Maroon Brand & Burnt Orange Accent */}
         <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs space-y-6">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
             <div className="flex items-center gap-2">
@@ -188,7 +188,7 @@ export default function ThemeSettingsPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {maroonShades.map((shade) => {
-                const isSelected = settings.primaryColor.toLowerCase() === shade.hex.toLowerCase();
+                const isSelected = settings.primaryColor?.toLowerCase() === shade.hex.toLowerCase();
                 return (
                   <button
                     key={shade.hex}
@@ -223,24 +223,24 @@ export default function ThemeSettingsPage() {
             </div>
           </div>
 
-          {/* 2. Gold Accent Customization */}
+          {/* 2. Accent Color Customization (Burnt Orange #D17B2F) */}
           <div className="space-y-3 pt-3 border-t border-[var(--maroon-tint)] dark:border-[var(--maroon-light)]/20">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-[var(--text)] uppercase tracking-wider">
-                Gold Accent Color (Customizable Highlight & Banner)
+                Accent Color (Burnt Orange #D17B2F & Gold Highlights)
               </label>
               <span className="text-[11px] text-[var(--text)]/60">
-                Applied to banners, badges, highlights & buttons
+                Applied to badges, highlights, banners and button accents
               </span>
             </div>
 
             <div className="flex flex-wrap gap-2 mb-3">
-              {goldPresets.map((g) => (
+              {accentPresets.map((g) => (
                 <button
                   key={g.hex}
                   type="button"
                   onClick={() => setSettings({ ...settings, accentColor: g.hex })}
-                  className="px-3 py-1.5 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-[var(--gold)] text-xs flex items-center gap-2 cursor-pointer transition"
+                  className="px-3 py-1.5 rounded-xl border border-gray-200 dark:border-slate-800 hover:border-[#D17B2F] text-xs flex items-center gap-2 cursor-pointer transition"
                 >
                   <div className="w-3.5 h-3.5 rounded-full shadow-xs" style={{ backgroundColor: g.hex }} />
                   <span className="text-[var(--text)] font-medium">{g.label}</span>
@@ -251,40 +251,40 @@ export default function ThemeSettingsPage() {
             <div className="flex items-center gap-4 max-w-sm">
               <input
                 type="color"
-                value={settings.accentColor || "#C9A227"}
+                value={settings.accentColor || "#D17B2F"}
                 onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
                 className="w-12 h-12 rounded-2xl border-0 cursor-pointer bg-transparent shadow-xs"
               />
               <input
                 type="text"
-                value={settings.accentColor || "#C9A227"}
+                value={settings.accentColor || "#D17B2F"}
                 onChange={(e) => setSettings({ ...settings, accentColor: e.target.value })}
                 className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 font-mono text-xs text-[var(--text)] uppercase font-bold"
-                placeholder="#C9A227"
+                placeholder="#D17B2F"
               />
             </div>
           </div>
 
-          {/* 3 Pillars Live Theme Preview */}
+          {/* 8-Color Brand Architecture Live Theme Preview */}
           <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#800000] dark:text-[var(--gold)]">
-                Institutional Brand Palette Architecture
+              <span className="text-xs font-bold uppercase tracking-wider text-[#800000] dark:text-[#FFD700]">
+                8-Color Institutional Brand Architecture
               </span>
               <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded-full border border-emerald-300">
                 100% WCAG AA & AAA Compliant
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {/* 1. Royal / Dark Blue */}
               <div className="p-3.5 rounded-xl border border-blue-200 bg-blue-50/50 dark:bg-blue-950/20 space-y-1">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full bg-[#1E3A8A] shadow-xs" />
-                  <span className="text-xs font-bold text-[#1E3A8A] dark:text-blue-300">1. Royal / Dark Blue</span>
+                  <span className="text-xs font-bold text-[#1E3A8A] dark:text-blue-300">1. Royal Blue</span>
                 </div>
                 <div className="font-mono text-[11px] font-bold text-[#1E3A8A]">HEX: #1E3A8A</div>
-                <p className="text-[10px] text-slate-600 dark:text-slate-400">Headings, card titles & blue course badges.</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Headings, card titles and blue course badges.</p>
               </div>
 
               {/* 2. White */}
@@ -294,7 +294,7 @@ export default function ThemeSettingsPage() {
                   <span className="text-xs font-bold text-slate-800 dark:text-slate-100">2. White</span>
                 </div>
                 <div className="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">HEX: #FFFFFF</div>
-                <p className="text-[10px] text-slate-600 dark:text-slate-400">Page backgrounds, cards & text on dark banners.</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Page backgrounds, cards and text on dark banners.</p>
               </div>
 
               {/* 3. Maroon */}
@@ -304,36 +304,83 @@ export default function ThemeSettingsPage() {
                   <span className="text-xs font-bold text-[#800000] dark:text-red-300">3. Maroon</span>
                 </div>
                 <div className="font-mono text-[11px] font-bold text-[#800000] dark:text-red-300">HEX: #800000</div>
-                <p className="text-[10px] text-slate-600 dark:text-slate-400">Prospectus cards, active tabs, icons & brand elements.</p>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Prospectus cards, active tabs, icons & prominent elements.</p>
+              </div>
+
+              {/* 4. Burnt Orange */}
+              <div className="p-3.5 rounded-xl border border-orange-200 bg-orange-50/50 dark:bg-orange-950/20 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-[#D17B2F] shadow-xs" />
+                  <span className="text-xs font-bold text-[#D17B2F] dark:text-orange-300">4. Burnt Orange</span>
+                </div>
+                <div className="font-mono text-[11px] font-bold text-[#D17B2F]">HEX: #D17B2F</div>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Theme accent color for highlighted elements.</p>
+              </div>
+
+              {/* 5. Gold */}
+              <div className="p-3.5 rounded-xl border border-amber-300 bg-amber-50/50 dark:bg-amber-950/20 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-[#FFD700] shadow-xs border border-amber-400" />
+                  <span className="text-xs font-bold text-amber-700 dark:text-amber-300">5. Gold</span>
+                </div>
+                <div className="font-mono text-[11px] font-bold text-amber-800 dark:text-amber-200">HEX: #FFD700</div>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Hover highlight for the brochure button.</p>
+              </div>
+
+              {/* 6. Black */}
+              <div className="p-3.5 rounded-xl border border-slate-300 bg-slate-50 dark:bg-slate-900 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-[#000000] shadow-xs" />
+                  <span className="text-xs font-bold text-black dark:text-white">6. Black</span>
+                </div>
+                <div className="font-mono text-[11px] font-bold text-black dark:text-white">HEX: #000000</div>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Body text for normal content text.</p>
+              </div>
+
+              {/* 7. Light Slate Gray */}
+              <div className="p-3.5 rounded-xl border border-slate-300 bg-[#F1F5F9] dark:bg-slate-800 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-[#F1F5F9] border border-[#CBD5E1] shadow-xs" />
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-200">7. Light Slate Gray</span>
+                </div>
+                <div className="font-mono text-[11px] font-bold text-slate-700 dark:text-slate-200">HEX: #F1F5F9</div>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Inactive semester tabs & subtle backgrounds.</p>
+              </div>
+
+              {/* 8. Border Gray */}
+              <div className="p-3.5 rounded-xl border border-[#CBD5E1] bg-white dark:bg-slate-900 space-y-1">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-[#CBD5E1] border border-slate-400 shadow-xs" />
+                  <span className="text-xs font-bold text-slate-600 dark:text-slate-300">8. Border Gray</span>
+                </div>
+                <div className="font-mono text-[11px] font-bold text-slate-600 dark:text-slate-300">HEX: #CBD5E1</div>
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">Borders around inactive tabs & interface elements.</p>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
-              <div className="flex items-center gap-2">
+            {/* Interactive Live Preview Controls */}
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100 dark:border-slate-800">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="badge-blue text-xs font-bold px-3 py-1 rounded-full uppercase">
                   Science Stream Badge
+                </span>
+                <span className="badge-accent text-xs font-bold px-3 py-1 rounded-full uppercase">
+                  Burnt Orange Accent
                 </span>
                 <span className="tab-active px-3 py-1 rounded-full text-xs font-bold bg-[#800000] text-white">
                   Active Tab
                 </span>
+                <span className="tab-inactive px-3 py-1 rounded-full text-xs font-bold bg-[#F1F5F9] text-black border border-[#CBD5E1]">
+                  Inactive Tab
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="px-4 py-2 rounded-xl text-white font-bold text-xs shadow-xs"
-                  style={{ backgroundColor: settings.primaryColor }}
+                  className="btn-prospectus px-4 py-2 rounded-xl font-bold text-xs cursor-pointer shadow-sm"
+                  title="Hover over me to see Gold #FFD700 background!"
                 >
-                  Primary Maroon Button
-                </button>
-                <button
-                  type="button"
-                  className="px-4 py-2 rounded-xl font-bold text-xs"
-                  style={{
-                    backgroundColor: settings.accentColor || "#C9A227",
-                    color: settings.secondaryColor || "#5A0F1B",
-                  }}
-                >
-                  Gold Accent
+                  Brochure Button (Hover for Gold #FFD700)
                 </button>
               </div>
             </div>

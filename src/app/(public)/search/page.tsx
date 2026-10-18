@@ -125,7 +125,7 @@ function SearchContent() {
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
                 activeTab === "ALL"
                   ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
-                  : "bg-white dark:bg-[var(--card)] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-[#800000]/40"
+                  : "tab-inactive bg-[#F1F5F9] text-black border border-[#CBD5E1] hover:border-[#800000]/40 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
               }`}
             >
               All Results ({total})
@@ -137,7 +137,7 @@ function SearchContent() {
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                   activeTab === cat
                     ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
-                    : "bg-white dark:bg-[var(--card)] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-[#800000]/40"
+                    : "tab-inactive bg-[#F1F5F9] text-black border border-[#CBD5E1] hover:border-[#800000]/40 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
                 }`}
               >
                 <span>{cat}</span>

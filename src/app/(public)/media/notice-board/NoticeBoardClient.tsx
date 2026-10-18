@@ -36,7 +36,7 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
               className={`px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
                 isActive
                   ? "tab-active bg-[#800000] text-white shadow-md border border-[#800000]"
-                  : "bg-white dark:bg-[var(--card)] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-[#800000]/40"
+                  : "tab-inactive bg-[#F1F5F9] text-black border border-[#CBD5E1] hover:border-[#800000]/40 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
               }`}
             >
               {cat === "ALL" ? "All Circulars" : cat}
