@@ -53,7 +53,7 @@ export default function FacultyDirectoryClient({
               className={`px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
                 isActive
                   ? "tab-active bg-[#800000] text-white shadow-md border border-[#800000]"
-                  : "tab-inactive bg-[#F1F5F9] text-black border border-[#CBD5E1] hover:border-[#800000]/40 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
+                  : "tab-inactive bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
               }`}
             >
               {stream === "ALL" ? "All Faculties" : `${stream} Stream`}

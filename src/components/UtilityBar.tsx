@@ -187,10 +187,10 @@ export default function UtilityBar({ settings, latestNotices = [] }: UtilityBarP
             {/* Admin Login Link */}
             <Link
               href="/admin"
-              className="flex items-center gap-1 px-3 py-1 rounded bg-[var(--gold)] hover:brightness-110 text-[var(--maroon-dark)] font-bold text-[11px] transition shadow-xs"
+              className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-white font-bold text-[11px] transition shadow-xs border border-[var(--gold)]/50"
               title="Access RBANMS Admin CRM Panel"
             >
-              <Shield className="w-3 h-3 text-[var(--maroon-dark)]" />
+              <Shield className="w-3 h-3 text-[var(--gold)]" />
               <span>Admin CRM</span>
             </Link>
           </div>

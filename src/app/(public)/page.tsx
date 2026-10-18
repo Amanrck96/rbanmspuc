@@ -102,13 +102,13 @@ export default async function HomePage() {
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 pt-2">
               <Link
                 href="/admissions/apply"
-                className="px-6 py-3.5 rounded-xl bg-[var(--gold)] hover:brightness-110 text-[var(--maroon-dark)] font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-black/20 transition transform hover:-translate-y-0.5 border border-white/20"
+                className="px-6 py-3.5 rounded-xl bg-white hover:bg-[var(--maroon-tint)] text-[var(--maroon)] font-extrabold text-sm uppercase tracking-wider shadow-lg shadow-black/20 transition transform hover:-translate-y-0.5 border border-white/40"
               >
                 Apply for Admission 2025-26
               </Link>
               <Link
                 href="/admissions/courses-offered"
-                className="px-6 py-3.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-light)] border border-[var(--gold)]/40 text-white font-bold text-sm transition"
+                className="px-6 py-3.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-light)] border border-[var(--gold)]/60 text-white font-bold text-sm transition"
               >
                 Explore Courses
               </Link>

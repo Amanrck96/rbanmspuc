@@ -12,7 +12,7 @@ interface ThemeProps {
 export default function ThemeInjector({
   primaryColor = "#800000",
   secondaryColor = "#5A0F1B",
-  accentColor = "#D17B2F",
+  accentColor = "#C9A227",
   fontFamily,
 }: ThemeProps) {
   useEffect(() => {
@@ -35,23 +35,13 @@ export default function ThemeInjector({
     root.style.setProperty("--maroon-light", "#A33B48");
     root.style.setProperty("--maroon-tint", "#F7E9EB");
 
-    // 4. Burnt Orange — Accent Color (#D17B2F)
-    root.style.setProperty("--accent", accentColor || "#D17B2F");
-    root.style.setProperty("--burnt-orange", accentColor || "#D17B2F");
+    // Gold Accent (#C9A227)
+    root.style.setProperty("--gold", accentColor || "#C9A227");
+    root.style.setProperty("--accent", accentColor || "#C9A227");
 
-    // 5. Gold — Hover Highlight (Brochure Button Hover) (#FFD700)
-    root.style.setProperty("--gold", "#FFD700");
-    root.style.setProperty("--gold-hover", "#FFD700");
-
-    // 6. Black — Body Text (#000000)
-    root.style.setProperty("--text", "#000000");
-    root.style.setProperty("--body-text", "#000000");
-
-    // 7. Light Slate Gray — Inactive Tabs (#F1F5F9)
-    root.style.setProperty("--tab-inactive-bg", "#F1F5F9");
-
-    // 8. Border Gray — Borders around Inactive Tabs (#CBD5E1)
-    root.style.setProperty("--border-gray", "#CBD5E1");
+    // Body Text
+    root.style.setProperty("--text", "#1E293B");
+    root.style.setProperty("--body-text", "#1E293B");
 
     if (fontFamily) {
       root.style.setProperty("--font-sans", fontFamily);
@@ -78,27 +68,17 @@ export default function ThemeInjector({
         --maroon-light: #A33B48;
         --maroon-tint: #F7E9EB;
 
-        /* 4. Burnt Orange — Accent Color */
-        --accent: ${accentColor || "#D17B2F"};
-        --burnt-orange: ${accentColor || "#D17B2F"};
+        /* Gold Accent */
+        --gold: ${accentColor || "#C9A227"};
+        --accent: ${accentColor || "#C9A227"};
 
-        /* 5. Gold — Hover Highlight */
-        --gold: #FFD700;
-        --gold-hover: #FFD700;
-
-        /* 6. Black — Body Text */
-        --text: #000000;
-        --body-text: #000000;
-
-        /* 7. Light Slate Gray — Inactive Tabs */
-        --tab-inactive-bg: #F1F5F9;
-
-        /* 8. Border Gray — Borders around Inactive Tabs */
-        --border-gray: #CBD5E1;
+        /* Body Text */
+        --text: #1E293B;
+        --body-text: #1E293B;
 
         --color-primary: var(--maroon);
         --color-secondary: var(--maroon-dark);
-        --color-accent: var(--accent);
+        --color-accent: var(--gold);
         --color-heading: var(--heading);
       }
 
@@ -113,18 +93,14 @@ export default function ThemeInjector({
         --maroon-dark: #5A0F1B;
         --maroon-light: #C44F5D;
         --maroon-tint: #1E293B;
-        --accent: #E68A3E;
-        --burnt-orange: #E68A3E;
-        --gold: #FFD700;
-        --gold-hover: #FFD700;
-        --tab-inactive-bg: #1E293B;
-        --border-gray: #334155;
+        --gold: ${accentColor && accentColor !== "#C9A227" ? accentColor : "#E0B93A"};
+        --accent: ${accentColor && accentColor !== "#C9A227" ? accentColor : "#E0B93A"};
         --white: #FFFFFF;
         --cream: #0B1120;
 
         --color-primary: var(--maroon);
         --color-secondary: var(--maroon-dark);
-        --color-accent: var(--accent);
+        --color-accent: var(--gold);
         --color-heading: var(--heading);
       }
     `}</style>

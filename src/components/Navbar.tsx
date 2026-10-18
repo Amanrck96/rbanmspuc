@@ -201,7 +201,7 @@ export default function Navbar({ settings }: NavbarProps) {
             {/* Apply Now CTA Button */}
             <Link
               href="/admissions/apply"
-              className="ml-3 px-4 py-2 rounded-xl bg-[var(--gold)] hover:brightness-110 text-[var(--maroon-dark)] font-extrabold text-xs uppercase tracking-wider shadow-md transition transform hover:-translate-y-0.5 border border-white/20"
+              className="ml-3 px-4 py-2 rounded-xl bg-white hover:bg-[var(--maroon-tint)] text-[var(--maroon)] font-extrabold text-xs uppercase tracking-wider shadow-md transition transform hover:-translate-y-0.5 border border-white/40"
             >
               Apply Online
             </Link>
@@ -211,7 +211,7 @@ export default function Navbar({ settings }: NavbarProps) {
           <div className="flex items-center gap-2 lg:hidden">
             <Link
               href="/admissions/apply"
-              className="px-3 py-1.5 rounded-lg bg-[var(--gold)] text-[var(--maroon-dark)] font-bold text-xs shadow-xs"
+              className="px-3 py-1.5 rounded-lg bg-white text-[var(--maroon)] font-bold text-xs shadow-xs"
             >
               Apply
             </Link>
