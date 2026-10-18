@@ -11,10 +11,10 @@ export default async function FaqsPage() {
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] py-12 transition-colors">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[var(--maroon)] dark:text-[var(--gold)]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
             Common Inquiries
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
             Frequently Asked Questions
           </h1>
           <p className="text-sm text-[var(--text)]/80">
@@ -26,16 +26,16 @@ export default async function FaqsPage() {
           {faqs.map((faq) => (
             <details
               key={faq.id}
-              className="group p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs transition open:border-[var(--maroon)] open:shadow-md"
+              className="group p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-xs transition open:border-[#800000] open:shadow-md"
             >
-              <summary className="flex items-center justify-between cursor-pointer list-none font-bold text-base text-[var(--text)]">
+              <summary className="flex items-center justify-between cursor-pointer list-none font-bold text-base text-[#1E3A8A] dark:text-blue-300">
                 <span className="flex items-center gap-3">
-                  <HelpCircle className="w-5 h-5 text-[var(--gold)] shrink-0" />
+                  <HelpCircle className="w-5 h-5 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   <span>{faq.question}</span>
                 </span>
-                <ChevronDown className="w-5 h-5 text-[var(--maroon-light)] group-open:rotate-180 transition-transform duration-200 shrink-0 ml-2" />
+                <ChevronDown className="w-5 h-5 text-[#800000] group-open:rotate-180 transition-transform duration-200 shrink-0 ml-2" />
               </summary>
-              <div className="mt-4 pt-4 border-t border-[var(--maroon-light)]/15 text-xs sm:text-sm text-[var(--text)]/80 leading-relaxed pl-8">
+              <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs sm:text-sm text-[var(--text)]/80 leading-relaxed pl-8">
                 {faq.answer}
               </div>
             </details>

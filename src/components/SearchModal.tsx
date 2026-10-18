@@ -86,19 +86,19 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const getSectionIcon = (category: string) => {
     switch (category) {
       case "Pages & Information":
-        return <BookOpen className="w-4 h-4 text-blue-600" />;
+        return <BookOpen className="w-4 h-4 text-[#800000]" />;
       case "Notices & Circulars":
-        return <Bell className="w-4 h-4 text-amber-600" />;
+        return <Bell className="w-4 h-4 text-[var(--gold)]" />;
       case "Courses & Academics":
-        return <GraduationCap className="w-4 h-4 text-emerald-600" />;
+        return <GraduationCap className="w-4 h-4 text-[#1E3A8A]" />;
       case "Faculty & Staff":
-        return <Users className="w-4 h-4 text-purple-600" />;
+        return <Users className="w-4 h-4 text-[#800000]" />;
       case "Downloads & Forms":
-        return <Download className="w-4 h-4 text-cyan-600" />;
+        return <Download className="w-4 h-4 text-[var(--gold)]" />;
       case "FAQs & Help":
-        return <HelpCircle className="w-4 h-4 text-orange-600" />;
+        return <HelpCircle className="w-4 h-4 text-[#800000]" />;
       default:
-        return <ImageIcon className="w-4 h-4 text-gray-600" />;
+        return <ImageIcon className="w-4 h-4 text-[#800000]" />;
     }
   };
 
@@ -186,7 +186,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     className="w-full text-left p-2.5 rounded-xl hover:bg-blue-50/80 dark:hover:bg-slate-800/80 transition flex items-start justify-between group"
                   >
                     <div className="pr-4">
-                      <div className="font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-blue-700 dark:group-hover:text-blue-400">
+                      <div className="font-semibold text-sm text-[#1E3A8A] dark:text-blue-300 group-hover:text-[#800000]">
                         {item.title}
                       </div>
                       {item.subtitle && (

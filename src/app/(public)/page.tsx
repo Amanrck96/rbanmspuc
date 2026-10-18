@@ -199,10 +199,10 @@ export default async function HomePage() {
       {/* 4. Academic Streams Overview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[var(--maroon)] dark:text-[var(--gold)]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
             Curriculum & Combinations
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
             Courses Offered at RBANMS
           </h2>
           <p className="text-sm text-[var(--text)]/80">
@@ -212,30 +212,30 @@ export default async function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Science Stream */}
-          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-md hover:shadow-xl hover:border-[var(--maroon)] transition flex flex-col justify-between">
+          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-[#1E3A8A] transition flex flex-col justify-between">
             <div className="space-y-4">
-              <div className="inline-block px-3 py-1 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30 text-xs font-bold uppercase">
+              <div className="badge-blue px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
                 Science Stream
               </div>
-              <h3 className="text-xl font-bold text-[var(--text)] font-serif">PCMB & PCMC</h3>
+              <h3 className="text-xl font-bold text-[#1E3A8A] dark:text-blue-300 font-serif">PCMB & PCMC</h3>
               <p className="text-xs text-[var(--text)]/80 leading-relaxed">
                 Physics, Chemistry, Mathematics with Biology or Computer Science. Supported by advanced laboratories and KCET/NEET coaching.
               </p>
               <ul className="space-y-2 text-xs text-[var(--text)]/90">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--maroon-light)] dark:text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Engineering & Medical Pathways
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--maroon-light)] dark:text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Separate Physics, Chem & Bio Labs
                 </li>
               </ul>
             </div>
-            <div className="pt-6 border-t border-[var(--maroon-light)]/15 mt-6">
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mt-6">
               <Link
                 href="/admissions/courses-offered#pcmc"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
               >
                 View Science Syllabus <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -243,30 +243,30 @@ export default async function HomePage() {
           </div>
 
           {/* Commerce Stream */}
-          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-md hover:shadow-xl hover:border-[var(--maroon)] transition flex flex-col justify-between">
+          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-[#1E3A8A] transition flex flex-col justify-between">
             <div className="space-y-4">
-              <div className="inline-block px-3 py-1 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30 text-xs font-bold uppercase">
+              <div className="badge-blue px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
                 Commerce Stream
               </div>
-              <h3 className="text-xl font-bold text-[var(--text)] font-serif">CEBA & SEBA</h3>
+              <h3 className="text-xl font-bold text-[#1E3A8A] dark:text-blue-300 font-serif">CEBA & SEBA</h3>
               <p className="text-xs text-[var(--text)]/80 leading-relaxed">
                 Accountancy, Business Studies, Economics with Computer Science or Statistics. Foundation for CA, CS, and Corporate Finance.
               </p>
               <ul className="space-y-2 text-xs text-[var(--text)]/90">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Chartered Accountancy Mentorship
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Business Simulation Software Lab
                 </li>
               </ul>
             </div>
-            <div className="pt-6 border-t border-[var(--maroon-light)]/15 mt-6">
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mt-6">
               <Link
                 href="/admissions/courses-offered#ceba"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
               >
                 View Commerce Syllabus <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -274,34 +274,65 @@ export default async function HomePage() {
           </div>
 
           {/* Arts Stream */}
-          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-md hover:shadow-xl hover:border-[var(--maroon)] transition flex flex-col justify-between">
+          <div className="rounded-3xl p-6 bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl hover:border-[#1E3A8A] transition flex flex-col justify-between">
             <div className="space-y-4">
-              <div className="inline-block px-3 py-1 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30 text-xs font-bold uppercase">
+              <div className="badge-blue px-3.5 py-1 text-xs font-bold uppercase tracking-wider">
                 Humanities Stream
               </div>
-              <h3 className="text-xl font-bold text-[var(--text)] font-serif">HEGP</h3>
+              <h3 className="text-xl font-bold text-[#1E3A8A] dark:text-blue-300 font-serif">HEGP</h3>
               <p className="text-xs text-[var(--text)]/80 leading-relaxed">
                 History, Economics, Geography, and Political Science. The ideal springboard for Civil Services (UPSC/KPSC), Law, and Public Administration.
               </p>
               <ul className="space-y-2 text-xs text-[var(--text)]/90">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--maroon-light)] dark:text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Civil Services Foundation Club
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--maroon-light)] dark:text-[var(--gold)] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#800000] dark:text-[var(--gold)] shrink-0" />
                   Heritage Archival Map Room
                 </li>
               </ul>
             </div>
-            <div className="pt-6 border-t border-[var(--maroon-light)]/15 mt-6">
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-800 mt-6">
               <Link
                 href="/admissions/courses-offered#hegp"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:gap-2 transition-all link-maroon"
               >
                 View Arts Syllabus <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
+          </div>
+        </div>
+
+        {/* Prospectus Feature Card in Maroon (#800000) with Gold Trim */}
+        <div className="prospectus-card rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-[var(--gold)]">
+          <div className="space-y-3 text-center md:text-left max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-[var(--gold)] text-xs font-bold uppercase tracking-wider border border-[var(--gold)]/40">
+              <FileCheck className="w-3.5 h-3.5 text-[var(--gold)]" /> Official College Handbook
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white font-serif">
+              Download Academic Prospectus 2025–26
+            </h3>
+            <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+              Detailed fee structure, subject combinations, scholarship rules, laboratory details, and sports amenities in one comprehensive PDF guide.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
+            <a
+              href="/uploads/rbanms-prospectus-2025-26.pdf"
+              target="_blank"
+              download
+              className="btn-prospectus px-6 py-3.5 rounded-xl font-extrabold text-xs uppercase tracking-wider flex items-center gap-2 transition"
+            >
+              <Download className="w-4 h-4 text-[var(--maroon-dark)]" /> Download Prospectus PDF
+            </a>
+            <Link
+              href="/admissions/prospectus"
+              className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider border border-white/30 transition"
+            >
+              View Online
+            </Link>
           </div>
         </div>
       </section>
@@ -354,11 +385,11 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Upcoming Events */}
           <div className="space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/20">
-              <h3 className="text-2xl font-bold text-[var(--maroon)] dark:text-[var(--gold)] font-serif flex items-center gap-2">
-                <Calendar className="w-6 h-6 text-[var(--maroon)] dark:text-[var(--gold)]" /> Upcoming Events
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-2xl font-bold text-[#1E3A8A] dark:text-blue-300 font-serif flex items-center gap-2">
+                <Calendar className="w-6 h-6 text-[#800000] dark:text-[var(--gold)]" /> Upcoming Events
               </h3>
-              <Link href="/media/events" className="text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:underline link-maroon">
+              <Link href="/media/events" className="text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:underline link-maroon">
                 View Calendar
               </Link>
             </div>
@@ -366,9 +397,9 @@ export default async function HomePage() {
               {events.map((ev) => (
                 <div
                   key={ev.id}
-                  className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs hover:shadow-md transition"
+                  className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-xs hover:border-[#1E3A8A] hover:shadow-md transition"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30 flex flex-col items-center justify-center shrink-0">
+                  <div className="w-16 h-16 rounded-xl bg-[var(--maroon-tint)] text-[#800000] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30 flex flex-col items-center justify-center shrink-0">
                     <span className="text-lg font-extrabold font-serif">
                       {new Date(ev.eventDate).getDate()}
                     </span>
@@ -380,10 +411,10 @@ export default async function HomePage() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--gold)]">
                       {ev.category}
                     </span>
-                    <h4 className="font-bold text-sm text-[var(--text)]">{ev.title}</h4>
+                    <h4 className="font-bold text-sm text-[#1E3A8A] dark:text-blue-300">{ev.title}</h4>
                     <p className="text-xs text-[var(--text)]/70 line-clamp-2">{ev.description}</p>
                     <div className="flex items-center gap-1 text-[11px] text-[var(--text)]/60 pt-1">
-                      <MapPin className="w-3 h-3 text-[var(--maroon-light)]" /> {ev.venue}
+                      <MapPin className="w-3 h-3 text-[#800000]" /> {ev.venue}
                     </div>
                   </div>
                 </div>
@@ -393,11 +424,11 @@ export default async function HomePage() {
 
           {/* Announcements & Notice Board */}
           <div className="space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/20">
-              <h3 className="text-2xl font-bold text-[var(--maroon)] dark:text-[var(--gold)] font-serif flex items-center gap-2">
-                <Bell className="w-6 h-6 text-[var(--gold)]" /> Official Circulars
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-2xl font-bold text-[#1E3A8A] dark:text-blue-300 font-serif flex items-center gap-2">
+                <Bell className="w-6 h-6 text-[#800000] dark:text-[var(--gold)]" /> Official Circulars
               </h3>
-              <Link href="/media/notice-board" className="text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:underline link-maroon">
+              <Link href="/media/notice-board" className="text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:underline link-maroon">
                 All Notices
               </Link>
             </div>
@@ -405,17 +436,17 @@ export default async function HomePage() {
               {notices.map((notice) => (
                 <div
                   key={notice.id}
-                  className="p-4 rounded-2xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs hover:border-[var(--maroon)] transition"
+                  className="p-4 rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-xs hover:border-[#1E3A8A] transition"
                 >
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] uppercase">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#1E3A8A] border border-blue-200 uppercase">
                       {notice.category}
                     </span>
                     <span className="text-[11px] text-[var(--text)]/60">
                       {new Date(notice.date).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
                     </span>
                   </div>
-                  <h4 className="font-bold text-sm text-[var(--text)]">{notice.title}</h4>
+                  <h4 className="font-bold text-sm text-[#1E3A8A] dark:text-blue-300">{notice.title}</h4>
                   <p className="text-xs text-[var(--text)]/70 mt-1 line-clamp-2">
                     {notice.description}
                   </p>
@@ -429,10 +460,10 @@ export default async function HomePage() {
       {/* 7. Achievements Showcase */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-[var(--maroon)] dark:text-[var(--gold)]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
             Hall of Distinction
           </span>
-          <h2 className="text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+          <h2 className="text-3xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
             Recent Institutional Achievements
           </h2>
         </div>
@@ -440,16 +471,16 @@ export default async function HomePage() {
           {achievements.map((ach) => (
             <div
               key={ach.id}
-              className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs hover:shadow-lg transition space-y-3"
+              className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 shadow-xs hover:shadow-lg hover:border-[#1E3A8A] transition space-y-3"
             >
-              <div className="p-3 rounded-2xl bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] w-fit">
-                <Award className="w-6 h-6" />
+              <div className="p-3 rounded-2xl bg-[var(--maroon-tint)] text-[#800000] dark:text-[var(--gold)] w-fit">
+                <Award className="w-6 h-6 text-[#800000]" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--text)]/60">
                 {ach.category} • {ach.year}
               </span>
-              <h4 className="font-bold text-base text-[var(--text)]">{ach.title}</h4>
-              <div className="text-xs font-semibold text-[var(--maroon)] dark:text-[var(--gold)]">{ach.recipient}</div>
+              <h4 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300">{ach.title}</h4>
+              <div className="text-xs font-semibold text-[#800000] dark:text-[var(--gold)]">{ach.recipient}</div>
               <p className="text-xs text-[var(--text)]/70">{ach.description}</p>
             </div>
           ))}
@@ -458,18 +489,18 @@ export default async function HomePage() {
 
       {/* 8. Photo Gallery Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex items-center justify-between pb-3 border-b border-[var(--maroon-light)]/20">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-[var(--maroon)] dark:text-[var(--gold)]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
               Campus Moments
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
               Life at RBANMS
             </h2>
           </div>
           <Link
             href="/media/photo-gallery"
-            className="text-xs font-bold text-[var(--maroon)] dark:text-[var(--gold)] hover:underline inline-flex items-center gap-1 link-maroon"
+            className="text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:underline inline-flex items-center gap-1 link-maroon"
           >
             Explore Gallery <ArrowRight className="w-3.5 h-3.5" />
           </Link>

@@ -111,23 +111,23 @@ export default async function DynamicSectionPage({ params }: PageProps) {
           <article className="lg:col-span-8 bg-white dark:bg-[var(--card)] rounded-3xl p-6 sm:p-10 shadow-sm border border-[var(--maroon-light)]/20 space-y-6">
             <div
               className="prose dark:prose-invert max-w-none 
-                prose-headings:font-serif prose-headings:font-bold prose-headings:text-[var(--maroon)] dark:prose-headings:text-[var(--gold)]
-                prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--maroon-light)]/20 prose-h2:pb-2 prose-h2:mt-8
+                prose-headings:font-serif prose-headings:font-bold prose-headings:text-[#1E3A8A] dark:prose-headings:text-blue-300
+                prose-h2:text-2xl prose-h2:border-b prose-h2:border-slate-200 dark:prose-h2:border-slate-800 prose-h2:pb-2 prose-h2:mt-8
                 prose-h3:text-xl prose-h3:mt-6
                 prose-p:text-[var(--text)]/90 prose-p:leading-relaxed prose-p:text-base
                 prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-2
                 prose-ol:list-decimal prose-ol:pl-6 prose-ol:space-y-2
                 prose-blockquote:border-l-4 prose-blockquote:border-[var(--gold)] prose-blockquote:bg-[var(--maroon-tint)] prose-blockquote:p-4 prose-blockquote:rounded-r-xl prose-blockquote:italic
-                prose-table:w-full prose-table:border-collapse prose-th:bg-[var(--maroon-tint)] prose-th:text-[var(--maroon)] dark:prose-th:text-[var(--gold)] prose-th:p-3 prose-td:p-3 prose-td:border-b prose-td:border-[var(--maroon-light)]/15
-                prose-a:text-[var(--maroon)] dark:prose-a:text-[var(--gold)] prose-a:underline hover:prose-a:text-[var(--maroon-dark)]"
+                prose-table:w-full prose-table:border-collapse prose-th:bg-[var(--maroon-tint)] prose-th:text-[#1E3A8A] dark:prose-th:text-blue-300 prose-th:p-3 prose-td:p-3 prose-td:border-b prose-td:border-slate-200 dark:prose-td:border-slate-800
+                prose-a:text-[#800000] dark:text-[var(--gold)] prose-a:underline hover:prose-a:text-[var(--maroon-dark)]"
               dangerouslySetInnerHTML={{ __html: page.content }}
             />
 
             {/* In-page Action Box */}
-            <div className="pt-8 border-t border-[var(--maroon-light)]/15 mt-10">
+            <div className="pt-8 border-t border-slate-100 dark:border-slate-800 mt-10">
               <div className="p-6 rounded-2xl bg-gradient-to-r from-[var(--maroon-dark)] to-[var(--maroon)] text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-[var(--gold)]/30">
                 <div>
-                  <h4 className="font-bold text-base font-serif">Have questions about admissions?</h4>
+                  <h4 className="font-bold text-base font-serif text-white">Have questions about admissions?</h4>
                   <p className="text-xs text-white/80 mt-1">Our counseling team is ready to guide you.</p>
                 </div>
                 <Link
@@ -143,8 +143,8 @@ export default async function DynamicSectionPage({ params }: PageProps) {
           {/* Sidebar */}
           <aside className="lg:col-span-4 space-y-6">
             {/* Related Pages in this section */}
-            <div className="bg-white dark:bg-[var(--card)] rounded-3xl p-6 shadow-xs border border-[var(--maroon-light)]/20 space-y-4">
-              <h3 className="font-bold text-base text-[var(--maroon)] dark:text-[var(--gold)] font-serif pb-2 border-b border-[var(--maroon-light)]/20">
+            <div className="bg-white dark:bg-[var(--card)] rounded-3xl p-6 shadow-xs border border-slate-200 dark:border-slate-800 space-y-4">
+              <h3 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 font-serif pb-2 border-b border-slate-200 dark:border-slate-800">
                 In this Section
               </h3>
               <div className="space-y-1">
@@ -154,10 +154,10 @@ export default async function DynamicSectionPage({ params }: PageProps) {
                     <Link
                       key={rp.id}
                       href={`/${rp.section}/${rp.slug}`}
-                      className={`block px-3.5 py-2 rounded-xl text-xs font-semibold transition ${
+                      className={`block px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                         isActive
-                          ? "bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border-l-4 border-[var(--maroon)] font-bold"
-                          : "text-[var(--text)]/80 hover:bg-[var(--maroon-tint)]/60 hover:text-[var(--maroon)]"
+                          ? "tab-active bg-[#800000] text-white font-bold shadow-sm border-l-4 border-[var(--gold)]"
+                          : "text-[var(--text)]/80 hover:bg-[var(--maroon-tint)]/60 hover:text-[#800000]"
                       }`}
                     >
                       {rp.title}

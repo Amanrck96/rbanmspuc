@@ -10,40 +10,55 @@
   --color-text-main: var(--text);
   --color-bg-main: var(--bg);
   --color-card-bg: var(--card);
+  --color-heading: var(--heading);
+  --color-royal-blue: var(--heading);
 }
 
 :root {
+  /* 3. Maroon — Primary Brand Color (#800000) */
   --maroon: #800000;
   --maroon-dark: #5A0F1B;
   --maroon-light: #A33B48;
   --maroon-tint: #F7E9EB;
   --gold: #C9A227;
-  --cream: #FFF9F2;
-  --text: #2B2B2B;
+
+  /* 2. White — Main Background & Cards (#FFFFFF) */
   --white: #FFFFFF;
-  --bg: #FFF9F2;
+  --bg: #FFFFFF;
   --card: #FFFFFF;
+  --cream: #FFFFFF;
+  --text: #1E293B;
+
+  /* 1. Royal / Dark Blue — Headings & Badges (#1E3A8A) */
+  --heading: #1E3A8A;
+  --blue: #1E3A8A;
+  --royal-blue: #1E3A8A;
 
   --color-primary: var(--maroon);
   --color-secondary: var(--maroon-dark);
   --color-accent: var(--gold);
+  --color-heading: var(--heading);
 }
 
 .dark, html.dark {
-  --bg: #1A0B0E;
-  --card: #2A1216;
-  --text: #F5E9EA;
-  --maroon: #B03A48;
+  --bg: #0B1120;
+  --card: #1E293B;
+  --text: #F1F5F9;
+  --heading: #60A5FA;
+  --blue: #60A5FA;
+  --royal-blue: #60A5FA;
+  --maroon: #991B1B;
   --maroon-dark: #5A0F1B;
   --maroon-light: #C44F5D;
-  --maroon-tint: #2A1216;
+  --maroon-tint: #1E293B;
   --gold: #E0B93A;
   --white: #FFFFFF;
-  --cream: #1A0B0E;
+  --cream: #0B1120;
 
   --color-primary: var(--maroon);
   --color-secondary: var(--maroon-dark);
   --color-accent: var(--gold);
+  --color-heading: var(--heading);
 }
 
 body {
@@ -52,6 +67,75 @@ body {
   font-family: var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+/* =========================================================================
+   1. ROYAL / DARK BLUE (#1E3A8A) — HEADINGS, CARD TITLES & COURSE BADGES
+   ========================================================================= */
+
+/* Headings default to Royal Blue */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.015em;
+  color: var(--heading);
+}
+
+/* Explicit text overrides for dark banners, heroes & gold highlights */
+header h1, header h2, header h3, header span,
+footer h1, footer h2, footer h3, footer h4,
+.text-white, .text-white * {
+  color: inherit;
+}
+
+.bg-maroon-dark h1, .bg-maroon-dark h2, .bg-maroon-dark h3,
+.bg-maroon h1, .bg-maroon h2, .bg-maroon h3,
+[class*="bg-gradient-to"] h1, [class*="bg-gradient-to"] h2, [class*="bg-gradient-to"] h3 {
+  color: #FFFFFF;
+}
+
+h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white, h6.text-white,
+h1.text-gold, h2.text-gold, h3.text-gold, h4.text-gold, h5.text-gold, h6.text-gold {
+  color: inherit;
+}
+
+.heading-blue, .text-heading, .card-title {
+  color: var(--heading) !important;
+}
+
+/* Royal Blue Course Badges */
+.badge-blue, .badge-course {
+  background-color: #EFF6FF !important;
+  color: #1E3A8A !important;
+  border: 1px solid #BFDBFE !important;
+  font-weight: 700 !important;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+}
+
+.dark .badge-blue, .dark .badge-course {
+  background-color: rgba(30, 58, 138, 0.35) !important;
+  color: #93C5FD !important;
+  border-color: rgba(96, 165, 250, 0.4) !important;
+}
+
+/* =========================================================================
+   2. WHITE (#FFFFFF) — MAIN BACKGROUND, CARDS & TEXT ON DARK BANNERS
+   ========================================================================= */
+
+.bg-white-theme {
+  background-color: #FFFFFF !important;
+}
+
+.bg-card-theme {
+  background-color: var(--card) !important;
+}
+
+.banner-text-white {
+  color: #FFFFFF !important;
+}
+
+/* =========================================================================
+   3. MAROON (#800000) — BRAND COLOR, PROSPECTUS CARDS, ACTIVE TABS, ICONS
+   ========================================================================= */
 
 /* Common Brand Theme Classes */
 .bg-maroon {
@@ -72,9 +156,6 @@ body {
 .bg-cream {
   background-color: var(--cream) !important;
 }
-.bg-card-theme {
-  background-color: var(--card) !important;
-}
 
 .text-maroon {
   color: var(--maroon) !important;
@@ -94,6 +175,9 @@ body {
 .text-main {
   color: var(--text) !important;
 }
+.text-royal-blue {
+  color: var(--heading) !important;
+}
 
 .border-maroon {
   border-color: var(--maroon) !important;
@@ -106,6 +190,49 @@ body {
 }
 .border-gold {
   border-color: var(--gold) !important;
+}
+.border-royal-blue {
+  border-color: #BFDBFE !important;
+}
+
+/* Prospectus Cards in Maroon (#800000) with Gold Trim */
+.prospectus-card, .card-prospectus {
+  background: linear-gradient(135deg, #800000 0%, #5A0F1B 100%) !important;
+  color: #FFFFFF !important;
+  border: 2px solid var(--gold) !important;
+  box-shadow: 0 16px 36px -8px rgba(128, 0, 0, 0.45) !important;
+}
+.prospectus-card h1, .prospectus-card h2, .prospectus-card h3, .prospectus-card h4, .prospectus-card p,
+.card-prospectus h1, .card-prospectus h2, .card-prospectus h3, .card-prospectus h4, .card-prospectus p {
+  color: #FFFFFF !important;
+}
+.prospectus-card .btn-prospectus, .card-prospectus .btn-prospectus {
+  background-color: var(--gold) !important;
+  color: var(--maroon-dark) !important;
+  font-weight: 800 !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+.prospectus-card .btn-prospectus:hover, .card-prospectus .btn-prospectus:hover {
+  filter: brightness(1.1);
+}
+
+/* Active Tabs in Maroon (#800000) */
+.tab-active, [aria-selected="true"].tab-item, .nav-tab-active, [data-active="true"] {
+  background-color: #800000 !important;
+  color: #FFFFFF !important;
+  border-color: #800000 !important;
+  box-shadow: 0 4px 12px rgba(128, 0, 0, 0.25) !important;
+}
+
+/* Brand Icons in Maroon (#800000) */
+.icon-maroon, .icon-brand {
+  color: #800000 !important;
+}
+.icon-box-maroon {
+  background-color: var(--maroon-tint) !important;
+  color: #800000 !important;
+  border: 1px solid rgba(128, 0, 0, 0.15) !important;
 }
 
 /* Interactive elements */
@@ -139,13 +266,8 @@ body {
 }
 
 .dark .link-maroon {
-  color: var(--maroon);
+  color: #B03A48;
 }
 .dark .link-maroon:hover {
   color: var(--gold);
-}
-
-/* Headings with Maroon Brand */
-h1, h2, h3 {
-  letter-spacing: -0.015em;
 }

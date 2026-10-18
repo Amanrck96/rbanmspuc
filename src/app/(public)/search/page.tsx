@@ -89,7 +89,7 @@ function SearchContent() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Search Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
             Global Knowledge Search
           </h1>
           <p className="text-sm text-[var(--text)]/80">
@@ -99,8 +99,8 @@ function SearchContent() {
 
         {/* Input Bar */}
         <form onSubmit={handleFormSubmit} className="relative max-w-2xl mx-auto">
-          <div className="relative flex items-center shadow-lg rounded-2xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 p-2">
-            <Search className="w-5 h-5 text-[var(--maroon-light)] ml-3 mr-2" />
+          <div className="relative flex items-center shadow-lg rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 p-2">
+            <Search className="w-5 h-5 text-[#800000] ml-3 mr-2" />
             <input
               type="text"
               value={query}
@@ -110,7 +110,7 @@ function SearchContent() {
             />
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition shadow-xs cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-[#800000] hover:bg-[#5A0F1B] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition shadow-xs cursor-pointer"
             >
               Search
             </button>
@@ -122,10 +122,10 @@ function SearchContent() {
           <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
             <button
               onClick={() => setActiveTab("ALL")}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
                 activeTab === "ALL"
-                  ? "bg-[var(--maroon)] text-white shadow-xs font-bold"
-                  : "bg-white dark:bg-[var(--card)] text-[var(--text)]/80 border border-[var(--maroon-light)]/20 hover:bg-[var(--maroon-tint)]"
+                  ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
+                  : "bg-white dark:bg-[var(--card)] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-[#800000]/40"
               }`}
             >
               All Results ({total})
@@ -134,10 +134,10 @@ function SearchContent() {
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition flex items-center gap-1.5 ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                   activeTab === cat
-                    ? "bg-[var(--maroon)] text-white shadow-xs font-bold"
-                    : "bg-white dark:bg-[var(--card)] text-[var(--text)]/80 border border-[var(--maroon-light)]/20 hover:bg-[var(--maroon-tint)]"
+                    ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
+                    : "bg-white dark:bg-[var(--card)] text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 hover:border-[#800000]/40"
                 }`}
               >
                 <span>{cat}</span>
@@ -154,8 +154,8 @@ function SearchContent() {
             <p className="text-xs text-[var(--text)]/60">Searching RBANMS database...</p>
           </div>
         ) : query && total === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-[var(--card)] rounded-3xl border border-[var(--maroon-light)]/20 p-8 space-y-3">
-            <p className="text-lg font-bold text-[var(--text)]">
+          <div className="text-center py-20 bg-white dark:bg-[var(--card)] rounded-3xl border border-slate-200 dark:border-slate-800 p-8 space-y-3">
+            <p className="text-lg font-bold text-[#1E3A8A] dark:text-blue-300">
               No matching results found for &ldquo;{query}&rdquo;
             </p>
             <p className="text-xs text-[var(--text)]/70 max-w-md mx-auto">
@@ -168,9 +168,9 @@ function SearchContent() {
               const items = results[category] || [];
               return (
                 <div key={category} className="space-y-4">
-                  <div className="flex items-center gap-2 pb-2 border-b border-[var(--maroon-light)]/20">
+                  <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
                     {getSectionIcon(category)}
-                    <h3 className="font-bold text-base text-[var(--maroon)] dark:text-[var(--gold)] font-serif">
+                    <h3 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 font-serif">
                       {category}
                     </h3>
                     <span className="text-xs text-[var(--text)]/60">({items.length})</span>
@@ -181,14 +181,14 @@ function SearchContent() {
                       <Link
                         key={item.id}
                         href={item.url}
-                        className="p-5 rounded-2xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 hover:border-[var(--maroon)] shadow-xs hover:shadow-md transition group flex flex-col justify-between"
+                        className="p-5 rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 hover:border-[#1E3A8A] shadow-xs hover:shadow-md transition group flex flex-col justify-between"
                       >
                         <div className="space-y-2">
                           <div className="flex items-start justify-between gap-2">
-                            <h4 className="font-bold text-base text-[var(--text)] group-hover:text-[var(--maroon)] dark:group-hover:text-[var(--gold)] transition">
+                            <h4 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 group-hover:text-[#800000] dark:group-hover:text-[var(--gold)] transition">
                               {item.title}
                             </h4>
-                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[var(--maroon)] dark:group-hover:text-[var(--gold)] transition shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#800000] dark:group-hover:text-[var(--gold)] transition shrink-0 mt-1" />
                           </div>
                           {item.subtitle && (
                             <div className="text-xs font-semibold text-[var(--gold)]">
@@ -202,8 +202,8 @@ function SearchContent() {
                             />
                           )}
                         </div>
-                        <div className="pt-3 mt-3 border-t border-[var(--maroon-light)]/15 text-[11px] font-semibold text-[var(--maroon)] dark:text-[var(--gold)] flex items-center gap-1 link-maroon">
-                          Navigate to page <ArrowRight className="w-3 h-3" />
+                        <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-[#800000] dark:text-[var(--gold)] flex items-center gap-1 link-maroon">
+                          Navigate to page <ArrowRight className="w-3.5 h-3.5" />
                         </div>
                       </Link>
                     ))}

@@ -11,10 +11,10 @@ export default async function PhotoGalleryPage() {
     <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] py-12 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[var(--maroon)] dark:text-[var(--gold)]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
             Visual Highlights
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
             Campus Photo Gallery
           </h1>
           <p className="text-sm text-[var(--text)]/80">
@@ -26,7 +26,7 @@ export default async function PhotoGalleryPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="group bg-white dark:bg-[var(--card)] rounded-3xl overflow-hidden border border-[var(--maroon-light)]/20 shadow-sm hover:border-[var(--maroon)] hover:shadow-xl transition"
+              className="group bg-white dark:bg-[var(--card)] rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:border-[#1E3A8A] hover:shadow-xl transition"
             >
               <div className="relative w-full h-64 overflow-hidden bg-[var(--maroon-dark)]">
                 <Image
@@ -42,7 +42,7 @@ export default async function PhotoGalleryPage() {
                 </div>
               </div>
               <div className="p-5 space-y-1">
-                <h3 className="font-bold text-base text-[var(--text)] group-hover:text-[var(--maroon)] dark:group-hover:text-[var(--gold)] transition">
+                <h3 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 group-hover:text-[#800000] dark:group-hover:text-[var(--gold)] transition">
                   {item.title}
                 </h3>
                 {item.caption && (
