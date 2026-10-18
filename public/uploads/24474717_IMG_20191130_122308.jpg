@@ -1,0 +1,2226 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--meta tag start-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="rbanm's">
+    <meta name="author" content="rbanm">
+    <meta name="copyright" content="rbanm's">
+    <!--title-->
+    <title>RBANM's</title>
+    <!-- faveicon start   -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="images/favicon/favicon-16x16.png" sizes="16x16">
+    <!-- stylesheet start -->
+
+
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.53">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css?v=1.53">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CABeeZee%3Aregular%2Citalic&amp;subset=latin%2Clatin-ext%2Cdevanagari&amp;ver=5.0.3' type='text/css' media='all' />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-N20L2096TD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-N20L2096TD');
+    </script>
+</head>
+<style>
+    .right_footer {
+
+        margin-bottom: 2%;
+    }
+</style>
+
+<body>
+
+
+
+    <!-- Page Header-->
+    	
+
+
+	<header>
+		<div class="top-header">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-sm-12 tophead-right" style="padding-left:0">
+						<ul class="tophead-link">
+							<!-- <li class="aqar"><a href="./pdf/AQAR-2016-17-3.pdf" target="_blank">AQAR</a></li> -->
+							<li class="line_effect"><a href="news.php">News</a></li>
+							<li class="line_effect"><a href="events.php"> Events</a>
+							<li class="line_effect"><a href="blog.php">Blog</a></li>
+							<li class="line_effect"><a href="media.php"> Media</a>
+							<li class="line_effect"><a href="contactus.php"> Contact</a>
+							<li><a href="tel:08025300853"><i class="fa fa-phone" aria-hidden="true"></i>080-25300853</a></li>
+							<li><a href="tel:08040906750">080 40906750</a> </li>
+							<li><a href="mailto:principal.puc@rbanmscharities.in" style="text-transform: lowercase;"><i class="fa fa-envelope" aria-hidden="true"></i> principal.puc@rbanmscharities.in </a> </li>
+							<li><a href="https://www.facebook.com/RBANMsedu" target="_blank" rel="noreferrer noopener"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="https://www.linkedin.com/company/rbanmsedu" target="_blank" rel="noreferrer noopener"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	</header>
+	<!-- Start Navigation -->
+	<div id="masthead" class="site-header menu">
+		<div class="container">
+			<div class="site-branding">
+				<a href="index.php" class="logo"> <img src="images/logo_puc_address.png?v=1.4" alt="logo"> </a>
+				<a class="menu-btn toggle-slide-right menu-icon-div menu-link" id="trigger-menu" href="javascript:;"> <i class="mdi mdi-menu fa fa-bars"></i> </a>
+				<!-- #site-identity -->
+			</div>
+
+
+			<!-- .site-branding -->
+			<div class="header-nav-search">
+
+
+				<div id="main-navigation">
+					<nav class="main-navigation">
+						<ul>
+							<li class=" current-menu-item "><a href="index.php" class="main_menu"> <i class="fa fa-home"></i> Home</a></li>
+
+							<li class="menu-item-has-children "><a href="javascript:;" class="main_menu"><i class="fa fa-university"></i> About Us</a>
+								<ul class="sub-menu-ul">
+									<li><a href="aboutus.php?open_type=history_link" id="history_link">History</a></li>
+									<li><a href="aboutus.php?open_type=founder_link" id="founder_link">Our Founder</a></li>
+									<li><a href="aboutus.php?open_type=vision_link" id="vision_link">Vision and Mission</a></li>
+									<li><a href="aboutus.php?open_type=aims_link" id="aims_link">Aims and Objectives</a></li>
+
+									<li><a href="aboutus.php?open_type=management_link" id="management_link">Management</a></li>
+									<li><a href="aboutus.php?open_type=principal_link" id="principal_link">Principal desk</a></li>
+								</ul>
+							</li>
+
+							<li class="menu-item-has-children "><a href="javascript:;" class="main_menu"><i class="fa fa-graduation-cap"></i> Academics</a>
+
+								<ul class="sub-menu-ul">
+
+									<li><a href="academics.php" class="">Courses offered </a></li>
+									<!-- <li><a href="value_added_courses.php">Value Added Courses</a></li> -->
+									<!-- <li><a href="admissions.php">Admissions</a></li> -->
+									<li><a href="guidelines.php">Student Guidelines</a></li>
+									<!-- <li><a href="placements.php">Placements</a></li> -->
+																		<!-- <li class="menu-item-has-children"><a href="javascript:;" class="">Department </a>
+										<ul style="min-width: 236px;">
+											<li><a href="department.php" class="">Department of Commerce And Management</a></li>
+											<li><a href="arts.php" class="">Department of Arts</a></li>
+											<li><a href="computer.php" class="">Department of Computer Applications</a></li>
+											<li><a href="science.php" class="">Department of Mathematics</a></li>
+											<li><a href="english.php" class="">Departmemt of English</a></li>
+											<li><a href="tamil.php" class="">Departmemt of Tamil</a></li>
+										</ul>
+
+									</li> -->
+
+
+								</ul>
+
+							</li>
+
+							<li class=""><a href="javascript:;" class="main_menu"><i class="fa fa-user"></i> Academy</a>
+								<ul class="sub-menu-ul">
+									<li><a href="academy.php?open_type=cricket_link" id="cricket_link">Cricket Academy</a></li>
+									<li><a href="academy.php?open_type=football_link" id="football_link">Football Academy</a></li>
+									<!-- <li><a href="academy.php?open_type=art_link" id="art_link">Art Academy</a></li> -->
+								</ul>
+
+							</li>
+
+
+							<li class="menu-item-has-children "><a href="facilities.php" class="main_menu"><i class="fa fa-bus"></i> Facilities</a> </li>
+							<li class=""><a href="faculty.php" class="main_menu"><i class="fa fa-user"></i> Faculty</a> </li>
+
+							<li class=" current-menu-item "><a href="https://rbanmsfgc.ac.in/online_payment.php" class="main_menu" style="background-color: #00b0f9; color: #fff; padding: 33px 12px;"><i class="fa fa-shopping-cart"></i> Online Payment</a> </li>
+
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Navigation -->    <!-- sidebar -->
+<div class="closeMenu"></div>
+<div class="sidebar-panel">
+  <div class="close-panel">
+    <label><i class="fa fa-times mdi mdi-close"></i> </label>
+  </div>
+  <div class="sidebar-links">
+    <ul class="list-unstyled sidebar-menu">
+      <li><a href="index.php"  class="resp-active" >Home</a></li>
+
+      <li class="web-none"><a class="open_link outeropen_link " id="fk1" href="javascript:;">About Us <b id="nfk1" class="n"></b> </a>
+        <ul id="open_menufk1" style="display:none;" class="respsub-menu sidebar-submenu">
+          <li class="sub-menu main"><a href="aboutus.php?open_type=history_link" id="history_link">History</a></li>
+          <li class="sub-menu main"><a href="aboutus.php?open_type=founder_link" id="founder_link">Our Founder</a></li>
+          <li class="sub-menu main"><a href="aboutus.php?open_type=vision_link" id="vision_link">Vision and Mission</a></li>
+          <li class="sub-menu main"><a href="aboutus.php?open_type=aims_link" id="aims_link">Aims and Objectives</a></li>
+          <li class="sub-menu main"><a href="aboutus.php?open_type=management_link" id="management_link">Management</a></li>
+          <li class="sub-menu main"><a href="aboutus.php?open_type=principal_link" id="principal_link">Principal desk</a></li>
+        </ul>
+      </li>
+
+      <li class="web-none"><a class="open_link outeropen_link " id="fk2" href="javascript:;"> Academics <b id="nfk2" class="n"></b> </a>
+        <ul id="open_menufk2" style="display:none;" class="respsub-menu sidebar-submenu">
+
+          <li class="sub-menu main"><a href="academics.php" >Courses Offered</a></li>
+          <li class="sub-menu main"><a href="guidelines.php" >Student Guidelines</a></li>
+        </ul>
+      </li>
+
+      <li class="web-none"><a class="open_link outeropen_link " id="fk3" href="javascript:;">Academy <b id="nfk3" class="n"></b> </a>
+        <ul id="open_menufk3" style="display:none;" class="respsub-menu sidebar-submenu">
+          <li class="sub-menu main"><a href="academy.php?open_type=cricket_link" id="cricket_link">Cricket Academy</a></li>
+          <li class="sub-menu main"><a href="academy.php?open_type=football_link" id="football_link">Football Academy</a></li>
+        </ul>
+      </li>
+
+      <li><a href="facilities.php" >Facilities</a></li>
+      <li><a href="faculty.php" >Faculty</a></li>
+      <li><a href="news.php" >News</a></li>
+      <li><a href="events.php" > Events</a>
+      <li><a href="blog.php" >Blog</a></li>
+      <li><a href="media.php" > Media</a>
+      <li><a href="contactus.php" >Contact Us</a></li>
+      <li><a href="tel:080-25300853">080-25300853</a></li>
+      <li><a href="mailto:principal.puc@rbanmscharities.in" style="text-transform: lowercase;">principal.puc@rbanmscharities.in</a></li>
+      <li><a href="javascript:;"> © 2021 RBANM'S School . All Rights Reserved </a></li>
+      <li><a href="https://www.steed26.com" target="_blank" style="background-color: #fff !important; color:#000 !important;"> Designed & Developed by <span><img src="images/26logo_m.png"></span> </a></li>
+
+    </ul>
+  </div>
+</div>    <!-- Page Header-->
+
+
+
+
+    <!-- slider-area start -->
+    <div class="banner-slider">
+        <div class="main-slider owl-carousel owl-theme">
+
+
+            
+
+
+                <div class="slider-items" style="background-image:url('admin/uploads/banners/2052977640_2.jpg');">
+                    <div class="caption-wrapper">
+                        <div class="carousel-caption caption-left">
+                            <div class="content">
+                                <h2>RBANM's </h2>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+                <div class="slider-items" style="background-image:url('admin/uploads/banners/924784159_1.jpg');">
+                    <div class="caption-wrapper">
+                        <div class="carousel-caption caption-left">
+                            <div class="content">
+                                <h2>RBANM's </h2>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <!--  <div class="slider-items" style="background-image:url(images/slider/2.jpg);">
+         
+  <div class="caption-wrapper">
+                    <div class="carousel-caption caption-left">
+                        <div class="content">
+                            <h2>RBANM's </h2>
+                            <p>To inculcate discipline, punctuality and regularity among students and staff.
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+     </div>
+  <div class="slider-items" style="background-image:url(images/slider/3.jpg);">
+        <div class="caption-wrapper">
+                    <div class="carousel-caption caption-left">
+                        <div class="content">
+                            <h2>RBANM's </h2>
+                            <p>To bring about holistic development of the personality of students through conduct of sports, cultural, NCC activities, providing counselling and medical facilities and conducting yoga classes. </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+  </div>
+   <div class="slider-items" style="background-image:url(images/slider/5.jpg);">
+       
+  <div class="caption-wrapper">
+                    <div class="carousel-caption caption-left">
+                        <div class="content">
+                            <h2>RBANM's </h2>
+                           <p>To encourage students to pursue academic excellence. </p>
+                            
+                        </div>
+                    </div>
+                </div>
+
+   </div>-->
+
+
+
+        </div>
+    </div>
+    <!-- slider-area end -->
+
+
+
+
+
+    <section class="rbanms-price section grey-background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="title sec-title charities_head">
+                        <h2>RBANM's <br> EDUCATIONAL CHARITIES</h2>
+                    </div>
+                </div>
+
+                <div class="rbanms-price-inner">
+                    <div class="rbanms-price-tab">
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active">
+
+                                <div class="price-tab-inner">
+
+                                    <div class="bottom-slider-column4 col-md-3">
+
+                                        <div class="price-list" style="background-color: rgb(0, 182, 251);">
+
+
+                                            <div class="bottom-column-service-title">148 YEARS OLD</div>
+                                            <p>The RBANM’s Trust is a 148-year-old Institution founded in 1873, focused on serving low income, first generation learners and marginalized communities in urban Bangalore. It is located in the Ulsoor area of Bangalore. </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bottom-slider-column4 col-md-3">
+
+                                        <div class="price-list" style=" background-color: rgb(2, 197, 271);">
+
+                                            <div class="bottom-column-service-title">RBANM's</div>
+                                            <p>The founder of RBANM's Educational Charities, Dharmarathnakara Rai Bahadur Arcot Narrainsawmy Mudaliar (1827-1910) believed that the propagation of knowledge was philanthropy at its best.
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="bottom-slider-column4 col-md-3">
+                                        <div class="price-list" style="background-color: rgb(4, 213, 291);">
+
+                                            <div class="bottom-column-service-title">09 INSTITUTIONS</div>
+                                            <p>It is remarkable that then a century ago without the guidance or example of parallel institutions, he could plan and setup centres of education and training so modern in conception and in purposes they subserve and that he could forestall such present day courses and movements as basic education </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="bottom-slider-column4 col-md-3">
+                                        <div class="price-list" style="background-color: rgb(5, 229, 311);">
+
+                                            <div class="bottom-column-service-title">IN 1875</div>
+                                            <p>In recognition of his eminent services in the cause of the poor Sri A Narrainsawmy Mudaliar was honoured by the imperial Assemblage at Delhi with the title of “Rai Bahadur” in 1875 and with “Dharmaratnakara” (Ocean of Charity) by his Highness the Maharaja Chamarajendra Wodeyar in 1894. </p>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- rbanms-pricess -->
+    <section class="rbanms-process">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="rbanms-process-inner">
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+
+
+                        <div class="working-step">
+                            <h5 class="title">News</h5>
+                            <div class="inner_news">
+
+
+                                
+
+                                    <div class="working-step-div">
+                                        <div class="news-img news-bg-image" style="background-image: url('admin/uploads/news/image/2135492621_IMG-20180103-WA0032.jpg');"></div>
+                                        <div class="news-content">
+                                            <h4><a href="#">NCC students of Pre-Univeristy College </a></h4>
+                                            <div><p>NCC students from Pre-Univeristy College on Republic Da...</div>
+                                            <div class="date"><i class="fa fa-calendar"></i> 01-01-1970                                                <a class="blog-continue-reading" href="javascript:;" style="margin-top: -2px;" data-toggle="modal" data-target="#myModalnews2"> Read More →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+
+                                    <div class="working-step-div">
+                                        <div class="news-img news-bg-image" style="background-image: url('admin/uploads/news/image/1011395792_IMG_9671.JPG');"></div>
+                                        <div class="news-content">
+                                            <h4><a href="#">Computer Lab Inauguration </a></h4>
+                                            <div><p>On 30th January 2020, Computer Lab was Inaugurated&nbsp...</div>
+                                            <div class="date"><i class="fa fa-calendar"></i> 30-01-2020                                                <a class="blog-continue-reading" href="javascript:;" style="margin-top: -2px;" data-toggle="modal" data-target="#myModalnews1"> Read More →</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+
+                        <div class="working-process">
+                            <h5 class="title">Information</h5>
+                            <div class="information_inner">
+
+                                <a href="aboutus.php?open_type=history_link" id="history_link">
+                                    <div class="box-title" style="background-color: #fecc06;">
+                                        <div class="middle-box">
+                                            <div class="col-md-10 padding-0">
+                                                <div class="image_title">Our college</div>
+                                                <span> Know more about us </span>
+                                            </div>
+                                            <div class="col-md-2 padding-0">
+                                                <h6 class="readmore">
+                                                    <div class="arrow-wrapper">
+                                                        <div class="arrow arrow-1"><i class="fa fa-chevron-right"></i></div>
+                                                        <div class="arrow arrow-2"><i class="fa fa-chevron-right"></i></div>
+                                                    </div>
+                                                </h6>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="clearfix"></div>
+
+                                <a href="./admissions.php">
+                                    <div class="box-title " style="background-color: #01a4f1;">
+
+                                        <div class="middle-box">
+                                            <div class="col-md-10 padding-0">
+                                                <div class="image_title"> ADMISSION 2021 - 2022 </div>
+                                                <span> </span>
+                                            </div>
+
+                                            <div class="col-md-2 padding-0">
+                                                <h6 class="readmore">
+                                                    <div class="arrow-wrapper">
+                                                        <div class="arrow arrow-1"><i class="fa fa-chevron-right"></i></div>
+                                                        <div class="arrow arrow-2"><i class="fa fa-chevron-right"></i></div>
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+
+                                <div class="clearfix"></div>
+
+                                <a href="academics.php">
+                                    <div class="box-title" style="background-color: #e5173e;">
+
+                                        <div class="middle-box">
+                                            <div class="col-md-10 padding-0">
+                                                <div class="image_title"> Academics </div>
+                                                <span> What we offer </span>
+                                            </div>
+                                            <div class="col-md-2 padding-0">
+                                                <h6 class="readmore">
+                                                    <div class="arrow-wrapper">
+                                                        <div class="arrow arrow-1"><i class="fa fa-chevron-right"></i></div>
+                                                        <div class="arrow arrow-2"><i class="fa fa-chevron-right"></i></div>
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+
+
+                        <div class="video">
+                            <h5 class="title">Events</h5>
+
+                            <div class="inner_news">
+
+
+                                                                    <div class="working-step-div">
+                                        <div class="news-img event-img">
+                                            <div class="calendar-img">
+                                                <div class="date web-date"> Sep <br> 21 <br> 2001 </div>
+                                                <div class="date resp-date"> Sep 21 2001 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="news-content">
+                                            <h4>
+                                                <a href="https://rbanmspuc.ac.in/admin/uploads/events/file/events.php">
+                                                    I PUC ADMISSION</a>
+                                            </h4>
+                                            <p>i puc admission </p>
+                                            <a class="blog-continue-reading" href="javascript:;" data-toggle="modal" data-target="#myModalevents51"> Read More →</a>
+                                        </div>
+                                    </div>
+                                                                    <div class="working-step-div">
+                                        <div class="news-img event-img">
+                                            <div class="calendar-img">
+                                                <div class="date web-date"> Sep <br> 21 <br> 2001 </div>
+                                                <div class="date resp-date"> Sep 21 2001 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="news-content">
+                                            <h4>
+                                                <a href="https://rbanmspuc.ac.in/admin/uploads/events/file/events.php">
+                                                    I PUC ADMISSION</a>
+                                            </h4>
+                                            <p>I PUC ADMISSION </p>
+                                            <a class="blog-continue-reading" href="javascript:;" data-toggle="modal" data-target="#myModalevents50"> Read More →</a>
+                                        </div>
+                                    </div>
+                                                                    <div class="working-step-div">
+                                        <div class="news-img event-img">
+                                            <div class="calendar-img">
+                                                <div class="date web-date"> Sep <br> 21 <br> 2001 </div>
+                                                <div class="date resp-date"> Sep 21 2001 </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="news-content">
+                                            <h4>
+                                                <a href="https://rbanmspuc.ac.in/admin/uploads/events/file/events.php">
+                                                    I PUC ADMISSION</a>
+                                            </h4>
+                                            <p>I PUC ADMISSION </p>
+                                            <a class="blog-continue-reading" href="javascript:;" data-toggle="modal" data-target="#myModalevents49"> Read More →</a>
+                                        </div>
+                                    </div>
+                                
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Start Team -->
+    <section class="rbanms-team section">
+        <div class="container">
+            <div class="">
+
+
+                <div class="gdl-header-wrapper navigation-on">
+                    <div class="gdl-header-left-bar"></div>
+                    <div class="gdl-header-left-bar"></div>
+                    <h3 class="gdl-header-title">Facilities</h3>
+                    <div class="gdl-header-divider"></div>
+                    <div class="clear"></div>
+                </div>
+
+
+
+                <div class="team-carousel owl-carousel owl-theme">
+
+
+                    
+
+                        <div class="rbanms-item">
+                            <div class="team-img" style="background-image: url('images/grayimage.jpg');"></div>
+                            <div class="team-bottom">
+                                <div class="team-text">
+                                    <h3 class="team-name">Sports</h3>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                        <div class="rbanms-item">
+                            <div class="team-img" style="background-image: url('admin/uploads/facilites/6/20210518_150527[1].jpg');"></div>
+                            <div class="team-bottom">
+                                <div class="team-text">
+                                    <h3 class="team-name">NCC</h3>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                        <div class="rbanms-item">
+                            <div class="team-img" style="background-image: url('admin/uploads/facilites/5/comp lab photo1.jpg');"></div>
+                            <div class="team-bottom">
+                                <div class="team-text">
+                                    <h3 class="team-name">labs</h3>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                        <div class="rbanms-item">
+                            <div class="team-img" style="background-image: url('admin/uploads/facilites/1/img_0366.jpg');"></div>
+                            <div class="team-bottom">
+                                <div class="team-text">
+                                    <h3 class="team-name">Library</h3>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Team -->
+
+
+
+
+
+
+
+    <!-- testimonial -->
+    <section class="testimonial section">
+        <div class="container">
+
+
+            <div class="gdl-header-wrapper navigation-on">
+                <div class="gdl-header-left-bar"></div>
+                <div class="gdl-header-left-bar"></div>
+                <h3 class="gdl-header-title">Beyond Academics</h3>
+                <div class="gdl-header-divider"></div>
+                <div class="clear"></div>
+            </div>
+
+
+            <!-- <div class="title sec-title">
+                <h2>Beyond Academics</h2>
+              </div>-->
+            <div class="testimonial-carousel owl-carousel owl-theme">
+                <a href="academy.php?open_type=cricket_link">
+                    <div class="box_outer">
+                        <div class="testimonial-item">
+                            <p><img src="images/cricket.jpg"></p>
+                        </div>
+                        <h6>Cricket Academy </h6>
+                    </div>
+                </a>
+
+                <a href="academy.php?open_type=football_link">
+                    <div class="box_outer">
+                        <div class="testimonial-item">
+                            <p><img src="images/football.jpg"></p>
+                        </div>
+                        <h6>FootBall Academy </h6>
+                    </div>
+                </a>
+                <a style="display: none" href="academy.php?open_type=art_link">
+                    <div class="box_outer">
+                        <div class="testimonial-item">
+                            <p><img src="images/art.jpg"></p>
+                        </div>
+                        <h6> Art Academy </h6>
+                    </div>
+                </a>
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!--rbanms-counter-->
+    <section class="rbanms-counter section" style="background-image:url(images/background/common.jpg);">
+        <div class="rbanms-counter-overlay"></div>
+        <div class="container container-padd">
+            <div class="">
+                <!--Column-->
+                <div class="col-md-4 col-sm-4 ">
+                    <h4> Albums</h4>
+                    <div class="owl-carousel owl-theme happy-clients">
+                        
+                            <div class="item">
+                                <a href="sub_album.php?td=edit&edit_id=1">
+                                    <div style=" background-image: url('images/grayimage.jpg');" class="home-album"></div>
+                                    <div class="album_name">Republic day celebration</div>
+                                </a>
+                            </div>
+                        
+
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4">
+                    <h4> Blog</h4>
+
+                    
+            </div>
+
+            <div class="col-md-4 col-sm-4 ">
+                <h4> What our Student Say</h4>
+
+
+                <div class="testimonial-item student-item">
+
+                    <p>I saw every possible way to make myself best among my friends. Well-versed lecturers. Environmental friendly campus and the lecturers sportively involve in social work. In time of Pandemic they showed special care on almost every student. Words aren't enough to express my gratitude towards my college and my dear lecturers</p>
+                    <div class="author-content">
+                        <h3>C.KIRAN </h3>
+                        <span>2nd Pu <br> Commerce computer science /BASC Combination.</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+    <!-- counter end -->
+
+
+
+    <!-- Stat Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+
+
+
+                <div class="col-md-5 col-sm-6 col-xs-12">
+                    <div class="footer-widget links-widget">
+                        <h2>Quick links</h2>
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-sm-12">
+                                <ul>
+                                    <li><a href="index.php">home</a></li>
+                                    <li><a href="aboutus.php">about Us</a></li>
+                                    <li><a href="academics.php">Academics</a></li>
+                                    <li><a href="facilities.php">Facilities</a></li>
+                                    <li><a href="faculty.php">Faculty</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-sm-12">
+                                <ul>
+                                    <li><a href="news.php">News</a></li>
+                                    <li><a href="events.php">Events</a></li>
+                                    <li><a href="media.php">Media</a></li>
+                                    <li><a href="blog.php">Blog</a></li>
+                                    <li><a href="contactus.php">Contact Us</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="footer-widget subscribe-widget">
+                        <h2>Contact</h2>
+                        <div class="widget-content">
+                            <ul class="footer_li">
+                                <li><span class="left_footer">Time </span> <span class="right_footer">: Mon to Fri<br> <span style="margin-left: 7px;">10.00 am – 4.30 pm</span></span> </li>
+                                <li><span class="left_footer">&nbsp; </span> <span class="right_footer"> <span style="margin-left: 7px;">Sat</span> <br> <span style="margin-left: 7px;">9.30 am - 1.00 pm</span></span></li>
+                                <li><span class="left_footer">Phone No </span>
+                                    <span class="right_footer"> : 080-25300853 <br> </span>
+                                </li>
+                                <li><span class="left_footer">Email Id </span>
+                                    <span class="right_footer" style="font-size: 1.3rem;"> : principal.puc@rbanmscharities.in </span>
+                                </li>
+                                <!-- <li><span class="left_footer"> Placement </span> <span class="right_footer" style="font-size: 1.3rem;position: relative;top: 0.2rem;"> : placement.fgc@rbanmscharities.in</span> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12 col-xs-12">
+                    <div class="footer-widget">
+                        <h2> Address</h2>
+                        <div class="widget-content">
+                            <div class="text">
+                                <span style="font-size: 1.4rem;">RBANM's Pre University college</span> <br>
+                                #12/A, Annaswami Mudaliar Road<br>
+                                Bengaluru - 560042.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </footer>
+    <!--Footer Bottom-->
+
+
+    <!-- Page Header-->
+     <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-6">
+                    <div class="text text-left"> &copy; 2019 RBANM's School . All Rights Reserved</div>
+                </div>
+               <div class="col-md-6 col-md-6">
+                    <div class="text text-right"> Powered by <a href="https://www.steed26.com/" style="color:#fff;" target="_blank"><img src="images/26logo.png?v=1.0" style="margin-top: -6px;"></a></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+			
+         <!-- Page Header-->
+
+
+
+    
+
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalnews2" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">NCC students of Pre-Univeristy College</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p><p>NCC students from Pre-Univeristy College on Republic Day</p>
+</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalnews1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Computer Lab Inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p><p>On 30th January 2020, Computer Lab was Inaugurated&nbsp;by Chief guest Dr. Prathap, Principal First Grade College, Administrative Officers Dr. H Veerabhadrapp&nbsp; and Mrs. Geetha Harikrishanan.</p>
+</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+
+
+
+
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents51" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">I PUC ADMISSION</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>i puc admission</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents50" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">I PUC ADMISSION</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>I PUC ADMISSION</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents49" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">I PUC ADMISSION</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>I PUC ADMISSION</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents48" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">I PUC ADMISSION</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>I PUC ADMISSION</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents47" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Independence Day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Independence Day celebration</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents46" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Independence Day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>75th Independence Day celebration.</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents45" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents44" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents43" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents42" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents41" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation Day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents40" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Graduation day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Graduation Day</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents37" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Founder's day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Today is our Founder's Day
+ Dharmarathnakara
+ Rai Bahadur Arcot Narrainsawmy Mudaliar</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents36" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Republic Day Celebration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Republic day Celebration 
+</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents35" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents34" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents33" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents32" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents31" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents30" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents29" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents28" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents27" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents26" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents25" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Sports day</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents22" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>New computer lab</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents21" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents20" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents19" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents18" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents17" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents16" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents15" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents14" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>our AO Sir veerabhadrappa is lighting lamp in new computer lab inauguration</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents13" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">New computer lab inauguration</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>new computer lab inauguration</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents12" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents11" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents10" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents9" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents8" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents7" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents6" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents5" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents4" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents3" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents2" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <!-- Modal -->
+        <div class="container">
+            <div class="modal fade" id="myModalevents1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+
+                            <h4 class="modal-title news_title">Kannada Rajyothsava</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body news_body" style="display: inline-block;">
+                            <div class="col-md-12">
+                                <p>Kannada Rajyothsava celebration</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="admissions-popup" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document" style="top: 50%; transform: translateY(-50%);">
+            <div class="modal-content" style="border: 2px solid #01a4f1;">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h2 class="text-center" style="margin: 10px 0 10px; color: #000; font-weight: 600;">Admissions open</h2>
+                    <div class="row" style="margin-bottom: 0px; display: flex; align-items: center;">
+                        <div class="col-md-6" style="border-right: 1px solid #dadada;">
+                            <img src="./images/modal.jpg" alt="RBANM's Educational Institutions" style="display: block; padding: 15px; width: 300px; margin: auto;">
+                        </div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdF1V-mh2qMwLgpDwWXW33uumDxOHOb1LrUL69b2heoGeKxMw/viewform" target="_blank" rel="noreferrer noopener" class="btn download-btn" download=""><i class="fa fa-file-text" aria-hidden="true" style="font-size: 1.7em; display:inline-block; margin-right: 0.5em; vertical-align: middle;"></i><span style="display: inline-block; vertical-align: middle;">Application Form</span></a>
+                        </div>
+                    </div>
+                    <!-- <div class="text-right">
+                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Close</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- scroll top -->
+    <a class="scroll-top fa fa-angle-up" href="javascript:void(0)"></a>
+    <!-- srolltop end -->
+
+    <script src="js/jquery-3.2.1.min.js?v=1.3"></script>
+    <script src="js/bootstrap.min.js?v=1.3"></script>
+    <script src="js/owl.carousel.min.js?v=1.3"></script>
+    <script src="js/jquery.counterup.min.js?v=1.3"></script>
+    <script src="js/waypoints.min.js?v=1.3"></script>
+    <script src="js/jquery.magnific-popup.min.js?v=1.3"></script>
+    <script src="js/wow.min.js?v=1.3"></script>
+    <script src="js/script.js?v=1.3"></script>
+
+    <script>
+        $(function() {
+            window.setTimeout(function() {
+                $("#admissions-popup").modal('show');
+                $("#admissions-popup").fadeIn();
+            }, 1500)
+        })
+    </script>
+    <script>
+        function getId(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                return match[2];
+            } else {
+                return 'error';
+            }
+        }
+
+
+            </script>
+
+
+    <script src="js/sidebar-menu.js?v=1.3"></script>
+
+    <script>
+        $.sidebarMenu($('.sidebar-menu'));
+    </script>
+
+
+
+
+</body>
+
+</html>

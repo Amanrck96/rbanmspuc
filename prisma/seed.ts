@@ -169,7 +169,7 @@ async function main() {
           qualification: dept.stream === "SCIENCE" ? "M.Sc., Ph.D." : "M.A. / M.Com., M.Phil.",
           experience: "18+ Years",
           email: `${dept.code.toLowerCase()}.hod@rbanmspuc.edu.in`,
-          photoUrl: "/uploads/principal.svg",
+          photoUrl: "/uploads/avatar-placeholder.svg",
           bio: `Dedicated academic leader committed to student mentorship and conceptual excellence in ${dept.name}.`,
           order: 1,
         },
@@ -180,7 +180,7 @@ async function main() {
           qualification: "M.Sc. / M.A., B.Ed.",
           experience: "8+ Years",
           email: `${dept.code.toLowerCase()}.faculty@rbanmspuc.edu.in`,
-          photoUrl: "/uploads/director.svg",
+          photoUrl: "/uploads/avatar-placeholder.svg",
           bio: `Passionate educator specializing in interactive classroom instruction and practical laboratory supervision.`,
           order: 2,
         },
@@ -591,7 +591,7 @@ async function main() {
       section: "about",
       title: "Principal's Message",
       subtitle: "Message from Dr. K. S. Rajendra, M.Sc., Ph.D.",
-      bannerImage: "/uploads/principal.svg",
+      bannerImage: "/uploads/principal-img.jpg",
       content: `
         <h2>Welcome to RBANM's Pre-University College</h2>
         <p>Dear Students, Parents, and Well-Wishers,</p>

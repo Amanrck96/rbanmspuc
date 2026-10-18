@@ -61,7 +61,7 @@ export default function FacultyManagerPage() {
       qualification: "M.Sc. / M.A., B.Ed.",
       experience: "5+ Years",
       email: "",
-      photoUrl: "/uploads/principal.svg",
+      photoUrl: "/uploads/avatar-placeholder.svg",
       bio: "",
       isPublished: true,
     });
@@ -132,7 +132,7 @@ export default function FacultyManagerPage() {
                 <div className="flex items-center gap-3">
                   <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-[var(--maroon-tint)] shrink-0 border border-[var(--maroon-light)]/20">
                     <Image
-                      src={f.photoUrl || "/uploads/principal.svg"}
+                      src={f.photoUrl || "/uploads/avatar-placeholder.svg"}
                       alt={f.name}
                       fill
                       className="object-cover"
@@ -279,7 +279,7 @@ export default function FacultyManagerPage() {
                   type="text"
                   value={editingFaculty.photoUrl || ""}
                   onChange={(e) => setEditingFaculty({ ...editingFaculty, photoUrl: e.target.value })}
-                  placeholder="/uploads/principal.svg"
+                  placeholder="/uploads/avatar-placeholder.svg"
                   className="w-full px-3.5 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-black/30 font-mono text-[var(--text)] text-xs focus:border-[var(--maroon)] focus:ring-1 focus:ring-[var(--maroon)] outline-hidden"
                 />
               </div>

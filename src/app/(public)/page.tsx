@@ -313,7 +313,7 @@ export default async function HomePage() {
             <div className="lg:col-span-4 flex justify-center">
               <div className="relative w-56 h-64 sm:w-64 sm:h-72 rounded-2xl overflow-hidden border-4 border-[var(--gold)]/60 shadow-2xl">
                 <Image
-                  src="/uploads/principal.svg"
+                  src="/uploads/principal.jpg"
                   alt="Principal Dr. K. S. Rajendra"
                   fill
                   className="object-cover"

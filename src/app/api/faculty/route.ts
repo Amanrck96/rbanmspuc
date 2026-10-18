@@ -30,7 +30,7 @@ export async function POST(req: Request) {
         qualification: body.qualification,
         experience: body.experience,
         email: body.email || null,
-        photoUrl: body.photoUrl || "/uploads/principal.svg",
+        photoUrl: body.photoUrl || "/uploads/avatar-placeholder.svg",
         bio: body.bio || null,
         isPublished: body.isPublished ?? true,
         order: parseInt(body.order) || 0,

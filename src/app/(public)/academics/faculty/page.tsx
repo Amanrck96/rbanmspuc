@@ -66,7 +66,7 @@ export default async function FacultyPage() {
                       <div className="flex items-center gap-4">
                         <div className="relative w-16 h-16 rounded-2xl overflow-hidden bg-[var(--maroon-tint)] shrink-0 border-2 border-[var(--gold)]/50">
                           <Image
-                            src={fac.photoUrl || "/uploads/principal.svg"}
+                            src={fac.photoUrl || "/uploads/avatar-placeholder.svg"}
                             alt={fac.name}
                             fill
                             className="object-cover"
