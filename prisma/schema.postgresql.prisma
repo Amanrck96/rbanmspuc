@@ -13,15 +13,16 @@ generator client {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  name         String
-  email        String   @unique
-  passwordHash String
-  role         String   @default("EDITOR") // SUPER_ADMIN, EDITOR, RECEPTIONIST
-  avatarUrl    String?
-  isActive     Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default(uuid())
+  name           String
+  email          String   @unique
+  passwordHash   String
+  role           String   @default("EDITOR") // SUPER_ADMIN, CAMPUS_ADMIN, EDITOR, RECEPTIONIST
+  assignedCampus String?
+  avatarUrl      String?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model SiteSetting {
@@ -200,6 +201,7 @@ model Enquiry {
   phone             String
   courseInterested  String
   campus            String?   @default("Main Campus")
+  natureOfEnquiry   String    @default("ADMISSIONS") // ADMISSIONS, CAREERS, VENDOR, GENERAL
   tenthPercentage   Float?
   schoolName        String?
   parentName        String?

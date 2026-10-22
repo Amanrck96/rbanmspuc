@@ -20,6 +20,11 @@ import {
   Trash2,
   Send,
   Loader2,
+  Building2,
+  TrendingUp,
+  Briefcase,
+  HelpCircle,
+  GraduationCap,
 } from "lucide-react";
 
 import { defaultInstitutionConfig } from "@/config/institution";
@@ -32,6 +37,7 @@ interface Enquiry {
   phone: string;
   courseInterested: string;
   campus?: string | null;
+  natureOfEnquiry?: string;
   tenthPercentage: number | null;
   schoolName: string | null;
   parentName: string | null;
@@ -45,15 +51,27 @@ interface Enquiry {
   createdAt: string;
 }
 
+const targetCampuses = [
+  "ITPL Campus (Whitefield)",
+  "HRBR Layout Campus (Kalyan Nagar)",
+  "BTM Layout Campus (South)",
+  "Byrathi Campus (Hennur)",
+  "NICE Road Campus (West)",
+];
+
 function EnquiriesManagerContent() {
   const searchParams = useSearchParams();
   const initialId = searchParams.get("id");
 
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [stats, setStats] = useState<any>({});
+  const [campusBreakdown, setCampusBreakdown] = useState<Record<string, any>>({});
+  const [userRole, setUserRole] = useState<string>("SUPER_ADMIN");
+  const [assignedCampus, setAssignedCampus] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [campusFilter, setCampusFilter] = useState("ALL");
+  const [natureFilter, setNatureFilter] = useState("ALL");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedEnquiry, setSelectedEnquiry] = useState<Enquiry | null>(null);
   const [savingNotes, setSavingNotes] = useState(false);
@@ -68,6 +86,7 @@ function EnquiriesManagerContent() {
       const url = new URL("/api/enquiries", window.location.origin);
       if (statusFilter !== "ALL") url.searchParams.set("status", statusFilter);
       if (campusFilter !== "ALL") url.searchParams.set("campus", campusFilter);
+      if (natureFilter !== "ALL") url.searchParams.set("nature", natureFilter);
       if (searchTerm) url.searchParams.set("search", searchTerm);
 
       const res = await fetch(url.toString());
@@ -75,6 +94,9 @@ function EnquiriesManagerContent() {
       if (data.success) {
         setEnquiries(data.enquiries);
         setStats(data.stats || {});
+        setCampusBreakdown(data.campusBreakdown || {});
+        setUserRole(data.userRole || "SUPER_ADMIN");
+        setAssignedCampus(data.assignedCampus || null);
 
         if (initialId && !selectedEnquiry) {
           const matched = data.enquiries.find((e: Enquiry) => e.id === initialId);
@@ -92,7 +114,7 @@ function EnquiriesManagerContent() {
 
   useEffect(() => {
     fetchEnquiries();
-  }, [statusFilter, campusFilter, searchTerm]);
+  }, [statusFilter, campusFilter, natureFilter, searchTerm]);
 
   const openDossier = (enq: Enquiry) => {
     setSelectedEnquiry(enq);
@@ -125,7 +147,6 @@ function EnquiriesManagerContent() {
         setSelectedEnquiry(data.enquiry);
         setSaveSuccess(true);
         setTimeout(() => setSaveSuccess(false), 3000);
-        // Refresh table list
         fetchEnquiries();
       }
     } catch (err) {
@@ -139,19 +160,39 @@ function EnquiriesManagerContent() {
     return phoneStr.replace(/[^0-9]/g, "");
   };
 
+  const getNatureBadge = (nature?: string) => {
+    switch (nature) {
+      case "CAREERS":
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-100 text-purple-800">Careers</span>;
+      case "VENDOR":
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Vendor</span>;
+      case "GENERAL":
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-800">General</span>;
+      default:
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">Admissions</span>;
+    }
+  };
+
   return (
     <div className="space-y-8 animate-fade-in text-[var(--text)]">
       {/* Header & Export Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--maroon-light)]/20">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--border)]">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
-            Admissions Pipeline
-          </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--maroon)] dark:text-white font-serif">
-            Student Enquiries & Applications CRM
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-[var(--secondary)]">
+              Multi-Campus Admissions Pipeline
+            </span>
+            {userRole === "CAMPUS_ADMIN" && assignedCampus && (
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[var(--tint)] text-[var(--primary)] border border-[var(--border)]">
+                Scoped to: {assignedCampus}
+              </span>
+            )}
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-[var(--primary)] font-serif">
+            Student Enquiries &amp; Admissions CRM
           </h1>
-          <p className="text-xs text-[var(--text)]/70 mt-1">
-            Track student leads, schedule follow-ups, reply via WhatsApp/Email, and export data.
+          <p className="text-xs text-[var(--muted)] mt-1">
+            Track student leads, schedule follow-ups, reply via WhatsApp/Email, and monitor multi-campus conversion.
           </p>
         </div>
 
@@ -159,15 +200,54 @@ function EnquiriesManagerContent() {
           <a
             href="/api/enquiries/export"
             download
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm cursor-pointer"
           >
-            <Download className="w-4 h-4 text-[var(--gold)]" /> Export CSV / Excel
+            <Download className="w-4 h-4 text-[var(--accent)]" /> Export CSV / Excel
           </a>
         </div>
       </div>
 
+      {/* Multi-Campus Performance Tiles */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between text-xs font-bold text-[var(--primary)]">
+          <span className="flex items-center gap-1.5 uppercase tracking-wider">
+            <Building2 className="w-3.5 h-3.5 text-[var(--secondary)]" /> Campus Lead Distribution
+          </span>
+          <span className="text-[var(--muted)]">Overall Conversion: {stats.conversionRate || "0%"}</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {targetCampuses.map((campName) => {
+            const campData = campusBreakdown[campName] || { total: 0, admitted: 0, contacted: 0, new: 0 };
+            const isSelected = campusFilter === campName;
+            return (
+              <button
+                key={campName}
+                onClick={() => setCampusFilter(isSelected ? "ALL" : campName)}
+                className={`p-4 rounded-2xl border text-left transition ${
+                  isSelected
+                    ? "bg-[var(--tint)] border-[var(--primary)] shadow-sm ring-1 ring-[var(--primary)]"
+                    : "bg-[var(--surface)] border-[var(--border)] hover:border-[var(--secondary)]"
+                }`}
+              >
+                <div className="text-[11px] font-bold text-[var(--primary)] truncate font-serif">
+                  {campName.split("(")[0]}
+                </div>
+                <div className="text-2xl font-extrabold text-[var(--primary)] mt-1">
+                  {campData.total}
+                  <span className="text-xs font-normal text-[var(--muted)] ml-1">leads</span>
+                </div>
+                <div className="flex items-center justify-between text-[10px] text-[var(--muted)] pt-2 border-t border-[var(--border)] mt-2">
+                  <span>Contacted: {campData.contacted}</span>
+                  <span className="text-emerald-600 font-bold">Admitted: {campData.admitted}</span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
       {/* Filter Tabs & Search Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         {/* Status Pills */}
         <div className="flex flex-wrap items-center gap-2">
           {[
@@ -181,122 +261,136 @@ function EnquiriesManagerContent() {
             <button
               key={tab.id}
               onClick={() => setStatusFilter(tab.id)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
                 statusFilter === tab.id
-                  ? "bg-[var(--maroon)] text-white shadow-md font-extrabold"
-                  : "bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 text-[var(--text)]/80 hover:bg-[var(--maroon-tint)]"
+                  ? "bg-[var(--primary)] text-white shadow-md font-extrabold"
+                  : "bg-[var(--surface)] border border-[var(--border)] text-[var(--muted)] hover:bg-[var(--tint)]"
               }`}
             >
               <span>{tab.label}</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)]">
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-white/20 text-current">
                 {tab.count}
               </span>
             </button>
           ))}
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
-          {/* Campus Filter */}
-          <div className="w-full sm:w-auto">
+        {/* Nature & Search Filter */}
+        <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+          {/* Nature of Enquiry Filter */}
+          <select
+            value={natureFilter}
+            onChange={(e) => setNatureFilter(e.target.value)}
+            className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text)] focus:outline-none focus:border-[var(--secondary)]"
+          >
+            <option value="ALL">All Categories</option>
+            <option value="ADMISSIONS">Admissions</option>
+            <option value="CAREERS">Careers</option>
+            <option value="VENDOR">Vendor / Partner</option>
+            <option value="GENERAL">General</option>
+          </select>
+
+          {/* Campus Filter (Disabled if CAMPUS_ADMIN) */}
+          {userRole !== "CAMPUS_ADMIN" && (
             <select
               value={campusFilter}
               onChange={(e) => setCampusFilter(e.target.value)}
-              className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 text-xs font-semibold text-[var(--text)] focus:outline-hidden focus:ring-2 focus:ring-[var(--maroon)]"
+              className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text)] focus:outline-none focus:border-[var(--secondary)]"
             >
               <option value="ALL">All Campuses</option>
-              {defaultInstitutionConfig.campuses.map((c) => (
-                <option key={c.id} value={c.name}>
-                  {c.name}
+              {targetCampuses.map((c) => (
+                <option key={c} value={c}>
+                  {c}
                 </option>
               ))}
             </select>
-          </div>
+          )}
 
           {/* Search Bar */}
           <div className="relative w-full sm:w-64">
-            <Search className="w-4 h-4 text-[var(--maroon-light)] absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-[var(--muted)] absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search name, phone, app no..."
-              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 text-xs text-[var(--text)] placeholder-gray-400 focus:outline-hidden focus:ring-2 focus:ring-[var(--maroon)]"
+              className="w-full pl-9 pr-4 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--text)] placeholder-gray-400 focus:outline-none focus:border-[var(--secondary)]"
             />
           </div>
         </div>
       </div>
 
       {/* Main Table View */}
-      <div className="p-6 rounded-3xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/20 shadow-xs overflow-hidden space-y-4">
+      <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-xs overflow-hidden space-y-4">
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center space-y-3">
-            <Loader2 className="w-8 h-8 text-[var(--gold)] animate-spin" />
-            <p className="text-xs text-[var(--text)]/60">Loading student records...</p>
+            <Loader2 className="w-8 h-8 text-[var(--secondary)] animate-spin" />
+            <p className="text-xs text-[var(--muted)]">Loading student records...</p>
           </div>
         ) : enquiries.length === 0 ? (
           <div className="text-center py-20 space-y-2">
             <p className="text-base font-bold text-[var(--text)]">No enquiry records found</p>
-            <p className="text-xs text-[var(--text)]/60">No applicants match this filter or search query.</p>
+            <p className="text-xs text-[var(--muted)]">No applicants match this filter or search query.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="border-b border-[var(--maroon-light)]/20 text-[var(--text)]/60 uppercase tracking-wider text-[10px]">
-                  <th className="py-3 px-3">Application No</th>
+                <tr className="border-b border-[var(--border)] text-[var(--muted)] uppercase tracking-wider text-[10px]">
+                  <th className="py-3 px-3">App No</th>
+                  <th className="py-3 px-3">Category</th>
                   <th className="py-3 px-3">Applicant Name</th>
                   <th className="py-3 px-3">Stream / Course</th>
                   <th className="py-3 px-3">Campus</th>
-                  <th className="py-3 px-3">10th Marks</th>
+                  <th className="py-3 px-3">10th %</th>
                   <th className="py-3 px-3">Phone</th>
-                  <th className="py-3 px-3">City</th>
                   <th className="py-3 px-3">Status</th>
-                  <th className="py-3 px-3">Submitted</th>
+                  <th className="py-3 px-3">Date</th>
                   <th className="py-3 px-3 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[var(--maroon-light)]/10">
+              <tbody className="divide-y divide-[var(--border)]">
                 {enquiries.map((enq) => (
                   <tr
                     key={enq.id}
-                    className="hover:bg-[var(--maroon-tint)]/40 transition cursor-pointer"
+                    className="hover:bg-[var(--tint)]/50 transition cursor-pointer"
                     onClick={() => openDossier(enq)}
                   >
-                    <td className="py-3.5 px-3 font-mono font-bold text-[var(--maroon)] dark:text-[var(--gold)]">
+                    <td className="py-3.5 px-3 font-mono font-bold text-[var(--primary)]">
                       {enq.applicationNumber}
                     </td>
+                    <td className="py-3.5 px-3">{getNatureBadge(enq.natureOfEnquiry)}</td>
                     <td className="py-3.5 px-3 font-bold text-[var(--text)]">{enq.fullName}</td>
-                    <td className="py-3.5 px-3 font-mono text-[var(--maroon)] dark:text-[var(--gold)] font-semibold">
+                    <td className="py-3.5 px-3 font-mono text-[var(--secondary)] font-semibold">
                       {enq.courseInterested}
                     </td>
                     <td className="py-3.5 px-3">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 font-medium whitespace-nowrap">
-                        {enq.campus || "Main Campus"}
+                      <span className="px-2 py-0.5 rounded-full text-[10px] bg-[var(--tint)] text-[var(--primary)] font-medium whitespace-nowrap">
+                        {enq.campus?.split("(")[0] || "Main"}
                       </span>
                     </td>
-                    <td className="py-3.5 px-3 text-[var(--text)]/80">
+                    <td className="py-3.5 px-3 text-[var(--muted)]">
                       {enq.tenthPercentage ? `${enq.tenthPercentage}%` : "—"}
                     </td>
-                    <td className="py-3.5 px-3 text-[var(--text)]/80">{enq.phone}</td>
-                    <td className="py-3.5 px-3 text-[var(--text)]/60">{enq.city || "Bengaluru"}</td>
+                    <td className="py-3.5 px-3 text-[var(--muted)]">{enq.phone}</td>
                     <td className="py-3.5 px-3">
                       <span
                         className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                           enq.status === "NEW"
-                            ? "bg-[var(--maroon-tint)] text-[var(--maroon)] dark:text-[var(--gold)] border border-[var(--maroon-light)]/30"
+                            ? "bg-blue-100 text-blue-800"
                             : enq.status === "ADMITTED"
-                            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300"
+                            ? "bg-emerald-100 text-emerald-800"
                             : enq.status === "CONTACTED"
-                            ? "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300"
+                            ? "bg-amber-100 text-amber-800"
                             : enq.status === "APPLIED"
-                            ? "bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300"
-                            : "bg-red-100 text-red-800 dark:bg-red-950/60 dark:text-red-300"
+                            ? "bg-purple-100 text-purple-800"
+                            : "bg-red-100 text-red-800"
                         }`}
                       >
                         {enq.status}
                       </span>
                     </td>
-                    <td className="py-3.5 px-3 text-[var(--text)]/50 text-[11px]">
+                    <td className="py-3.5 px-3 text-[var(--muted)] text-[11px]">
                       {new Date(enq.createdAt).toLocaleDateString("en-IN", {
                         day: "numeric",
                         month: "short",
@@ -309,9 +403,9 @@ function EnquiriesManagerContent() {
                           e.stopPropagation();
                           openDossier(enq);
                         }}
-                        className="px-3 py-1 rounded-lg bg-[var(--maroon-tint)] hover:bg-[var(--maroon)] hover:text-white text-[var(--maroon)] dark:text-[var(--gold)] text-xs font-semibold transition"
+                        className="px-3 py-1 rounded-lg bg-[var(--tint)] hover:bg-[var(--primary)] hover:text-white text-[var(--primary)] text-xs font-semibold transition"
                       >
-                        Open Dossier
+                        Dossier
                       </button>
                     </td>
                   </tr>
@@ -329,210 +423,181 @@ function EnquiriesManagerContent() {
           onClick={() => setSelectedEnquiry(null)}
         >
           <div
-            className="w-full max-w-2xl bg-white dark:bg-[var(--card)] border-l border-[var(--maroon-light)]/30 p-6 sm:p-8 space-y-6 overflow-y-auto text-left shadow-2xl text-[var(--text)]"
+            className="w-full max-w-2xl bg-[var(--surface)] border-l border-[var(--border)] p-6 sm:p-8 space-y-6 overflow-y-auto text-left shadow-2xl text-[var(--text)]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Dossier Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-[var(--maroon-light)]/20">
+            <div className="flex items-center justify-between pb-4 border-b border-[var(--border)]">
               <div>
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
-                  Application Dossier: {selectedEnquiry.applicationNumber}
-                </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--text)] font-serif">
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--secondary)]">
+                    Application Dossier: {selectedEnquiry.applicationNumber}
+                  </span>
+                  {getNatureBadge(selectedEnquiry.natureOfEnquiry)}
+                </div>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-[var(--primary)] font-serif mt-1">
                   {selectedEnquiry.fullName}
                 </h2>
+                <div className="text-xs text-[var(--muted)] mt-0.5">
+                  Target: {selectedEnquiry.campus || "Central Campus"}
+                </div>
               </div>
               <button
                 onClick={() => setSelectedEnquiry(null)}
-                className="p-2 rounded-full text-[var(--text)]/60 hover:text-[var(--text)] hover:bg-[var(--maroon-tint)] cursor-pointer"
+                className="p-2 rounded-full text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--tint)] cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {saveSuccess && (
-              <div className="p-3.5 rounded-2xl bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-500/40 text-emerald-800 dark:text-emerald-300 text-xs flex items-center gap-2">
+              <div className="p-3.5 rounded-2xl bg-emerald-100 text-emerald-800 text-xs flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 shrink-0" />
                 <span>Counselor dossier updated successfully!</span>
               </div>
             )}
 
-            {/* Quick Contact Buttons (WhatsApp & Email) */}
+            {/* Quick Contact Buttons (WhatsApp & Email with Campus Text) */}
             <div className="grid grid-cols-2 gap-3">
               <a
                 href={`https://wa.me/${cleanPhoneForWhatsApp(selectedEnquiry.phone)}?text=Hello%20${encodeURIComponent(
                   selectedEnquiry.fullName
-                )},%20greetings%20from%20RBANMS%20Pre-University%20College.%20Regarding%20your%20admission%20application%20(${
+                )},%20greetings%20from%20${encodeURIComponent(
+                  selectedEnquiry.campus || defaultInstitutionConfig.name
+                )}.%20Regarding%20your%20enquiry%20(${
                   selectedEnquiry.applicationNumber
-                })%20for%20${selectedEnquiry.courseInterested}:`}
+                })%20for%20${encodeURIComponent(selectedEnquiry.courseInterested)}:`}
                 target="_blank"
                 rel="noreferrer"
-                className="p-3 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 hover:bg-emerald-100 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center justify-center gap-2 transition"
+                className="p-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center justify-center gap-2 transition"
               >
                 <MessageSquare className="w-4 h-4" /> Reply on WhatsApp
               </a>
 
               <a
-                href={`mailto:${selectedEnquiry.email}?subject=RBANMS%20PU%20College%20Admissions%20-%20Application%20${
-                  selectedEnquiry.applicationNumber
-                }&body=Dear%20${encodeURIComponent(
+                href={`mailto:${selectedEnquiry.email}?subject=${encodeURIComponent(
+                  (selectedEnquiry.campus || defaultInstitutionConfig.name) + " - Reference " + selectedEnquiry.applicationNumber
+                )}&body=Dear%20${encodeURIComponent(
                   selectedEnquiry.fullName
-                )},%0D%0A%0D%0AGreetings%20from%20RBANM's%20Pre-University%20College.%20We%20have%20reviewed%20your%20application%20for%20the%20${
-                  selectedEnquiry.courseInterested
-                }%20stream...`}
-                className="p-3 rounded-2xl bg-[var(--maroon-tint)] hover:bg-[var(--maroon-light)]/20 border border-[var(--maroon-light)]/30 text-[var(--maroon)] dark:text-[var(--gold)] text-xs font-bold flex items-center justify-center gap-2 transition"
+                )},%0D%0A%0D%0AGreetings%20from%20${encodeURIComponent(
+                  selectedEnquiry.campus || defaultInstitutionConfig.name
+                )}.%20We%20have%20reviewed%20your%20enquiry%20(${
+                  selectedEnquiry.applicationNumber
+                })%20regarding%20${encodeURIComponent(selectedEnquiry.courseInterested)}...`}
+                className="p-3 rounded-2xl bg-[var(--tint)] hover:bg-[var(--tint)]/80 border border-[var(--border)] text-[var(--primary)] text-xs font-bold flex items-center justify-center gap-2 transition"
               >
                 <Mail className="w-4 h-4" /> Send Email
               </a>
             </div>
 
-            {/* Academic Information */}
-            <div className="p-4 rounded-2xl bg-[var(--maroon-tint)]/40 border border-[var(--maroon-light)]/20 space-y-3">
-              <h3 className="font-bold text-xs uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
-                Academic Profile
+            {/* Academic & Enquiry Information */}
+            <div className="p-4 rounded-2xl bg-[var(--tint)] border border-[var(--border)] space-y-3">
+              <h3 className="font-bold text-xs uppercase tracking-wider text-[var(--primary)]">
+                Enquiry Details
               </h3>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div>
-                  <span className="text-[var(--text)]/60 block">Course Choice:</span>
-                  <span className="font-bold font-mono text-[var(--maroon)] dark:text-[var(--gold)] text-sm">
+                  <span className="text-[var(--muted)] block">Stream / Interest:</span>
+                  <span className="font-bold font-mono text-[var(--primary)] text-sm">
                     {selectedEnquiry.courseInterested}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[var(--text)]/60 block">10th / SSLC Marks:</span>
-                  <span className="font-bold text-[var(--text)] text-sm">
+                  <span className="text-[var(--muted)] block">Class 10th Marks:</span>
+                  <span className="font-bold text-[var(--primary)] text-sm">
                     {selectedEnquiry.tenthPercentage ? `${selectedEnquiry.tenthPercentage}%` : "Not provided"}
                   </span>
                 </div>
-                <div className="col-span-2">
-                  <span className="text-[var(--text)]/60 block">Preferred Campus:</span>
-                  <span className="font-semibold text-[var(--text)]">
-                    {selectedEnquiry.campus || "Main Campus"}
+                <div>
+                  <span className="text-[var(--muted)] block">Previous School:</span>
+                  <span className="font-medium text-[var(--text)]">
+                    {selectedEnquiry.schoolName || "Not provided"}
                   </span>
                 </div>
-                <div className="col-span-2">
-                  <span className="text-[var(--text)]/60 block">School Last Attended:</span>
-                  <span className="font-semibold text-[var(--text)]">
-                    {selectedEnquiry.schoolName || "Not specified"}
+                <div>
+                  <span className="text-[var(--muted)] block">Parent / Guardian:</span>
+                  <span className="font-medium text-[var(--text)]">
+                    {selectedEnquiry.parentName || "—"} ({selectedEnquiry.parentPhone || "—"})
                   </span>
                 </div>
               </div>
+
+              {selectedEnquiry.message && (
+                <div className="pt-2 border-t border-[var(--border)]">
+                  <span className="text-[var(--muted)] block text-xs">Applicant Message:</span>
+                  <p className="text-xs text-[var(--text)] italic mt-1 bg-[var(--surface)] p-3 rounded-xl border border-[var(--border)]">
+                    &ldquo;{selectedEnquiry.message}&rdquo;
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* Contact & Parent Details */}
-            <div className="p-4 rounded-2xl bg-[var(--maroon-tint)]/40 border border-[var(--maroon-light)]/20 space-y-3">
-              <h3 className="font-bold text-xs uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
-                Contact & Guardian Information
-              </h3>
-              <div className="grid grid-cols-2 gap-3 text-xs">
-                <div>
-                  <span className="text-[var(--text)]/60 block">Student Phone:</span>
-                  <a href={`tel:${selectedEnquiry.phone}`} className="font-semibold text-[var(--text)] hover:underline link-maroon">
-                    {selectedEnquiry.phone}
-                  </a>
-                </div>
-                <div>
-                  <span className="text-[var(--text)]/60 block">Student Email:</span>
-                  <a href={`mailto:${selectedEnquiry.email}`} className="font-semibold text-[var(--text)] hover:underline link-maroon truncate block">
-                    {selectedEnquiry.email}
-                  </a>
-                </div>
-                <div>
-                  <span className="text-[var(--text)]/60 block">Parent / Guardian:</span>
-                  <span className="font-semibold text-[var(--text)]">
-                    {selectedEnquiry.parentName || "Not provided"}
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[var(--text)]/60 block">Parent Phone:</span>
-                  <span className="font-semibold text-[var(--text)]">
-                    {selectedEnquiry.parentPhone || "Not provided"}
-                  </span>
-                </div>
-                <div className="col-span-2">
-                  <span className="text-[var(--text)]/60 block">Address & City:</span>
-                  <span className="font-semibold text-[var(--text)]">
-                    {selectedEnquiry.address ? `${selectedEnquiry.address}, ` : ""}
-                    {selectedEnquiry.city || "Bengaluru"}
-                  </span>
-                </div>
-                {selectedEnquiry.message && (
-                  <div className="col-span-2 pt-2 border-t border-[var(--maroon-light)]/15">
-                    <span className="text-[var(--text)]/60 block">Applicant&apos;s Message:</span>
-                    <p className="text-[var(--text)]/90 italic mt-0.5">&ldquo;{selectedEnquiry.message}&rdquo;</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* CRM Status & Counselor Controls */}
-            <div className="p-4 rounded-2xl bg-[var(--maroon-tint)]/50 border border-[var(--maroon-light)]/30 space-y-4">
-              <h3 className="font-bold text-xs uppercase tracking-wider text-[var(--maroon)] dark:text-[var(--gold)]">
-                Counselor Workflow & Status
+            {/* Counselor Pipeline Actions */}
+            <div className="p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)] space-y-4">
+              <h3 className="font-bold text-xs uppercase tracking-wider text-[var(--primary)]">
+                Counselor Workflow &amp; Notes
               </h3>
 
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[var(--text)]/80 font-semibold mb-1">
-                    Application Status
+                  <label className="block text-xs font-semibold text-[var(--muted)] mb-1">
+                    Pipeline Stage:
                   </label>
                   <select
                     value={statusInput}
                     onChange={(e) => setStatusInput(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs font-bold focus:outline-hidden focus:ring-2 focus:ring-[var(--maroon)]"
+                    className="w-full px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs font-semibold text-[var(--text)] focus:outline-none focus:border-[var(--secondary)]"
                   >
-                    <option value="NEW">NEW - Pending Review</option>
-                    <option value="CONTACTED">CONTACTED - Call Made</option>
-                    <option value="APPLIED">APPLIED - Documents Submitted</option>
-                    <option value="ADMITTED">ADMITTED - Fees Paid</option>
-                    <option value="REJECTED">REJECTED - Not Eligible</option>
+                    <option value="NEW">NEW</option>
+                    <option value="CONTACTED">CONTACTED</option>
+                    <option value="APPLIED">APPLIED</option>
+                    <option value="ADMITTED">ADMITTED</option>
+                    <option value="REJECTED">REJECTED</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-[var(--text)]/80 font-semibold mb-1">
-                    Next Follow-up Date
+                  <label className="block text-xs font-semibold text-[var(--muted)] mb-1">
+                    Follow-Up Date:
                   </label>
                   <input
                     type="date"
                     value={followUpInput}
                     onChange={(e) => setFollowUpInput(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:outline-hidden focus:ring-2 focus:ring-[var(--maroon)]"
+                    className="w-full px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--text)] focus:outline-none focus:border-[var(--secondary)]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[var(--text)]/80 font-semibold mb-1 text-xs">
-                  Counselor Internal Notes & Call Log
+                <label className="block text-xs font-semibold text-[var(--muted)] mb-1">
+                  Counselor Notes:
                 </label>
                 <textarea
-                  rows={4}
+                  rows={3}
                   value={notesInput}
                   onChange={(e) => setNotesInput(e.target.value)}
-                  placeholder="Record conversation summary, document verification notes, fee concession approval..."
-                  className="w-full px-3 py-2 rounded-xl bg-white dark:bg-[var(--card)] border border-[var(--maroon-light)]/30 text-[var(--text)] text-xs focus:outline-hidden focus:ring-2 focus:ring-[var(--maroon)]"
+                  placeholder="Record call summary, scholarship discussions, or follow-up notes..."
+                  className="w-full px-3 py-2 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-xs text-[var(--text)] focus:outline-none focus:border-[var(--secondary)]"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={handleUpdateDossier}
-                  disabled={savingNotes}
-                  className="px-5 py-2.5 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-dark)] text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition cursor-pointer disabled:opacity-50 shadow-xs"
-                >
-                  {savingNotes ? (
-                    <>
-                      <Loader2 className="w-3.5 h-3.5 animate-spin" /> Saving Changes...
-                    </>
-                  ) : (
-                    <>
-                      <Save className="w-3.5 h-3.5 text-[var(--gold)]" /> Save Counselor Notes & Status
-                    </>
-                  )}
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={handleUpdateDossier}
+                disabled={savingNotes}
+                className="w-full py-2.5 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition disabled:opacity-50"
+              >
+                {savingNotes ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" /> Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" /> Save Dossier Changes
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </div>
@@ -541,12 +606,12 @@ function EnquiriesManagerContent() {
   );
 }
 
-export default function EnquiriesManagerPage() {
+export default function AdminEnquiriesPage() {
   return (
     <Suspense
       fallback={
-        <div className="py-20 flex justify-center items-center">
-          <Loader2 className="w-8 h-8 text-[var(--gold)] animate-spin" />
+        <div className="py-20 flex justify-center">
+          <Loader2 className="w-8 h-8 text-[var(--secondary)] animate-spin" />
         </div>
       }
     >

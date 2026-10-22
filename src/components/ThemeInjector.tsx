@@ -1,107 +1,122 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { colorPalettes, ColorPalette } from "@/config/theme.config";
 
 interface ThemeProps {
+  initialPaletteId?: string;
+  fontFamily?: string;
   primaryColor?: string;
   secondaryColor?: string;
   accentColor?: string;
-  fontFamily?: string;
 }
 
 export default function ThemeInjector({
-  primaryColor = "#800000",
-  secondaryColor = "#5A0F1B",
-  accentColor = "#C9A227",
-  fontFamily,
+  initialPaletteId = "default",
+  primaryColor,
+  secondaryColor,
+  accentColor,
 }: ThemeProps) {
+  const [activePalette, setActivePalette] = useState<ColorPalette>(
+    colorPalettes[initialPaletteId] || colorPalettes.default
+  );
+
   useEffect(() => {
-    const root = document.documentElement;
+    // Listen for custom palette switch events
+    const handlePaletteChange = (e: CustomEvent<string>) => {
+      const selected = colorPalettes[e.detail];
+      if (selected) {
+        setActivePalette(selected);
+        localStorage.setItem("selected_theme_palette", e.detail);
+      }
+    };
 
-    // 1. Royal / Dark Blue — Headings & Badges (#1E3A8A)
-    root.style.setProperty("--heading", "#1E3A8A");
-    root.style.setProperty("--blue", "#1E3A8A");
-    root.style.setProperty("--royal-blue", "#1E3A8A");
-
-    // 2. White — Main Background & Cards (#FFFFFF)
-    root.style.setProperty("--white", "#FFFFFF");
-    root.style.setProperty("--bg", "#FFFFFF");
-    root.style.setProperty("--card", "#FFFFFF");
-    root.style.setProperty("--cream", "#FFFFFF");
-
-    // 3. Maroon — Primary Brand Color (#800000)
-    root.style.setProperty("--maroon", primaryColor || "#800000");
-    root.style.setProperty("--maroon-dark", secondaryColor || "#5A0F1B");
-    root.style.setProperty("--maroon-light", "#A33B48");
-    root.style.setProperty("--maroon-tint", "#F7E9EB");
-
-    // Gold Accent (#C9A227)
-    root.style.setProperty("--gold", accentColor || "#C9A227");
-    root.style.setProperty("--accent", accentColor || "#C9A227");
-
-    // Body Text
-    root.style.setProperty("--text", "#1E293B");
-    root.style.setProperty("--body-text", "#1E293B");
-
-    if (fontFamily) {
-      root.style.setProperty("--font-sans", fontFamily);
+    const saved = localStorage.getItem("selected_theme_palette");
+    if (saved && colorPalettes[saved]) {
+      setActivePalette(colorPalettes[saved]);
     }
-  }, [primaryColor, secondaryColor, accentColor, fontFamily]);
+
+    window.addEventListener(
+      "theme-palette-change" as any,
+      handlePaletteChange as any
+    );
+    return () => {
+      window.removeEventListener(
+        "theme-palette-change" as any,
+        handlePaletteChange as any
+      );
+    };
+  }, []);
+
+  const p = activePalette.light;
+  const d = activePalette.dark;
 
   return (
     <style jsx global>{`
       :root {
-        /* 1. Royal / Dark Blue — Headings */
-        --heading: #1E3A8A;
-        --blue: #1E3A8A;
-        --royal-blue: #1E3A8A;
+        /* Section 7C: Design System Primary Tokens */
+        --primary: ${p.primary};
+        --primary-dark: ${p.primaryDark};
+        --secondary: ${p.secondary};
+        --secondary-soft: ${p.secondarySoft};
+        --accent: ${p.accent};
+        --bg: ${p.bg};
+        --surface: ${p.surface};
+        --card: ${p.surface};
+        --tint: ${p.tint};
+        --text: ${p.text};
+        --muted: ${p.muted};
+        --border: ${p.border};
 
-        /* 2. White — Main Background */
-        --cream: #FFFFFF;
+        /* Headings & Brand Elements */
+        --heading: ${p.primary};
+        --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+        /* Backwards-compatible aliases for existing components */
+        --maroon: ${p.primary};
+        --maroon-dark: ${p.primaryDark};
+        --maroon-light: ${p.secondary};
+        --maroon-tint: ${p.tint};
+        --gold: ${p.accent};
+        --cream: ${p.bg};
         --white: #FFFFFF;
-        --bg: #FFFFFF;
-        --card: #FFFFFF;
-
-        /* 3. Maroon — Primary Brand Color */
-        --maroon: ${primaryColor || "#800000"};
-        --maroon-dark: ${secondaryColor || "#5A0F1B"};
-        --maroon-light: #A33B48;
-        --maroon-tint: #F7E9EB;
-
-        /* Gold Accent */
-        --gold: ${accentColor || "#C9A227"};
-        --accent: ${accentColor || "#C9A227"};
-
-        /* Body Text */
-        --text: #1E293B;
-        --body-text: #1E293B;
-
-        --color-primary: var(--maroon);
-        --color-secondary: var(--maroon-dark);
-        --color-accent: var(--gold);
-        --color-heading: var(--heading);
       }
 
       .dark, html.dark {
-        --bg: #0B1120;
-        --card: #1E293B;
-        --text: #FFFFFF;
-        --heading: #60A5FA;
-        --blue: #60A5FA;
-        --royal-blue: #60A5FA;
-        --maroon: #991B1B;
-        --maroon-dark: #5A0F1B;
-        --maroon-light: #C44F5D;
-        --maroon-tint: #1E293B;
-        --gold: ${accentColor && accentColor !== "#C9A227" ? accentColor : "#E0B93A"};
-        --accent: ${accentColor && accentColor !== "#C9A227" ? accentColor : "#E0B93A"};
-        --white: #FFFFFF;
-        --cream: #0B1120;
+        --primary: ${d.primary};
+        --primary-dark: #080C1E;
+        --secondary: ${d.secondary};
+        --secondary-soft: #14B8A6;
+        --accent: ${d.accent};
+        --bg: ${d.bg};
+        --surface: ${d.surface};
+        --card: ${d.surface};
+        --tint: #141B38;
+        --text: ${d.text};
+        --muted: #8E99B8;
+        --border: ${d.border};
 
-        --color-primary: var(--maroon);
-        --color-secondary: var(--maroon-dark);
-        --color-accent: var(--gold);
-        --color-heading: var(--heading);
+        --heading: ${d.primary};
+
+        /* Backwards-compatible aliases */
+        --maroon: ${d.primary};
+        --maroon-dark: #080C1E;
+        --maroon-light: ${d.secondary};
+        --maroon-tint: #141B38;
+        --gold: ${d.accent};
+        --cream: ${d.bg};
+        --white: #FFFFFF;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
       }
     `}</style>
   );

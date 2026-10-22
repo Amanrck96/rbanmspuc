@@ -11,6 +11,7 @@ export interface TokenPayload {
   email: string;
   role: string;
   name: string;
+  assignedCampus?: string | null;
 }
 
 export async function hashPassword(password: string): Promise<string> {
@@ -44,7 +45,7 @@ export async function getCurrentUser(): Promise<TokenPayload | null> {
     // Check user is still active in DB
     const user = await prisma.user.findUnique({
       where: { id: payload.userId },
-      select: { id: true, isActive: true, role: true, name: true, email: true },
+      select: { id: true, isActive: true, role: true, name: true, email: true, assignedCampus: true },
     });
 
     if (!user || !user.isActive) return null;
@@ -53,6 +54,7 @@ export async function getCurrentUser(): Promise<TokenPayload | null> {
       email: user.email,
       role: user.role,
       name: user.name,
+      assignedCampus: user.assignedCampus,
     };
   } catch {
     return null;
