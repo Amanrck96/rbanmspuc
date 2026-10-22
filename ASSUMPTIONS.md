@@ -30,12 +30,10 @@ This document tracks all defaults and architectural decisions made autonomously 
    - JWT sessions stored in HTTP-only, secure, `SameSite=Lax` cookies named `rbanms_admin_token`.
    - Passwords securely hashed with `bcryptjs` (salt rounds: 10).
    - Pre-seeded Super Admin:
-     - Email: `admin@rbanmspuc.edu.in`
-     - Password: `Admin@RBANMS2025!`
+     - Configurable via `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD`
      - Role: `SUPER_ADMIN`
    - Pre-seeded Staff / Receptionist:
-     - Email: `staff@rbanmspuc.edu.in`
-     - Password: `Staff@RBANMS2025!`
+     - Configurable via `SEED_STAFF_EMAIL` and `SEED_STAFF_PASSWORD`
      - Role: `RECEPTIONIST`
 
 4. **Public Sitemap & Content Hierarchy**:

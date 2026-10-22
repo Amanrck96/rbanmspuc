@@ -84,14 +84,15 @@ Maroon (`#800000`) is the signature brand color and appears on **every public pa
 
 ---
 
-## 🔐 Admin Login Credentials
+## 🔐 Administrative Access & Security
 
-| Role | Email | Password | Access Level |
-| :--- | :--- | :--- | :--- |
-| **Super Admin** | `admin@rbanmspuc.edu.in` | `Admin@RBANMS2025!` | Full System & Data Access |
-| **Admissions Counselor** | `staff@rbanmspuc.edu.in` | `Staff@RBANMS2025!` | CRM Enquiries & Student Follow-ups |
+Access to `/admin` routes is strictly restricted to authenticated personnel via secure HTTP-only cookies (`rbanms_admin_token`) and Next.js Edge middleware route protection.
 
-*A 1-click **"Fill Super Admin"** button is also available directly on the login screen (`/admin/login`) for convenience.*
+Initial administrative accounts are provisioned securely during database seeding via environment variables (see `.env.example`):
+- `SEED_ADMIN_EMAIL` & `SEED_ADMIN_PASSWORD`: Super Administrator
+- `SEED_STAFF_EMAIL` & `SEED_STAFF_PASSWORD`: Admissions Counselor
+
+> **Security Notice**: Never commit live passwords, database URLs, or secret keys to version control. Configure production secrets directly in your deployment provider (Vercel, AWS, or Railway).
 
 ---
 

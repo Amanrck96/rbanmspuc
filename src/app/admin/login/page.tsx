@@ -138,30 +138,9 @@ export default function AdminLoginPage() {
           </button>
         </form>
 
-        {/* Credentials Helper Box */}
-        <div className="p-3.5 rounded-2xl bg-black/30 border border-[var(--maroon-light)]/30 text-white/90 text-[11px] space-y-2">
-          <div className="font-semibold text-[var(--gold)] flex items-center justify-between">
-            <span>🔑 Default Seeded Credentials</span>
-            <button
-              type="button"
-              data-testid="fill-admin"
-              onClick={() => {
-                setEmail("admin@rbanmspuc.edu.in");
-                setPassword("Admin@RBANMS2025!");
-              }}
-              className="text-[10px] px-2 py-0.5 rounded bg-[var(--gold)]/20 hover:bg-[var(--gold)]/30 text-[var(--gold)] font-bold transition cursor-pointer"
-            >
-              Fill Super Admin
-            </button>
-          </div>
-          <div>
-            <span className="text-white/60">Super Admin:</span>{" "}
-            <code className="text-[var(--gold)]">admin@rbanmspuc.edu.in</code>
-          </div>
-          <div>
-            <span className="text-white/60">Password:</span>{" "}
-            <code className="text-[var(--gold)]">Admin@RBANMS2025!</code>
-          </div>
+        {/* Security Notice */}
+        <div className="p-3.5 rounded-2xl bg-black/20 border border-white/10 text-white/70 text-[11px] text-center">
+          <span>Authorized personnel only. Access is monitored and logged in the system audit trail.</span>
         </div>
 
         <div className="text-center pt-2">

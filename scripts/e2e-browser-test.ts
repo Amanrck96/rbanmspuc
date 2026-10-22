@@ -169,8 +169,18 @@ async function main() {
       await page.click("button[type='submit']");
       await page.waitForSelector("[data-testid='login-error']", { timeout: 8000 });
 
-      // Click 1-click Super Admin fill button
-      await page.click("button[data-testid='fill-admin']");
+      // Enter valid Super Admin credentials from environment or fallback
+      const adminEmail = process.env.SEED_ADMIN_EMAIL || process.env.ADMIN_EMAIL || "admin@institution.local";
+      const adminPassword = process.env.SEED_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || "TestAdminSecure123!";
+
+      await page.click("input[name='email']", { clickCount: 3 });
+      await page.keyboard.press("Backspace");
+      await page.type("input[name='email']", adminEmail);
+
+      await page.click("input[name='password']", { clickCount: 3 });
+      await page.keyboard.press("Backspace");
+      await page.type("input[name='password']", adminPassword);
+
       await page.click("button[type='submit']");
 
       await page.waitForNavigation({ waitUntil: "networkidle2", timeout: 10000 });

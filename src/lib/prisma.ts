@@ -3,6 +3,14 @@ import path from "path";
 import fs from "fs";
 
 function getDatabaseUrl(): string {
+  const envUrl = process.env.DATABASE_URL;
+
+  // 1. Direct PostgreSQL / CockroachDB / MySQL connection (Supabase, Neon, AWS RDS, Vercel Postgres)
+  if (envUrl && (envUrl.startsWith("postgres://") || envUrl.startsWith("postgresql://") || envUrl.startsWith("mysql://"))) {
+    return envUrl;
+  }
+
+  // 2. Vercel Serverless environment with SQLite (copies bundled dev.db to writable /tmp)
   if (process.env.VERCEL) {
     const tmpDbPath = path.join("/tmp", "dev.db");
     if (!fs.existsSync(tmpDbPath) || fs.statSync(tmpDbPath).size === 0) {
@@ -27,7 +35,7 @@ function getDatabaseUrl(): string {
     return `file:${tmpDbPath}`;
   }
 
-  return process.env.DATABASE_URL || "file:./prisma/dev.db";
+  return envUrl || "file:./prisma/dev.db";
 }
 
 const dbUrl = getDatabaseUrl();

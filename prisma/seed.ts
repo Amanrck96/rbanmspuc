@@ -6,33 +6,38 @@ const prisma = new PrismaClient();
 async function main() {
   console.log("Starting RBANMS PU College database seed...");
 
-  // 1. Users
-  const adminPasswordHash = await bcrypt.hash("Admin@RBANMS2025!", 10);
-  const staffPasswordHash = await bcrypt.hash("Staff@RBANMS2025!", 10);
+  // 1. Users (Configured via environment variables for security)
+  const seedAdminEmail = process.env.SEED_ADMIN_EMAIL || "admin@institution.local";
+  const seedAdminPassword = process.env.SEED_ADMIN_PASSWORD || "AdminInitialPass2025!";
+  const seedStaffEmail = process.env.SEED_STAFF_EMAIL || "staff@institution.local";
+  const seedStaffPassword = process.env.SEED_STAFF_PASSWORD || "StaffInitialPass2025!";
+
+  const adminPasswordHash = await bcrypt.hash(seedAdminPassword, 10);
+  const staffPasswordHash = await bcrypt.hash(seedStaffPassword, 10);
 
   const superAdmin = await prisma.user.upsert({
-    where: { email: "admin@rbanmspuc.edu.in" },
+    where: { email: seedAdminEmail },
     update: { passwordHash: adminPasswordHash },
     create: {
       name: "Super Administrator",
-      email: "admin@rbanmspuc.edu.in",
+      email: seedAdminEmail,
       passwordHash: adminPasswordHash,
       role: "SUPER_ADMIN",
     },
   });
 
   const staffUser = await prisma.user.upsert({
-    where: { email: "staff@rbanmspuc.edu.in" },
+    where: { email: seedStaffEmail },
     update: { passwordHash: staffPasswordHash },
     create: {
       name: "Admissions Counselor",
-      email: "staff@rbanmspuc.edu.in",
+      email: seedStaffEmail,
       passwordHash: staffPasswordHash,
       role: "RECEPTIONIST",
     },
   });
 
-  console.log("Seeded Users: admin@rbanmspuc.edu.in & staff@rbanmspuc.edu.in");
+  console.log(`Seeded Users: ${seedAdminEmail} & ${seedStaffEmail} (Configured via ENV)`);
 
   // 2. Site Settings
   await prisma.siteSetting.upsert({

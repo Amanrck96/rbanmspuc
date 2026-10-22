@@ -197,6 +197,7 @@ model Enquiry {
   email             String
   phone             String
   courseInterested  String
+  campus            String?   @default("Main Campus")
   tenthPercentage   Float?
   schoolName        String?
   parentName        String?

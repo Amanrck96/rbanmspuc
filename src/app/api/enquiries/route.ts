@@ -10,6 +10,7 @@ export async function POST(req: Request) {
     const email = (body.email || "").trim().toLowerCase();
     const phone = (body.phone || "").trim();
     const courseInterested = (body.courseInterested || body.courseStream || "").trim();
+    const campus = (body.campus || body.campusPreference || "Main Campus").trim();
     const tenthPercentage = body.tenthPercentage;
     const schoolName = body.schoolName || body.previousSchool;
     const parentName = body.parentName;
@@ -35,6 +36,7 @@ export async function POST(req: Request) {
         email: email.trim().toLowerCase(),
         phone: phone.trim(),
         courseInterested,
+        campus: campus || "Main Campus",
         tenthPercentage: tenthPercentage ? parseFloat(tenthPercentage) : null,
         schoolName: schoolName?.trim() || null,
         parentName: parentName?.trim() || null,
@@ -52,7 +54,7 @@ export async function POST(req: Request) {
       action: "CREATE",
       entityType: "ENQUIRY",
       entityId: enquiry.id,
-      details: `New online application submitted: ${applicationNumber} (${fullName} - ${courseInterested})`,
+      details: `New online application submitted: ${applicationNumber} (${fullName} - ${courseInterested} [${campus}])`,
     });
 
     return NextResponse.json({
@@ -78,11 +80,15 @@ export async function GET(req: Request) {
 
     const { searchParams } = new URL(req.url);
     const status = searchParams.get("status");
+    const campus = searchParams.get("campus");
     const search = searchParams.get("search")?.toLowerCase().trim();
 
     const where: any = {};
     if (status && status !== "ALL") {
       where.status = status;
+    }
+    if (campus && campus !== "ALL") {
+      where.campus = campus;
     }
     if (search) {
       where.OR = [
@@ -91,6 +97,7 @@ export async function GET(req: Request) {
         { phone: { contains: search } },
         { applicationNumber: { contains: search } },
         { courseInterested: { contains: search } },
+        { campus: { contains: search } },
         { schoolName: { contains: search } },
       ];
     }

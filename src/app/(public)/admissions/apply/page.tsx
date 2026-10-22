@@ -17,12 +17,15 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+import { defaultInstitutionConfig } from "@/config/institution";
+
 export default function AdmissionApplyPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     courseInterested: "PCMB",
+    campus: defaultInstitutionConfig.campuses[0]?.name || "Main Campus",
     tenthPercentage: "",
     schoolName: "",
     parentName: "",
@@ -120,6 +123,7 @@ export default function AdmissionApplyPage() {
                     email: "",
                     phone: "",
                     courseInterested: "PCMB",
+                    campus: defaultInstitutionConfig.campuses[0]?.name || "Main Campus",
                     tenthPercentage: "",
                     schoolName: "",
                     parentName: "",
@@ -241,11 +245,28 @@ export default function AdmissionApplyPage() {
                     onChange={(e) => setFormData({ ...formData, courseInterested: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white dark:bg-[var(--card)] text-sm focus:ring-2 focus:ring-[#800000] focus:outline-hidden"
                   >
-                    <option value="PCMB">Science - PCMB (Physics, Chem, Math, Biology)</option>
-                    <option value="PCMC">Science - PCMC (Physics, Chem, Math, Computer Science)</option>
-                    <option value="CEBA">Commerce - CEBA (Computer Science, Econ, Business, Accounts)</option>
-                    <option value="SEBA">Commerce - SEBA (Statistics, Econ, Business, Accounts)</option>
-                    <option value="HEGP">Arts - HEGP (History, Econ, Geography, Political Science)</option>
+                    {defaultInstitutionConfig.courses.map((course) => (
+                      <option key={course.code} value={course.code}>
+                        {course.stream} — {course.code} ({course.subjects.join(", ")})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-[var(--text)] mb-1">
+                    Preferred Campus <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    name="campus"
+                    value={formData.campus}
+                    onChange={(e) => setFormData({ ...formData, campus: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white dark:bg-[var(--card)] text-sm focus:ring-2 focus:ring-[#800000] focus:outline-hidden"
+                  >
+                    {defaultInstitutionConfig.campuses.map((c) => (
+                      <option key={c.id} value={c.name}>
+                        {c.name}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div>

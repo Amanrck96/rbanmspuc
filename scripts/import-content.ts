@@ -559,10 +559,8 @@ ${missingItems
 
 ## 🛠️ How to Fill Missing Content from the Admin Panel
 
-1. Log in to the Admin Console at [http://localhost:3000/admin/login](http://localhost:3000/admin/login) using your Super Admin or Editor credentials:
-   - **Email**: \`admin@rbanmspuc.edu.in\`
-   - **Password**: \`Admin@RBANMS2025!\`
-2. Navigate to **Pages CMS** (\`/admin/pages\`) in the maroon sidebar.
+1. Log in to the Admin Console at [http://localhost:3000/admin/login](http://localhost:3000/admin/login) using your configured administrative credentials (set via `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD`).
+2. Navigate to **Pages CMS** (\`/admin/pages\`) in the admin sidebar.
 3. Click the **Edit** button next to any page listed above.
 4. Replace the pending placeholder with your official college circular, PDF embed, or text formatted via the rich editor.
 5. Click **"Save Page"** — changes reflect immediately on the live public site with **zero stale cache**!
