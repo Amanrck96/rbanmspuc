@@ -122,7 +122,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { label: "FAQs Manager", href: "/admin/faqs", icon: HelpCircle },
     { label: "Photo Gallery", href: "/admin/gallery", icon: ImageIcon },
     { label: "Achievements", href: "/admin/achievements", icon: Award },
-    { label: "Theme & Settings", href: "/admin/settings", icon: Settings },
+    { label: "Site Settings", href: "/admin/settings", icon: Settings },
     { label: "Activity Audit Log", href: "/admin/activity", icon: History },
     { label: "Recycle Bin / Undo", href: "/admin/trash", icon: Trash2 },
     { label: "Staff Users", href: "/admin/users", icon: Shield },
@@ -223,7 +223,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Sidebar Footer */}
         <div className="p-4 border-t border-[var(--maroon)]/50 space-y-2">
           <div className="flex items-center justify-between px-2 py-1 text-xs text-white/70">
-            <span>Theme Mode</span>
+            <span>Appearance</span>
             <button
               onClick={toggleDarkMode}
               className="flex items-center gap-1.5 px-2 py-1 rounded bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-[var(--gold)] font-medium text-[11px] transition cursor-pointer"

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Search, Bell, Download, ExternalLink, Moon, Sun, Shield, ChevronDown } from "lucide-react";
 import SearchModal from "./SearchModal";
-import PaletteSwitcher from "./PaletteSwitcher";
 
 interface UtilityBarProps {
   settings?: any;
@@ -175,9 +174,6 @@ export default function UtilityBar({ settings, latestNotices = [] }: UtilityBarP
                 YT
               </a>
             </div>
-
-            {/* Theme Palette Switcher */}
-            <PaletteSwitcher />
 
             {/* Dark Mode toggle */}
             <button
