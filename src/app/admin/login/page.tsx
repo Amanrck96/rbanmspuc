@@ -49,12 +49,13 @@ export default function AdminLoginPage() {
       <div className="relative w-full max-w-md bg-[#2A1216]/95 backdrop-blur-xl rounded-3xl border border-[var(--gold)]/30 p-8 shadow-2xl space-y-6 text-white">
         {/* Emblem & Title */}
         <div className="text-center space-y-2">
-          <div className="relative w-16 h-16 mx-auto mb-3 bg-white/10 rounded-full p-2 border border-[var(--gold)]/40">
+          <div className="relative w-28 h-16 mx-auto mb-3 bg-white rounded-2xl p-1.5 border border-[var(--gold)]/40 shadow-lg overflow-hidden">
             <Image
-              src="/images/rbanms-logo.svg"
+              src="/images/rbanms-logo.png"
               alt="RBANMS Logo"
               fill
               className="object-contain p-1"
+              priority
             />
           </div>
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--maroon)] border border-[var(--gold)]/30 text-[var(--gold)] text-[10px] font-bold uppercase tracking-wider">

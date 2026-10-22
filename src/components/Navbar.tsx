@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -55,10 +56,17 @@ export default function Navbar({ settings }: NavbarProps) {
     <header className="sticky top-0 z-40 bg-[var(--primary)] text-white shadow-lg border-b border-white/10 backdrop-blur-md transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Brand Logo & Name (Placeholder for client re-skinning) */}
+          {/* Brand Logo & Name */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-11 h-11 shrink-0 bg-white/10 rounded-2xl p-2 border border-white/20 shadow-xs flex items-center justify-center text-[var(--accent)] group-hover:bg-white/20 transition">
-              <GraduationCap className="w-6 h-6" />
+            <div className="relative w-12 h-12 shrink-0 bg-white rounded-xl p-1 border border-white/20 shadow-xs flex items-center justify-center overflow-hidden group-hover:scale-105 transition">
+              <Image
+                src={settings?.logoUrl || "/images/rbanms-logo.png"}
+                alt={settings?.collegeName || "Institution Logo"}
+                width={48}
+                height={48}
+                className="object-contain w-full h-full"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-base sm:text-lg tracking-tight text-white font-serif leading-tight">

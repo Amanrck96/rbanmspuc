@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { GraduationCap, MapPin, Phone, Mail, ShieldCheck } from "lucide-react";
 import ConceptDemoBanner from "./ConceptDemoBanner";
 
@@ -24,8 +25,14 @@ export default function Footer({ settings }: FooterProps) {
             {/* Brand Bio */}
             <div className="lg:col-span-2 space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-[var(--accent)]">
-                  <GraduationCap className="w-6 h-6" />
+                <div className="w-12 h-12 rounded-xl bg-white p-1 border border-white/20 flex items-center justify-center overflow-hidden shrink-0">
+                  <Image
+                    src={settings?.logoUrl || "/images/rbanms-logo.png"}
+                    alt={settings?.collegeName || "Institution Logo"}
+                    width={48}
+                    height={48}
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <div>
                   <h3 className="font-extrabold text-white text-base font-serif leading-none">
