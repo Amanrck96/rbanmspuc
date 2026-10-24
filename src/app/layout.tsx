@@ -47,9 +47,9 @@ export default async function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[var(--bg)] text-[var(--text)] transition-colors`}>
         <ThemeInjector
-          primaryColor={settings?.primaryColor || "#800000"}
-          secondaryColor={settings?.secondaryColor || "#5A0F1B"}
-          accentColor={settings?.accentColor || "#C9A227"}
+          primaryColor="#000000"
+          secondaryColor="#000000"
+          accentColor="#000000"
         />
         {children}
       </body>

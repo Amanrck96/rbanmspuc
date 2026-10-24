@@ -68,23 +68,23 @@ export default function AlumniPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
-        <Link href="/" className="hover:text-[var(--primary)] transition">
+      <div className="flex items-center gap-2 text-xs text-gray-500">
+        <Link href="/" className="hover:text-black transition">
           Home
         </Link>
         <span>/</span>
-        <span className="text-[var(--primary)] font-bold">Alumni Network</span>
+        <span className="text-black font-bold">Alumni Network</span>
       </div>
 
       {/* Hero Header */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[var(--primary)] via-[var(--primary-dark)] to-[var(--primary)] text-white shadow-xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[var(--accent)] text-xs font-bold uppercase tracking-wider">
-          <GraduationCap className="w-4 h-4" /> Global Alumni Association
+      <div className="p-8 sm:p-12 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-black text-xs font-bold uppercase tracking-wider border border-gray-300">
+          <GraduationCap className="w-4 h-4 text-black" /> Global Alumni Association
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif">
+        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-black">
           Connected for Life, Inspiring the Future
         </h1>
-        <p className="text-sm sm:text-base text-white/80 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
           Our alumni community spans continents and disciplines—from visionary tech innovators and healthcare pioneers to corporate leaders and legal scholars.
         </p>
       </div>
@@ -99,12 +99,12 @@ export default function AlumniPage() {
         ].map((st, i) => (
           <div
             key={i}
-            className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm text-center space-y-1"
+            className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs text-center space-y-1"
           >
-            <div className="text-2xl sm:text-3xl font-extrabold text-[var(--primary)]">
+            <div className="text-2xl sm:text-3xl font-extrabold text-black">
               {st.value}
             </div>
-            <div className="text-xs text-[var(--muted)] font-medium">{st.label}</div>
+            <div className="text-xs text-gray-500 font-medium">{st.label}</div>
           </div>
         ))}
       </div>
@@ -112,10 +112,10 @@ export default function AlumniPage() {
       {/* Alumni Spotlights */}
       <div className="space-y-6">
         <div className="space-y-1">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--primary)] font-serif">
+          <h2 className="text-2xl sm:text-3xl font-bold text-black font-serif">
             Distinguished Alumni Spotlights
           </h2>
-          <p className="text-xs sm:text-sm text-[var(--muted)]">
+          <p className="text-xs sm:text-sm text-gray-600">
             Stories of purpose, perseverance, and leadership from our graduates.
           </p>
         </div>
@@ -124,25 +124,25 @@ export default function AlumniPage() {
           {alumniSpotlights.map((alumnus, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex flex-col justify-between space-y-4 hover:border-[var(--secondary)] transition"
+              className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs flex flex-col justify-between space-y-4 hover:border-black transition"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-[var(--tint)] text-[var(--primary)] px-2.5 py-1 rounded-md">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider bg-gray-100 text-black px-2.5 py-1 rounded-md border border-gray-300">
                     {alumnus.batch}
                   </span>
-                  <span className="text-[10px] text-[var(--muted)] font-semibold">
+                  <span className="text-[10px] text-gray-500 font-semibold">
                     {alumnus.campus}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-base text-[var(--primary)] font-serif">
+                  <h3 className="font-bold text-base text-black font-serif">
                     {alumnus.name}
                   </h3>
-                  <p className="text-xs font-semibold text-[var(--secondary)]">{alumnus.current}</p>
-                  <p className="text-[11px] text-[var(--muted)] mt-0.5">{alumnus.education}</p>
+                  <p className="text-xs font-semibold text-gray-700">{alumnus.current}</p>
+                  <p className="text-[11px] text-gray-500 mt-0.5">{alumnus.education}</p>
                 </div>
-                <p className="text-xs text-[var(--text)]/80 italic leading-relaxed border-l-2 border-[var(--accent)] pl-3">
+                <p className="text-xs text-black italic leading-relaxed border-l-2 border-black pl-3">
                   &ldquo;{alumnus.quote}&rdquo;
                 </p>
               </div>
@@ -153,7 +153,7 @@ export default function AlumniPage() {
 
       {/* Ways to Give Back & Engage */}
       <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-[var(--primary)] font-serif">
+        <h2 className="text-2xl font-bold text-black font-serif">
           Ways to Engage &amp; Give Back
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -162,13 +162,13 @@ export default function AlumniPage() {
             return (
               <div
                 key={i}
-                className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-3"
+                className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs space-y-3"
               >
-                <div className="p-3 w-fit rounded-xl bg-[var(--tint)] text-[var(--secondary)]">
-                  <Icon className="w-5 h-5" />
+                <div className="p-3 w-fit rounded-xl bg-gray-100 text-black border border-gray-300">
+                  <Icon className="w-5 h-5 text-black" />
                 </div>
-                <h3 className="font-bold text-sm text-[var(--primary)]">{item.title}</h3>
-                <p className="text-xs text-[var(--muted)] leading-relaxed">{item.desc}</p>
+                <h3 className="font-bold text-sm text-black">{item.title}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             );
           })}
@@ -176,17 +176,17 @@ export default function AlumniPage() {
       </div>
 
       {/* Alumni Registration Form CTA */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-[var(--tint)] border border-[var(--border)] text-center space-y-4 max-w-3xl mx-auto">
-        <h3 className="text-2xl font-bold text-[var(--primary)] font-serif">
+      <div className="p-8 sm:p-12 rounded-3xl bg-white border border-gray-200 text-center space-y-4 max-w-3xl mx-auto shadow-sm">
+        <h3 className="text-2xl font-bold text-black font-serif">
           Are you a Graduate? Stay in Touch!
         </h3>
-        <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl mx-auto">
+        <p className="text-xs sm:text-sm text-gray-700 max-w-xl mx-auto">
           Register with our alumni portal to receive reunion invitations, quarterly institutional updates, and opportunities to mentor young aspirants.
         </p>
         <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
           <Link
             href="/contact?subject=Alumni+Network+Registration"
-            className="px-8 py-3 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white text-xs font-bold uppercase tracking-wider transition shadow-md"
+            className="px-8 py-3 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black text-xs font-bold uppercase tracking-wider transition shadow-xs"
           >
             Register With Alumni Portal
           </Link>

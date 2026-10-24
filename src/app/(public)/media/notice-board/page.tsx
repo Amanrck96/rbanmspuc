@@ -12,13 +12,13 @@ export default async function NoticeBoardPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#800000] dark:text-[var(--gold)]">
+          <span className="text-xs font-bold uppercase tracking-widest text-black">
             Official Communications
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-black font-serif">
             Digital Notice Board
           </h1>
-          <p className="text-sm text-[var(--text)]/80">
+          <p className="text-sm text-gray-700">
             Stay updated with official college circulars, board examination schedules, admission guidelines, and academic announcements.
           </p>
         </div>

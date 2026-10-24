@@ -74,12 +74,12 @@ export const defaultInstitutionConfig: InstitutionConfig = {
   logoUrl: "/images/rbanms-logo.svg",
   crestUrl: "/uploads/rbanms-crest.png",
   theme: {
-    primaryColor: "#800000",       // Maroon signature
-    secondaryColor: "#5A0F1B",     // Deep dark maroon
-    primaryLight: "#A33B48",
-    primaryTint: "#F7E9EB",
-    accentColor: "#C9A227",        // Royal gold
-    headingColor: "#1E3A8A",       // Classic academic navy
+    primaryColor: "#000000",
+    secondaryColor: "#000000",
+    primaryLight: "#333333",
+    primaryTint: "#F9FAFB",
+    accentColor: "#000000",
+    headingColor: "#000000",
     lightBg: "#FFFFFF",
   },
   contact: {

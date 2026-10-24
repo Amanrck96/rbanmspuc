@@ -204,23 +204,23 @@ export default async function CoCurricularPage({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
-        <Link href="/" className="hover:text-[var(--primary)] transition">
+      <div className="flex items-center gap-2 text-xs text-gray-500">
+        <Link href="/" className="hover:text-black transition">
           Home
         </Link>
         <span>/</span>
-        <span className="text-[var(--muted)]">Co-Curricular</span>
+        <span className="text-gray-500">Co-Curricular</span>
         <span>/</span>
-        <span className="text-[var(--primary)] font-bold">{item.title}</span>
+        <span className="text-black font-bold">{item.title}</span>
       </div>
 
       {/* Hero Banner */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[var(--primary)] via-[var(--primary-dark)] to-[var(--primary)] text-white shadow-xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[var(--accent)] text-xs font-bold uppercase tracking-wider">
-          <PageIcon className="w-4 h-4" /> Holistic Education Pillar
+      <div className="p-8 sm:p-12 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-black text-xs font-bold uppercase tracking-wider border border-gray-300">
+          <PageIcon className="w-4 h-4 text-black" /> Holistic Education Pillar
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif">{item.title}</h1>
-        <p className="text-sm sm:text-base text-white/80 max-w-2xl leading-relaxed">
+        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-black">{item.title}</h1>
+        <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
           {item.subtitle}
         </p>
       </div>
@@ -230,12 +230,12 @@ export default async function CoCurricularPage({
         {item.impactStats.map((st, i) => (
           <div
             key={i}
-            className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm text-center space-y-1"
+            className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs text-center space-y-1"
           >
-            <div className="text-2xl sm:text-3xl font-extrabold text-[var(--primary)]">
+            <div className="text-2xl sm:text-3xl font-extrabold text-black">
               {st.value}
             </div>
-            <div className="text-xs text-[var(--muted)] font-medium">{st.label}</div>
+            <div className="text-xs text-gray-500 font-medium">{st.label}</div>
           </div>
         ))}
       </div>
@@ -243,19 +243,19 @@ export default async function CoCurricularPage({
       {/* Overview & Objectives */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          <div className="p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4 text-sm leading-relaxed text-[var(--text)]/90">
-            <h2 className="text-xl font-bold text-[var(--primary)] font-serif">Pillar Overview</h2>
+          <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4 text-sm leading-relaxed text-black">
+            <h2 className="text-xl font-bold text-black font-serif">Pillar Overview</h2>
             <p>{item.intro}</p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[var(--tint)] border border-[var(--border)] space-y-4">
-            <h3 className="text-lg font-bold text-[var(--primary)] font-serif">
+          <div className="p-8 rounded-3xl bg-gray-50 border border-gray-200 space-y-4">
+            <h3 className="text-lg font-bold text-black font-serif">
               Core Strategic Objectives
             </h3>
             <div className="space-y-3 pt-2">
               {item.objectives.map((obj, i) => (
-                <div key={i} className="flex items-start gap-3 text-xs text-[var(--text)]">
-                  <CheckCircle2 className="w-4 h-4 text-[var(--secondary)] shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-3 text-xs text-black">
+                  <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
                   <span>{obj}</span>
                 </div>
               ))}
@@ -264,17 +264,17 @@ export default async function CoCurricularPage({
 
           {/* Key Initiatives */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold text-[var(--primary)] font-serif">
+            <h3 className="text-xl font-bold text-black font-serif">
               Featured Initiatives &amp; Activities
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {item.keyInitiatives.map((init, i) => (
                 <div
                   key={i}
-                  className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-2 hover:border-[var(--secondary)] transition"
+                  className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs space-y-2 hover:border-black transition"
                 >
-                  <h4 className="font-bold text-sm text-[var(--primary)]">{init.title}</h4>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed">{init.desc}</p>
+                  <h4 className="font-bold text-sm text-black">{init.title}</h4>
+                  <p className="text-xs text-gray-600 leading-relaxed">{init.desc}</p>
                 </div>
               ))}
             </div>
@@ -283,8 +283,8 @@ export default async function CoCurricularPage({
 
         {/* Sidebar Nav for other Co-Curricular */}
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4">
-            <h4 className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider">
+          <div className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4">
+            <h4 className="text-xs font-bold text-black uppercase tracking-wider">
               Co-Curricular Pillars
             </h4>
             <div className="space-y-2 text-xs">
@@ -296,8 +296,8 @@ export default async function CoCurricularPage({
                     href={`/co-curricular/${cc.slug}`}
                     className={`block px-3.5 py-2.5 rounded-xl font-medium transition ${
                       active
-                        ? "bg-[var(--primary)] text-white shadow-sm"
-                        : "hover:bg-[var(--tint)] text-[var(--text)]"
+                        ? "bg-black text-white shadow-xs font-bold"
+                        : "hover:bg-gray-100 text-black"
                     }`}
                   >
                     {cc.title}
@@ -307,17 +307,17 @@ export default async function CoCurricularPage({
             </div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-gradient-to-br from-[var(--primary)] to-[var(--primary-dark)] text-white shadow-md space-y-4">
-            <div className="text-xs uppercase tracking-wider font-bold text-[var(--accent)]">
+          <div className="p-6 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
+            <div className="text-xs uppercase tracking-wider font-bold text-black">
               Admissions 2025-26
             </div>
-            <h4 className="text-base font-bold font-serif">Experience Holistic Growth</h4>
-            <p className="text-xs text-white/80">
+            <h4 className="text-base font-bold font-serif text-black">Experience Holistic Growth</h4>
+            <p className="text-xs text-gray-700">
               Join an institution that prioritizes academic depth, emotional resilience, and authentic leadership.
             </p>
             <Link
               href="/admissions/apply"
-              className="w-full py-2.5 rounded-xl bg-[var(--accent)] text-[var(--primary-dark)] font-extrabold text-xs uppercase tracking-wider block text-center shadow-md transition hover:brightness-110"
+              className="w-full py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black font-extrabold text-xs uppercase tracking-wider block text-center shadow-xs transition"
             >
               Apply Online
             </Link>

@@ -25,7 +25,7 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
 
   return (
     <div className="space-y-8">
-      {/* Active Tabs Filter in Maroon (#800000) */}
+      {/* Active Tabs Filter */}
       <div className="flex flex-wrap items-center justify-center gap-2">
         {categories.map((cat) => {
           const isActive = selectedCategory === cat;
@@ -35,8 +35,8 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
                 isActive
-                  ? "tab-active bg-[#800000] text-white shadow-md border border-[#800000]"
-                  : "tab-inactive bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
+                  ? "tab-active bg-black text-white shadow-xs border border-black"
+                  : "tab-inactive bg-gray-100 text-black border border-gray-300 hover:bg-gray-200 transition"
               }`}
             >
               {cat === "ALL" ? "All Circulars" : cat}
@@ -50,25 +50,25 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
         {filteredNotices.map((notice) => (
           <div
             key={notice.id}
-            className={`p-6 rounded-3xl bg-white dark:bg-[var(--card)] border transition shadow-xs hover:shadow-md ${
+            className={`p-6 rounded-3xl bg-white border transition shadow-xs hover:border-black ${
               notice.isPinned
-                ? "border-2 border-[var(--gold)] bg-[var(--maroon-tint)]/20"
-                : "border border-slate-200 dark:border-slate-800 hover:border-[#1E3A8A]"
+                ? "border-2 border-black bg-gray-50"
+                : "border border-gray-200"
             }`}
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
               <div className="flex items-center gap-2">
                 {notice.isPinned && (
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[var(--gold)] text-[var(--maroon-dark)] uppercase">
+                  <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-black text-white uppercase">
                     <Pin className="w-3 h-3 fill-current" /> Pinned
                   </span>
                 )}
-                <span className="badge-blue text-xs font-bold px-3 py-0.5 rounded-full uppercase">
+                <span className="bg-gray-100 text-black border border-gray-300 text-xs font-bold px-3 py-0.5 rounded-full uppercase">
                   {notice.category}
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-[var(--text)]/60">
-                <Calendar className="w-3.5 h-3.5 text-[#800000] dark:text-[var(--gold)]" />
+              <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                <Calendar className="w-3.5 h-3.5 text-black" />
                 <span>
                   {new Date(notice.date).toLocaleDateString("en-IN", {
                     day: "numeric",
@@ -79,23 +79,23 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
               </div>
             </div>
 
-            <h2 className="text-xl font-bold text-[#1E3A8A] dark:text-blue-300 mb-2 font-serif">
+            <h2 className="text-xl font-bold text-black mb-2 font-serif">
               {notice.title}
             </h2>
-            <p className="text-xs sm:text-sm text-[var(--text)]/80 leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
               {notice.description}
             </p>
 
             {notice.fileUrl && (
-              <div className="pt-4 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                <span className="text-xs text-[var(--text)]/60">Official Board Circular Attachment</span>
+              <div className="pt-4 mt-4 border-t border-gray-200 flex items-center justify-between">
+                <span className="text-xs text-gray-500">Official Board Circular Attachment</span>
                 <a
                   href={notice.fileUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#800000] dark:text-[var(--gold)] hover:underline link-maroon"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-black hover:underline"
                 >
-                  <Download className="w-3.5 h-3.5 text-[#800000] dark:text-[var(--gold)]" /> View / Download Document
+                  <Download className="w-3.5 h-3.5 text-black" /> View / Download Document
                 </a>
               </div>
             )}
@@ -103,8 +103,8 @@ export default function NoticeBoardClient({ initialNotices }: { initialNotices: 
         ))}
 
         {filteredNotices.length === 0 && (
-          <div className="text-center py-16 bg-white dark:bg-[var(--card)] rounded-3xl border border-slate-200 dark:border-slate-800">
-            <p className="text-sm text-[var(--text)]/60">No active circulars in this category.</p>
+          <div className="text-center py-16 bg-white rounded-3xl border border-gray-200">
+            <p className="text-sm text-gray-500">No active circulars in this category.</p>
           </div>
         )}
       </div>

@@ -85,25 +85,25 @@ export default function ThemeInjector({
 
       .dark, html.dark {
         --primary: ${d.primary};
-        --primary-dark: #080C1E;
+        --primary-dark: #000000;
         --secondary: ${d.secondary};
-        --secondary-soft: #14B8A6;
+        --secondary-soft: #555555;
         --accent: ${d.accent};
         --bg: ${d.bg};
         --surface: ${d.surface};
         --card: ${d.surface};
-        --tint: #141B38;
+        --tint: #F5F5F5;
         --text: ${d.text};
-        --muted: #8E99B8;
+        --muted: #666666;
         --border: ${d.border};
 
         --heading: ${d.primary};
 
         /* Backwards-compatible aliases */
         --maroon: ${d.primary};
-        --maroon-dark: #080C1E;
+        --maroon-dark: #000000;
         --maroon-light: ${d.secondary};
-        --maroon-tint: #141B38;
+        --maroon-tint: #F5F5F5;
         --gold: ${d.accent};
         --cream: ${d.bg};
         --white: #FFFFFF;

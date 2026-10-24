@@ -152,27 +152,27 @@ export default async function CampusPage({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Campus Hero Header */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[var(--primary)] via-[var(--primary-dark)] to-[var(--primary)] text-white shadow-xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[var(--accent)] text-xs font-bold uppercase tracking-wider">
-          <Building2 className="w-3.5 h-3.5" /> Campus Profile
+      <div className="p-8 sm:p-12 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-black text-xs font-bold uppercase tracking-wider border border-gray-300">
+          <Building2 className="w-3.5 h-3.5 text-black" /> Campus Profile
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif">{data.name}</h1>
-        <p className="text-sm sm:text-base text-white/80 max-w-3xl leading-relaxed">
+        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-black">{data.name}</h1>
+        <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed">
           {data.description}
         </p>
-        <div className="pt-2 flex flex-wrap gap-4 text-xs text-white/80">
+        <div className="pt-2 flex flex-wrap gap-4 text-xs text-gray-700">
           <div className="flex items-center gap-1.5">
-            <MapPin className="w-4 h-4 text-[var(--accent)]" /> {data.address}
+            <MapPin className="w-4 h-4 text-black" /> {data.address}
           </div>
           <div className="flex items-center gap-1.5">
-            <Phone className="w-4 h-4 text-[var(--accent)]" /> {data.phone}
+            <Phone className="w-4 h-4 text-black" /> {data.phone}
           </div>
         </div>
       </div>
 
       {/* 5 Campus Sub-Sections (Section 7B) */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold text-[var(--primary)] font-serif">
+        <h2 className="text-2xl font-bold text-black font-serif">
           Campus Sub-Sections &amp; Portals
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -180,15 +180,15 @@ export default async function CampusPage({
             <Link
               key={sub.slug}
               href={`/campuses/${data.id}/${sub.slug}`}
-              className="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm hover:shadow-md hover:border-[var(--secondary)] transition group"
+              className="p-5 rounded-2xl bg-white border border-gray-200 shadow-xs hover:border-black transition group"
             >
               <div className="flex items-center justify-between">
-                <span className="font-bold text-sm text-[var(--primary)] group-hover:text-[var(--secondary)]">
+                <span className="font-bold text-sm text-black group-hover:underline">
                   {sub.label}
                 </span>
-                <ArrowRight className="w-4 h-4 text-[var(--secondary)] group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 text-black group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="text-xs text-[var(--muted)] mt-1.5">{sub.desc}</p>
+              <p className="text-xs text-gray-600 mt-1.5">{sub.desc}</p>
             </Link>
           ))}
         </div>
@@ -196,38 +196,38 @@ export default async function CampusPage({
 
       {/* Key Campus Highlights */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-4 p-8 rounded-3xl bg-[var(--tint)] border border-[var(--border)]">
-          <h3 className="text-xl font-bold text-[var(--primary)] font-serif">
+        <div className="lg:col-span-2 space-y-4 p-8 rounded-3xl bg-gray-50 border border-gray-200">
+          <h3 className="text-xl font-bold text-black font-serif">
             Campus Infrastructure &amp; Features
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
             {data.features.map((feature, i) => (
-              <div key={i} className="flex items-start gap-2.5 text-xs text-[var(--text)]/90">
-                <CheckCircle2 className="w-4 h-4 text-[var(--secondary)] shrink-0 mt-0.5" />
+              <div key={i} className="flex items-start gap-2.5 text-xs text-black">
+                <CheckCircle2 className="w-4 h-4 text-black shrink-0 mt-0.5" />
                 <span>{feature}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-[var(--primary)] font-serif border-b border-[var(--border)] pb-2">
+        <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4">
+          <h3 className="text-base font-bold text-black font-serif border-b border-gray-200 pb-2">
             Branch Leadership
           </h3>
           <div className="text-xs space-y-1">
-            <span className="text-[var(--muted)] block">Head of Campus</span>
-            <span className="font-bold text-sm text-[var(--primary)]">{data.headOfCampus}</span>
+            <span className="text-gray-500 block">Head of Campus</span>
+            <span className="font-bold text-sm text-black">{data.headOfCampus}</span>
           </div>
-          <div className="pt-4 border-t border-[var(--border)] space-y-2">
+          <div className="pt-4 border-t border-gray-200 space-y-2">
             <Link
               href={`/admissions/apply?campus=${encodeURIComponent(data.name)}`}
-              className="w-full py-3 rounded-xl bg-[var(--accent)] hover:brightness-110 text-[var(--primary-dark)] font-extrabold text-xs uppercase tracking-wider block text-center shadow-md transition"
+              className="w-full py-3 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black font-extrabold text-xs uppercase tracking-wider block text-center shadow-xs transition"
             >
               Apply to {data.name.split("(")[0]}
             </Link>
             <Link
               href="/contact"
-              className="w-full py-2.5 rounded-xl border border-[var(--secondary)] text-[var(--secondary)] hover:bg-[var(--secondary)]/10 text-xs font-bold block text-center transition"
+              className="w-full py-2.5 rounded-xl border border-gray-300 text-black hover:bg-gray-100 text-xs font-bold block text-center transition"
             >
               Contact Branch Office
             </Link>

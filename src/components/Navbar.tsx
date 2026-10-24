@@ -125,12 +125,12 @@ export default function Navbar({ settings }: NavbarProps) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-[var(--primary)] text-white shadow-lg border-b border-[var(--border)] backdrop-blur-md transition-colors">
+    <header className="sticky top-0 z-40 bg-white text-black shadow-xs border-b border-gray-200 backdrop-blur-md transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Brand Logo & Name (Using official RBANM's Educational Institutions crest) */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-16 h-12 shrink-0 bg-white rounded-xl p-1 border border-white/20 shadow-xs flex items-center justify-center overflow-hidden group-hover:scale-105 transition">
+            <div className="relative w-16 h-12 shrink-0 bg-white rounded-xl p-1 border border-gray-200 shadow-xs flex items-center justify-center overflow-hidden group-hover:scale-105 transition">
               <Image
                 src={settings?.logoUrl || "/images/rbanms-logo.png"}
                 alt="RBANMS Educational Institutions Logo"
@@ -140,13 +140,13 @@ export default function Navbar({ settings }: NavbarProps) {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-extrabold text-base sm:text-lg tracking-tight text-white font-serif leading-none group-hover:text-[var(--accent)] transition">
+              <span className="font-extrabold text-base sm:text-lg tracking-tight text-black font-serif leading-none group-hover:text-black transition">
                 RBANM&apos;S
               </span>
-              <span className="font-bold text-xs sm:text-sm tracking-wider text-[var(--accent)] uppercase leading-tight">
+              <span className="font-bold text-xs sm:text-sm tracking-wider text-black uppercase leading-tight">
                 Pre-University College
               </span>
-              <span className="text-[10px] text-white/80 font-medium tracking-wide">
+              <span className="text-[10px] text-gray-600 font-medium tracking-wide">
                 ESTD. 1883 • Near Ulsoor Lake, Bengaluru
               </span>
             </div>
@@ -165,29 +165,29 @@ export default function Navbar({ settings }: NavbarProps) {
                 >
                   <Link
                     href={link.href}
-                    className="flex items-center gap-1 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-semibold text-white/95 hover:text-[var(--accent)] hover:bg-white/10 rounded-lg transition"
+                    className="flex items-center gap-1 px-2.5 xl:px-3 py-2 text-xs xl:text-sm font-semibold text-black hover:text-gray-600 hover:bg-gray-100 rounded-lg transition"
                   >
                     <span>{link.label}</span>
                     {hasDropdown && (
-                      <ChevronDown className="w-3.5 h-3.5 text-[var(--accent)] group-hover:rotate-180 transition-transform duration-200" />
+                      <ChevronDown className="w-3.5 h-3.5 text-black group-hover:rotate-180 transition-transform duration-200" />
                     )}
                   </Link>
 
                   {/* Dropdown Menu */}
                   {hasDropdown && (
                     <div className="absolute top-full left-0 w-72 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <div className="bg-white dark:bg-[var(--card)] rounded-2xl shadow-2xl border border-[var(--border)] p-2.5 space-y-1">
+                      <div className="bg-white rounded-2xl shadow-2xl border border-gray-200 p-2.5 space-y-1">
                         {link.dropdown?.map((sub) => (
                           <Link
                             key={sub.label}
                             href={sub.href}
-                            className="block p-2 rounded-xl hover:bg-[var(--tint)] transition group/item"
+                            className="block p-2 rounded-xl hover:bg-gray-50 transition group/item"
                           >
-                            <div className="font-bold text-xs text-[var(--primary)] group-hover/item:text-[var(--secondary)] transition-colors">
+                            <div className="font-bold text-xs text-black group-hover/item:text-gray-700 transition-colors">
                               {sub.label}
                             </div>
                             {sub.desc && (
-                              <div className="text-[11px] text-[var(--muted)] line-clamp-1 mt-0.5">
+                              <div className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">
                                 {sub.desc}
                               </div>
                             )}
@@ -203,7 +203,7 @@ export default function Navbar({ settings }: NavbarProps) {
             {/* Quick Apply CTA */}
             <Link
               href="/admissions/apply"
-              className="ml-2 px-3.5 py-2 rounded-xl bg-[var(--accent)] hover:brightness-110 text-[var(--primary-dark)] font-extrabold text-xs uppercase tracking-wider shadow-sm transition"
+              className="ml-2 px-3.5 py-2 rounded-xl bg-white hover:bg-gray-100 text-black font-extrabold text-xs uppercase tracking-wider border-2 border-black shadow-xs transition"
             >
               Apply Online
             </Link>
@@ -213,16 +213,16 @@ export default function Navbar({ settings }: NavbarProps) {
           <div className="lg:hidden flex items-center gap-2">
             <Link
               href="/admissions/apply"
-              className="px-3 py-1.5 rounded-lg bg-[var(--accent)] text-[var(--primary-dark)] text-xs font-bold uppercase tracking-wider"
+              className="px-3 py-1.5 rounded-lg bg-white text-black text-xs font-bold uppercase tracking-wider border border-black"
             >
               Apply
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-white hover:bg-white/10 transition cursor-pointer"
+              className="p-2 rounded-lg text-black hover:bg-gray-100 transition cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[var(--accent)]" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
             </button>
           </div>
         </div>
@@ -230,24 +230,24 @@ export default function Navbar({ settings }: NavbarProps) {
 
       {/* Mobile Drawer Navigation matching Rbanms website.docx */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-white/10 bg-[var(--primary-dark)] px-4 pt-3 pb-8 max-h-[85vh] overflow-y-auto animate-fade-in text-white space-y-3">
+        <div className="lg:hidden border-t border-gray-200 bg-white px-4 pt-3 pb-8 max-h-[85vh] overflow-y-auto animate-fade-in text-black space-y-3">
           {navLinks.map((link) => (
-            <div key={link.label} className="border-b border-white/10 pb-2">
+            <div key={link.label} className="border-b border-gray-200 pb-2">
               <Link
                 href={link.href}
                 onClick={() => !link.dropdown && setMobileMenuOpen(false)}
-                className="block py-2 text-sm font-bold text-white hover:text-[var(--accent)]"
+                className="block py-2 text-sm font-bold text-black hover:text-gray-600"
               >
                 {link.label}
               </Link>
               {link.dropdown && (
-                <div className="pl-3 space-y-1 mt-1 border-l border-[var(--accent)]/30">
+                <div className="pl-3 space-y-1 mt-1 border-l border-gray-200">
                   {link.dropdown.map((sub) => (
                     <Link
                       key={sub.label}
                       href={sub.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1 text-xs text-white/80 hover:text-[var(--accent)]"
+                      className="block py-1 text-xs text-gray-600 hover:text-black"
                     >
                       {sub.label}
                     </Link>
@@ -262,10 +262,10 @@ export default function Navbar({ settings }: NavbarProps) {
             <Link
               href="/campuses"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-between p-3 rounded-xl bg-white/10 text-xs font-bold text-[var(--accent)]"
+              className="flex items-center justify-between p-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-xs font-bold text-black"
             >
               <span>Explore Multi-Campus Demo</span>
-              <Building2 className="w-4 h-4" />
+              <Building2 className="w-4 h-4 text-black" />
             </Link>
           </div>
         </div>

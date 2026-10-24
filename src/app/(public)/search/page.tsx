@@ -68,19 +68,19 @@ function SearchContent() {
   const getSectionIcon = (category: string) => {
     switch (category) {
       case "Pages & Information":
-        return <BookOpen className="w-4 h-4 text-[var(--maroon)] dark:text-[var(--gold)]" />;
+        return <BookOpen className="w-4 h-4 text-black" />;
       case "Notices & Circulars":
-        return <Bell className="w-4 h-4 text-[var(--gold)]" />;
+        return <Bell className="w-4 h-4 text-black" />;
       case "Courses & Academics":
-        return <GraduationCap className="w-4 h-4 text-[var(--maroon)] dark:text-[var(--gold)]" />;
+        return <GraduationCap className="w-4 h-4 text-black" />;
       case "Faculty & Staff":
-        return <Users className="w-4 h-4 text-[var(--maroon-light)] dark:text-[var(--gold)]" />;
+        return <Users className="w-4 h-4 text-black" />;
       case "Downloads & Forms":
-        return <Download className="w-4 h-4 text-[var(--gold)]" />;
+        return <Download className="w-4 h-4 text-black" />;
       case "FAQs & Help":
-        return <HelpCircle className="w-4 h-4 text-[var(--maroon)] dark:text-[var(--gold)]" />;
+        return <HelpCircle className="w-4 h-4 text-black" />;
       default:
-        return <ImageIcon className="w-4 h-4 text-[var(--maroon)] dark:text-[var(--gold)]" />;
+        return <ImageIcon className="w-4 h-4 text-black" />;
     }
   };
 
@@ -89,28 +89,28 @@ function SearchContent() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Search Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1E3A8A] dark:text-blue-300 font-serif">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-black font-serif">
             Global Knowledge Search
           </h1>
-          <p className="text-sm text-[var(--text)]/80">
+          <p className="text-sm text-gray-700">
             Search across our entire database: admissions, courses, notices, faculty, curriculum, fees, and campus life.
           </p>
         </div>
 
         {/* Input Bar */}
         <form onSubmit={handleFormSubmit} className="relative max-w-2xl mx-auto">
-          <div className="relative flex items-center shadow-lg rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 p-2">
-            <Search className="w-5 h-5 text-[#800000] ml-3 mr-2" />
+          <div className="relative flex items-center shadow-xs rounded-2xl bg-white border border-gray-300 p-2">
+            <Search className="w-5 h-5 text-black ml-3 mr-2" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search by keywords, course code (PCMB/CEBA), faculty name..."
-              className="w-full py-2 bg-transparent text-[var(--text)] placeholder-gray-400 focus:outline-hidden text-sm sm:text-base"
+              className="w-full py-2 bg-transparent text-black placeholder-gray-500 focus:outline-hidden text-sm sm:text-base"
             />
             <button
               type="submit"
-              className="px-5 py-2.5 rounded-xl bg-[#800000] hover:bg-[#5A0F1B] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition shadow-xs cursor-pointer"
+              className="px-5 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black font-bold text-xs uppercase tracking-wider shrink-0 transition shadow-xs cursor-pointer"
             >
               Search
             </button>
@@ -124,8 +124,8 @@ function SearchContent() {
               onClick={() => setActiveTab("ALL")}
               className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition cursor-pointer ${
                 activeTab === "ALL"
-                  ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
-                  : "tab-inactive bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
+                  ? "tab-active bg-black text-white shadow-xs font-bold border border-black"
+                  : "tab-inactive bg-gray-100 text-black border border-gray-300 hover:bg-gray-200 transition"
               }`}
             >
               All Results ({total})
@@ -136,8 +136,8 @@ function SearchContent() {
                 onClick={() => setActiveTab(cat)}
                 className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition flex items-center gap-1.5 cursor-pointer ${
                   activeTab === cat
-                    ? "tab-active bg-[#800000] text-white shadow-xs font-bold border border-[#800000]"
-                    : "tab-inactive bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200 hover:text-slate-900 transition dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700"
+                    ? "tab-active bg-black text-white shadow-xs font-bold border border-black"
+                    : "tab-inactive bg-gray-100 text-black border border-gray-300 hover:bg-gray-200 transition"
                 }`}
               >
                 <span>{cat}</span>
@@ -150,15 +150,15 @@ function SearchContent() {
         {/* Results Stream */}
         {loading ? (
           <div className="py-20 flex flex-col items-center justify-center space-y-3">
-            <Loader2 className="w-8 h-8 text-[var(--gold)] animate-spin" />
-            <p className="text-xs text-[var(--text)]/60">Searching RBANMS database...</p>
+            <Loader2 className="w-8 h-8 text-black animate-spin" />
+            <p className="text-xs text-gray-500">Searching RBANMS database...</p>
           </div>
         ) : query && total === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-[var(--card)] rounded-3xl border border-slate-200 dark:border-slate-800 p-8 space-y-3">
-            <p className="text-lg font-bold text-[#1E3A8A] dark:text-blue-300">
+          <div className="text-center py-20 bg-white rounded-3xl border border-gray-200 p-8 space-y-3">
+            <p className="text-lg font-bold text-black">
               No matching results found for &ldquo;{query}&rdquo;
             </p>
-            <p className="text-xs text-[var(--text)]/70 max-w-md mx-auto">
+            <p className="text-xs text-gray-700 max-w-md mx-auto">
               Please check your spelling, or try searching for broader keywords like &quot;admissions&quot;, &quot;fees&quot;, &quot;science&quot;, &quot;commerce&quot;, or &quot;history&quot;.
             </p>
           </div>
@@ -168,12 +168,12 @@ function SearchContent() {
               const items = results[category] || [];
               return (
                 <div key={category} className="space-y-4">
-                  <div className="flex items-center gap-2 pb-2 border-b border-slate-200 dark:border-slate-800">
+                  <div className="flex items-center gap-2 pb-2 border-b border-gray-200">
                     {getSectionIcon(category)}
-                    <h3 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 font-serif">
+                    <h3 className="font-bold text-base text-black font-serif">
                       {category}
                     </h3>
-                    <span className="text-xs text-[var(--text)]/60">({items.length})</span>
+                    <span className="text-xs text-gray-500">({items.length})</span>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -181,28 +181,28 @@ function SearchContent() {
                       <Link
                         key={item.id}
                         href={item.url}
-                        className="p-5 rounded-2xl bg-white dark:bg-[var(--card)] border border-slate-200 dark:border-slate-800 hover:border-[#1E3A8A] shadow-xs hover:shadow-md transition group flex flex-col justify-between"
+                        className="p-5 rounded-2xl bg-white border border-gray-200 hover:border-black shadow-xs transition group flex flex-col justify-between"
                       >
                         <div className="space-y-2">
                           <div className="flex items-start justify-between gap-2">
-                            <h4 className="font-bold text-base text-[#1E3A8A] dark:text-blue-300 group-hover:text-[#800000] dark:group-hover:text-[var(--gold)] transition">
+                            <h4 className="font-bold text-base text-black group-hover:underline transition">
                               {item.title}
                             </h4>
-                            <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-[#800000] dark:group-hover:text-[var(--gold)] transition shrink-0 mt-1" />
+                            <ArrowRight className="w-4 h-4 text-black transition shrink-0 mt-1" />
                           </div>
                           {item.subtitle && (
-                            <div className="text-xs font-semibold text-[var(--gold)]">
+                            <div className="text-xs font-semibold text-gray-700">
                               {item.subtitle}
                             </div>
                           )}
                           {item.snippet && (
                             <p
-                              className="text-xs text-[var(--text)]/80 leading-relaxed"
+                              className="text-xs text-black leading-relaxed"
                               dangerouslySetInnerHTML={{ __html: item.snippet }}
                             />
                           )}
                         </div>
-                        <div className="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-[#800000] dark:text-[var(--gold)] flex items-center gap-1 link-maroon">
+                        <div className="pt-3 mt-3 border-t border-gray-200 text-[11px] font-semibold text-black flex items-center gap-1">
                           Navigate to page <ArrowRight className="w-3.5 h-3.5" />
                         </div>
                       </Link>
@@ -223,7 +223,7 @@ export default function SearchPage() {
     <Suspense
       fallback={
         <div className="min-h-screen py-20 flex justify-center items-center">
-          <Loader2 className="w-8 h-8 animate-spin text-[var(--gold)]" />
+          <Loader2 className="w-8 h-8 animate-spin text-black" />
         </div>
       }
     >

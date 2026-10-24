@@ -99,10 +99,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   if (checkingAuth) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--maroon-dark)] text-white">
+      <div className="min-h-screen flex items-center justify-center bg-white text-black">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="w-8 h-8 animate-spin text-[var(--gold)]" />
-          <p className="text-xs text-white/80 font-medium">Verifying administrative credentials...</p>
+          <Loader2 className="w-8 h-8 animate-spin text-black" />
+          <p className="text-xs text-gray-700 font-medium">Verifying administrative credentials...</p>
         </div>
       </div>
     );
@@ -129,61 +129,61 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)] flex flex-col lg:flex-row transition-colors">
+    <div className="min-h-screen bg-white text-black flex flex-col lg:flex-row transition-colors">
       {/* Mobile Top Header */}
-      <header className="lg:hidden flex items-center justify-between p-4 bg-[var(--maroon-dark)] border-b border-[var(--gold)]/30 sticky top-0 z-50 text-white">
+      <header className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 sticky top-0 z-50 text-black">
         <div className="flex items-center gap-2">
-          <div className="relative w-12 h-8 bg-white rounded-lg p-0.5 border border-white/20 shadow-xs shrink-0 overflow-hidden">
-            <Image src="/images/rbanms-logo.png" alt="RBANMS Logo" fill className="object-contain" priority />
+          <div className="relative w-12 h-8 bg-white rounded-lg p-0.5 border border-gray-200 shadow-xs shrink-0 overflow-hidden">
+            <Image src="/images/rbanms-logo.png" alt="RBANMS Logo" fill className="object-contain grayscale" priority />
           </div>
           <div>
-            <div className="font-bold text-xs text-white">RBANMS PU College</div>
-            <div className="text-[10px] text-[var(--gold)] font-bold">Admin CRM Console</div>
+            <div className="font-bold text-xs text-black">RBANMS PU College</div>
+            <div className="text-[10px] text-gray-600 font-bold">Admin CRM Console</div>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={toggleDarkMode}
-            className="p-1.5 rounded-lg text-white/80 hover:text-[var(--gold)] hover:bg-[var(--maroon)] transition"
+            className="p-1.5 rounded-lg text-black hover:bg-gray-100 transition"
           >
-            {isDark ? <Sun className="w-4 h-4 text-[var(--gold)]" /> : <Moon className="w-4 h-4" />}
+            {isDark ? <Sun className="w-4 h-4 text-black" /> : <Moon className="w-4 h-4 text-black" />}
           </button>
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-lg bg-[var(--maroon)] text-white hover:bg-[var(--maroon-light)]"
+            className="p-2 rounded-lg bg-gray-100 text-black border border-gray-300 hover:bg-gray-200"
           >
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </header>
 
-      {/* Admin Sidebar Navigation in Maroon */}
+      {/* Admin Sidebar Navigation */}
       <aside
-        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-[var(--maroon-dark)] border-r border-[var(--gold)]/20 text-white flex flex-col justify-between transition-transform duration-200 overflow-y-auto ${
+        className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-gray-200 text-black flex flex-col justify-between transition-transform duration-200 overflow-y-auto ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
         <div className="p-4 space-y-5">
           {/* Logo & College Title */}
           <Link href="/admin" className="flex items-center gap-3 px-2 py-2 group">
-            <div className="relative w-14 h-9 shrink-0 bg-white rounded-xl p-1 border border-white/20 shadow-xs overflow-hidden">
-              <Image src="/images/rbanms-logo.png" alt="RBANMS Logo" fill className="object-contain" priority />
+            <div className="relative w-14 h-9 shrink-0 bg-white rounded-xl p-1 border border-gray-200 shadow-xs overflow-hidden">
+              <Image src="/images/rbanms-logo.png" alt="RBANMS Logo" fill className="object-contain grayscale" priority />
             </div>
             <div>
-              <div className="font-extrabold text-sm text-white font-serif leading-none">RBANM&apos;S</div>
-              <div className="text-[10px] text-[var(--gold)] font-bold uppercase tracking-wider">Admin CRM Panel</div>
-              <div className="text-[9px] text-white/60">Shared DB & Media Storage</div>
+              <div className="font-extrabold text-sm text-black font-serif leading-none">RBANM&apos;S</div>
+              <div className="text-[10px] text-gray-600 font-bold uppercase tracking-wider">Admin CRM Panel</div>
+              <div className="text-[9px] text-gray-500">Shared DB & Media Storage</div>
             </div>
           </Link>
 
           {/* Current User Pill */}
           {currentUser && (
-            <div className="p-3 rounded-2xl bg-[var(--maroon)] border border-[var(--gold)]/30 flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-gray-50 border border-gray-200 flex items-center justify-between">
               <div className="overflow-hidden">
-                <div className="text-xs font-bold text-white truncate">{currentUser.name}</div>
-                <div className="text-[10px] text-[var(--gold)] font-bold">{currentUser.role}</div>
+                <div className="text-xs font-bold text-black truncate">{currentUser.name}</div>
+                <div className="text-[10px] text-gray-600 font-bold">{currentUser.role}</div>
               </div>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Online" />
+              <span className="w-2 h-2 rounded-full bg-black shrink-0" title="Online" />
             </div>
           )}
 
@@ -199,8 +199,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   onClick={() => setSidebarOpen(false)}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition ${
                     isActive
-                      ? "bg-[var(--gold)] text-[var(--maroon-dark)] font-extrabold shadow-md"
-                      : "text-white/85 hover:text-white hover:bg-[var(--maroon)]"
+                      ? "bg-black text-white font-extrabold shadow-xs"
+                      : "text-black hover:bg-gray-100"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -209,7 +209,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   </div>
                   {item.badge && (
                     <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold ${
-                      isActive ? "bg-[var(--maroon-dark)] text-[var(--gold)]" : "bg-[var(--gold)]/20 text-[var(--gold)]"
+                      isActive ? "bg-white text-black" : "bg-gray-100 text-black border border-gray-300"
                     }`}>
                       {item.badge}
                     </span>
@@ -221,36 +221,36 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-[var(--maroon)]/50 space-y-2">
-          <div className="flex items-center justify-between px-2 py-1 text-xs text-white/70">
+        <div className="p-4 border-t border-gray-200 space-y-2">
+          <div className="flex items-center justify-between px-2 py-1 text-xs text-gray-600">
             <span>Appearance</span>
             <button
               onClick={toggleDarkMode}
-              className="flex items-center gap-1.5 px-2 py-1 rounded bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-[var(--gold)] font-medium text-[11px] transition cursor-pointer"
+              className="flex items-center gap-1.5 px-2 py-1 rounded bg-gray-100 hover:bg-gray-200 text-black font-medium text-[11px] transition cursor-pointer border border-gray-300"
             >
-              {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+              {isDark ? <Sun className="w-3.5 h-3.5 text-black" /> : <Moon className="w-3.5 h-3.5 text-black" />}
               <span>{isDark ? "Dark" : "Light"}</span>
             </button>
           </div>
           <Link
             href="/"
             target="_blank"
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-[var(--maroon)] hover:bg-[var(--maroon-light)] text-white text-xs font-semibold border border-[var(--gold)]/30 transition"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-white hover:bg-gray-100 text-black text-xs font-semibold border border-gray-300 transition"
           >
-            <ExternalLink className="w-3.5 h-3.5 text-[var(--gold)]" /> View Public Site
+            <ExternalLink className="w-3.5 h-3.5 text-black" /> View Public Site
           </Link>
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-red-950/60 hover:bg-red-900/80 text-red-200 border border-red-800/40 text-xs font-semibold transition cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-black border border-gray-300 text-xs font-semibold transition cursor-pointer"
           >
-            <LogOut className="w-3.5 h-3.5" /> Sign Out
+            <LogOut className="w-3.5 h-3.5 text-black" /> Sign Out
           </button>
         </div>
       </aside>
 
-      {/* Main Admin Content Area in Cream / Dark Background */}
-      <div className="flex-1 flex flex-col min-w-0 bg-[var(--bg)]">
-        <main className="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full text-[var(--text)]">
+      {/* Main Admin Content Area */}
+      <div className="flex-1 flex flex-col min-w-0 bg-white">
+        <main className="flex-1 p-4 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full text-black">
           {children}
         </main>
       </div>

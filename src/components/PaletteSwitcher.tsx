@@ -61,7 +61,7 @@ export default function PaletteSwitcher() {
               onClick={toggleDark}
               className="p-1 rounded-lg bg-[var(--tint)] hover:bg-[var(--border)] text-[var(--text)] flex items-center gap-1 text-[10px] font-bold"
             >
-              {isDark ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5" />}
+              {isDark ? <Sun className="w-3.5 h-3.5 text-black" /> : <Moon className="w-3.5 h-3.5" />}
               <span>{isDark ? "Light" : "Dark"}</span>
             </button>
           </div>

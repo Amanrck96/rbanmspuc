@@ -86,19 +86,19 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const getSectionIcon = (category: string) => {
     switch (category) {
       case "Pages & Information":
-        return <BookOpen className="w-4 h-4 text-[#800000]" />;
+        return <BookOpen className="w-4 h-4 text-black" />;
       case "Notices & Circulars":
-        return <Bell className="w-4 h-4 text-[var(--gold)]" />;
+        return <Bell className="w-4 h-4 text-black" />;
       case "Courses & Academics":
-        return <GraduationCap className="w-4 h-4 text-[#1E3A8A]" />;
+        return <GraduationCap className="w-4 h-4 text-black" />;
       case "Faculty & Staff":
-        return <Users className="w-4 h-4 text-[#800000]" />;
+        return <Users className="w-4 h-4 text-black" />;
       case "Downloads & Forms":
-        return <Download className="w-4 h-4 text-[var(--gold)]" />;
+        return <Download className="w-4 h-4 text-black" />;
       case "FAQs & Help":
-        return <HelpCircle className="w-4 h-4 text-[#800000]" />;
+        return <HelpCircle className="w-4 h-4 text-black" />;
       default:
-        return <ImageIcon className="w-4 h-4 text-[#800000]" />;
+        return <ImageIcon className="w-4 h-4 text-black" />;
     }
   };
 
@@ -122,7 +122,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             className="w-full py-4 bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-hidden text-base sm:text-lg"
           />
           {loading ? (
-            <Loader2 className="w-5 h-5 text-blue-600 animate-spin mr-2" />
+            <Loader2 className="w-5 h-5 text-black animate-spin mr-2" />
           ) : query ? (
             <button
               type="button"
@@ -159,7 +159,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                     <button
                       key={term}
                       onClick={() => setQuery(term)}
-                      className="px-3 py-1.5 rounded-full text-xs bg-gray-100 dark:bg-slate-800 hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-slate-700 transition"
+                      className="px-3 py-1.5 rounded-full text-xs bg-gray-100 dark:bg-slate-800 hover:bg-gray-100 hover:text-black dark:hover:bg-slate-700 transition"
                     >
                       {term}
                     </button>
@@ -183,10 +183,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                   <button
                     key={item.id}
                     onClick={() => handleSelect(item.url)}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-blue-50/80 dark:hover:bg-slate-800/80 transition flex items-start justify-between group"
+                    className="w-full text-left p-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-50 transition flex items-start justify-between group"
                   >
                     <div className="pr-4">
-                      <div className="font-semibold text-sm text-[#1E3A8A] dark:text-blue-300 group-hover:text-[#800000]">
+                      <div className="font-semibold text-sm text-black dark:text-black group-hover:text-gray-700">
                         {item.title}
                       </div>
                       {item.subtitle && (
@@ -201,7 +201,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                         />
                       )}
                     </div>
-                    <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 mt-1 shrink-0 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-black dark:group-hover:text-black mt-1 shrink-0 transition-transform group-hover:translate-x-1" />
                   </button>
                 ))}
               </div>
@@ -212,7 +212,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <div className="pt-2 border-t border-gray-100 dark:border-slate-800 text-center">
               <button
                 onClick={handleSubmit}
-                className="text-xs font-semibold text-blue-600 hover:text-blue-800 dark:text-blue-400 inline-flex items-center gap-1"
+                className="text-xs font-semibold text-black hover:text-gray-700 dark:text-black inline-flex items-center gap-1"
               >
                 View all {total} matching results in full search page <ArrowRight className="w-3.5 h-3.5" />
               </button>

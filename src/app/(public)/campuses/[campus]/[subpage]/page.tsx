@@ -308,30 +308,30 @@ export default async function CampusSubpage({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       {/* Breadcrumb Navigation */}
-      <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
-        <Link href="/" className="hover:text-[var(--primary)] transition">
+      <div className="flex items-center gap-2 text-xs text-gray-500">
+        <Link href="/" className="hover:text-black transition">
           Home
         </Link>
         <span>/</span>
-        <Link href={`/campuses/${campus}`} className="hover:text-[var(--primary)] transition">
+        <Link href={`/campuses/${campus}`} className="hover:text-black transition">
           {campusData.name.split("(")[0]}
         </Link>
         <span>/</span>
-        <span className="text-[var(--primary)] font-bold">{meta.title}</span>
+        <span className="text-black font-bold">{meta.title}</span>
       </div>
 
       {/* Hero Header */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[var(--primary)] via-[var(--primary-dark)] to-[var(--primary)] text-white shadow-xl space-y-4">
+      <div className="p-8 sm:p-12 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-white/10 text-[var(--accent)]">
-            <PageIcon className="w-5 h-5" />
+          <div className="p-2.5 rounded-xl bg-gray-100 text-black border border-gray-300">
+            <PageIcon className="w-5 h-5 text-black" />
           </div>
-          <span className="text-xs uppercase tracking-wider font-extrabold text-[var(--accent)]">
+          <span className="text-xs uppercase tracking-wider font-extrabold text-black">
             {campusData.name}
           </span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif">{meta.title}</h1>
-        <p className="text-sm sm:text-base text-white/80 max-w-2xl">{meta.subtitle}</p>
+        <h1 className="text-3xl sm:text-4xl font-extrabold font-serif text-black">{meta.title}</h1>
+        <p className="text-sm sm:text-base text-gray-700 max-w-2xl">{meta.subtitle}</p>
       </div>
 
       {/* Highlights Bar */}
@@ -339,10 +339,10 @@ export default async function CampusSubpage({
         {content.highlights.map((h, i) => (
           <div
             key={i}
-            className="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm flex items-start gap-3"
+            className="p-5 rounded-2xl bg-white border border-gray-200 shadow-xs flex items-start gap-3"
           >
-            <CheckCircle2 className="w-5 h-5 text-[var(--secondary)] shrink-0 mt-0.5" />
-            <span className="text-xs font-medium text-[var(--text)]">{h}</span>
+            <CheckCircle2 className="w-5 h-5 text-black shrink-0 mt-0.5" />
+            <span className="text-xs font-medium text-black">{h}</span>
           </div>
         ))}
       </div>
@@ -351,7 +351,7 @@ export default async function CampusSubpage({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Body */}
         <div className="lg:col-span-2 space-y-8">
-          <div className="p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4 text-sm leading-relaxed text-[var(--text)]/90">
+          <div className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4 text-sm leading-relaxed text-black">
             {content.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
@@ -360,15 +360,15 @@ export default async function CampusSubpage({
           {content.sections.map((sec, i) => (
             <div
               key={i}
-              className="p-8 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4"
+              className="p-8 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4"
             >
-              <h3 className="text-lg font-bold text-[var(--primary)] font-serif border-b border-[var(--border)] pb-3">
+              <h3 className="text-lg font-bold text-black font-serif border-b border-gray-200 pb-3">
                 {sec.heading}
               </h3>
               <ul className="space-y-3">
                 {sec.details.map((detail, di) => (
-                  <li key={di} className="flex items-start gap-2.5 text-xs text-[var(--text)]/90">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)] mt-1.5 shrink-0" />
+                  <li key={di} className="flex items-start gap-2.5 text-xs text-black">
+                    <span className="w-1.5 h-1.5 rounded-full bg-black mt-1.5 shrink-0" />
                     <span>{detail}</span>
                   </li>
                 ))}
@@ -379,8 +379,8 @@ export default async function CampusSubpage({
 
         {/* Sidebar Navigation & Quick CTA */}
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-[var(--tint)] border border-[var(--border)] space-y-4">
-            <h4 className="text-xs font-bold text-[var(--primary)] uppercase tracking-wider">
+          <div className="p-6 rounded-3xl bg-gray-50 border border-gray-200 space-y-4">
+            <h4 className="text-xs font-bold text-black uppercase tracking-wider">
               Explore {campusData.name.split("(")[0]}
             </h4>
             <div className="space-y-1.5 text-xs">
@@ -393,8 +393,8 @@ export default async function CampusSubpage({
                     href={`/campuses/${campus}/${spKey}`}
                     className={`block px-3 py-2.5 rounded-xl font-medium transition ${
                       isActive
-                        ? "bg-[var(--primary)] text-white shadow-sm"
-                        : "hover:bg-[var(--surface)] text-[var(--text)]"
+                        ? "bg-black text-white shadow-xs font-bold"
+                        : "hover:bg-white text-black"
                     }`}
                   >
                     {spMeta.title}
@@ -404,20 +404,20 @@ export default async function CampusSubpage({
             </div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-4">
-            <h4 className="text-sm font-bold text-[var(--primary)] font-serif">Ready to Join Us?</h4>
-            <p className="text-xs text-[var(--muted)]">
+          <div className="p-6 rounded-3xl bg-white border border-gray-200 shadow-xs space-y-4">
+            <h4 className="text-sm font-bold text-black font-serif">Ready to Join Us?</h4>
+            <p className="text-xs text-gray-600">
               Applications are currently open for the upcoming academic year across all science and commerce combinations.
             </p>
             <Link
               href={`/admissions/apply?campus=${encodeURIComponent(campusData.name)}`}
-              className="w-full py-3 rounded-xl bg-[var(--accent)] hover:brightness-110 text-[var(--primary-dark)] font-extrabold text-xs uppercase tracking-wider block text-center shadow-md transition"
+              className="w-full py-3 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black font-extrabold text-xs uppercase tracking-wider block text-center shadow-xs transition"
             >
               Apply Online Now
             </Link>
             <Link
               href="/contact"
-              className="w-full py-2.5 rounded-xl border border-[var(--border)] hover:border-[var(--secondary)] text-[var(--text)] text-xs font-semibold block text-center transition"
+              className="w-full py-2.5 rounded-xl border border-gray-300 hover:border-black text-black text-xs font-semibold block text-center transition"
             >
               Enquire About Admissions
             </Link>

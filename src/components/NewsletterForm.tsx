@@ -19,8 +19,8 @@ export default function NewsletterForm() {
 
   if (subscribed) {
     return (
-      <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center justify-center gap-2 font-medium max-w-md mx-auto">
-        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+      <div className="p-4 rounded-2xl bg-gray-50 border border-gray-300 text-black text-xs flex items-center justify-center gap-2 font-medium max-w-md mx-auto">
+        <CheckCircle2 className="w-4 h-4 text-black" />
         <span>Thank you for subscribing to our newsletter updates!</span>
       </div>
     );
@@ -39,13 +39,13 @@ export default function NewsletterForm() {
       <button
         type="submit"
         disabled={loading}
-        className="px-5 py-2.5 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white text-xs font-bold uppercase tracking-wider transition shadow-sm flex items-center justify-center gap-1.5 disabled:opacity-50"
+        className="px-5 py-2.5 rounded-xl bg-black hover:bg-gray-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-sm flex items-center justify-center gap-1.5 disabled:opacity-50"
       >
         {loading ? (
           <Loader2 className="w-3.5 h-3.5 animate-spin" />
         ) : (
           <>
-            <Send className="w-3.5 h-3.5 text-[var(--accent)]" /> Subscribe
+            <Send className="w-3.5 h-3.5 text-white" /> Subscribe
           </>
         )}
       </button>

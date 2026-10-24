@@ -83,23 +83,23 @@ export default function CareersPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-[var(--muted)]">
-        <Link href="/" className="hover:text-[var(--primary)] transition">
+      <div className="flex items-center gap-2 text-xs text-gray-500">
+        <Link href="/" className="hover:text-black transition">
           Home
         </Link>
         <span>/</span>
-        <span className="text-[var(--primary)] font-bold">Careers</span>
+        <span className="text-black font-bold">Careers</span>
       </div>
 
       {/* Hero Header */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[var(--primary)] via-[var(--primary-dark)] to-[var(--primary)] text-white shadow-xl space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-[var(--accent)] text-xs font-bold uppercase tracking-wider">
-          <Briefcase className="w-3.5 h-3.5" /> Join Our Academic Community
+      <div className="p-8 sm:p-12 rounded-3xl bg-white text-black border border-gray-200 shadow-sm space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-black text-xs font-bold uppercase tracking-wider border border-gray-300">
+          <Briefcase className="w-3.5 h-3.5 text-black" /> Join Our Academic Community
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif">
+        <h1 className="text-3xl sm:text-5xl font-extrabold font-serif text-black">
           Shape the Leaders of Tomorrow
         </h1>
-        <p className="text-sm sm:text-base text-white/80 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-700 max-w-2xl leading-relaxed">
           We invite passionate educators, subject mentors, and administrative professionals who are committed to mentoring students during their formative pre-university years.
         </p>
       </div>
@@ -107,10 +107,10 @@ export default function CareersPage() {
       {/* Why Teach With Us */}
       <div className="space-y-6">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--primary)] font-serif">
+          <h2 className="text-2xl sm:text-3xl font-bold text-black font-serif">
             Why Build Your Career With Us?
           </h2>
-          <p className="text-xs sm:text-sm text-[var(--muted)]">
+          <p className="text-xs sm:text-sm text-gray-600">
             A collaborative, research-oriented environment designed to nurture your professional and pedagogical growth.
           </p>
         </div>
@@ -120,13 +120,13 @@ export default function CareersPage() {
             return (
               <div
                 key={i}
-                className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm space-y-3"
+                className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs space-y-3"
               >
-                <div className="p-3 w-fit rounded-xl bg-[var(--tint)] text-[var(--secondary)]">
-                  <Icon className="w-5 h-5" />
+                <div className="p-3 w-fit rounded-xl bg-gray-100 text-black border border-gray-300">
+                  <Icon className="w-5 h-5 text-black" />
                 </div>
-                <h3 className="font-bold text-sm text-[var(--primary)]">{b.title}</h3>
-                <p className="text-xs text-[var(--muted)] leading-relaxed">{b.desc}</p>
+                <h3 className="font-bold text-sm text-black">{b.title}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{b.desc}</p>
               </div>
             );
           })}
@@ -135,14 +135,14 @@ export default function CareersPage() {
 
       {/* Current Openings */}
       <div className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--border)] pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-200 pb-4">
           <div>
-            <h2 className="text-2xl font-bold text-[var(--primary)] font-serif">
+            <h2 className="text-2xl font-bold text-black font-serif">
               Current Faculty &amp; Staff Openings
             </h2>
-            <p className="text-xs text-[var(--muted)]">Academic Year 2025-26 recruitment cycle</p>
+            <p className="text-xs text-gray-600">Academic Year 2025-26 recruitment cycle</p>
           </div>
-          <span className="text-xs font-bold text-[var(--secondary)] bg-[var(--tint)] px-3 py-1 rounded-full w-fit">
+          <span className="text-xs font-bold text-black bg-gray-100 border border-gray-300 px-3 py-1 rounded-full w-fit">
             {openings.length} Positions Available
           </span>
         </div>
@@ -151,27 +151,27 @@ export default function CareersPage() {
           {openings.map((job, i) => (
             <div
               key={i}
-              className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] shadow-sm hover:border-[var(--secondary)] transition flex flex-col md:flex-row md:items-center justify-between gap-6"
+              className="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs hover:border-black transition flex flex-col md:flex-row md:items-center justify-between gap-6"
             >
               <div className="space-y-2 max-w-2xl">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-[var(--tint)] text-[var(--primary)]">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-gray-100 text-black border border-gray-300">
                     {job.department}
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-semibold bg-emerald-50 text-emerald-700">
+                  <span className="px-2.5 py-0.5 rounded-md text-[10px] font-semibold bg-gray-100 text-black border border-gray-300">
                     {job.type}
                   </span>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold text-[var(--primary)] font-serif">
+                <h3 className="text-base sm:text-lg font-bold text-black font-serif">
                   {job.title}
                 </h3>
-                <p className="text-xs text-[var(--muted)]">{job.qualification}</p>
-                <div className="flex flex-wrap gap-4 text-xs text-[var(--muted)] pt-1">
+                <p className="text-xs text-gray-600">{job.qualification}</p>
+                <div className="flex flex-wrap gap-4 text-xs text-gray-500 pt-1">
                   <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-[var(--secondary)]" /> {job.campuses}
+                    <MapPin className="w-3.5 h-3.5 text-black" /> {job.campuses}
                   </div>
                   <div className="flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[var(--secondary)]" /> {job.experience}
+                    <Clock className="w-3.5 h-3.5 text-black" /> {job.experience}
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function CareersPage() {
               <div className="shrink-0">
                 <Link
                   href={`/contact?subject=${encodeURIComponent("Careers: " + job.title)}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-dark)] text-white text-xs font-bold transition shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-gray-100 text-black border border-black text-xs font-bold transition shadow-xs"
                 >
                   Apply for Position <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -190,19 +190,19 @@ export default function CareersPage() {
       </div>
 
       {/* Direct Application CTA */}
-      <div className="p-8 sm:p-10 rounded-3xl bg-[var(--tint)] border border-[var(--border)] flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="p-8 sm:p-10 rounded-3xl bg-white border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
         <div className="space-y-2 text-center md:text-left">
-          <h3 className="text-xl font-bold text-[var(--primary)] font-serif">
+          <h3 className="text-xl font-bold text-black font-serif">
             Don&apos;t see your subject area listed?
           </h3>
-          <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl">
+          <p className="text-xs sm:text-sm text-gray-600 max-w-xl">
             We are always eager to meet exceptional educators. Send your CV and a statement of teaching philosophy directly to our talent acquisition team.
           </p>
         </div>
         <div className="shrink-0 flex flex-col sm:flex-row gap-3">
           <Link
             href="/contact?subject=General+Faculty+Application"
-            className="px-6 py-3 rounded-xl bg-[var(--accent)] hover:brightness-110 text-[var(--primary-dark)] font-extrabold text-xs uppercase tracking-wider text-center shadow-md transition"
+            className="px-6 py-3 rounded-xl bg-white hover:bg-gray-100 text-black border-2 border-black font-extrabold text-xs uppercase tracking-wider text-center shadow-xs transition"
           >
             Submit General Resume
           </Link>
